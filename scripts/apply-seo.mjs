@@ -122,10 +122,12 @@ function patchGuideHead(html, filePath) {
     /<meta\s+(?:property|name)=["'](?:og:[^"']+|twitter:[^"']+)["'][^>]*>\s*/gi,
     "",
   );
+  // Collapse blank lines left behind by repeated SEO runs
+  out = out.replace(/(<meta\s+name=["']viewport["'][^>]*>)\s+/i, "$1\n");
 
   out = out.replace(
-    /(<meta\s+name=["']viewport["'][^>]*>\s*)/i,
-    `$1\n${seoBlock}\n`,
+    /(<meta\s+name=["']viewport["'][^>]*>\n)/i,
+    `$1${seoBlock}\n`,
   );
 
   // Cover alt from title
