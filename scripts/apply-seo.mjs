@@ -141,54 +141,129 @@ function writeRobots() {
   const body = `User-agent: *
 Allow: /
 
+# Primary sitemap index (pages + all guides/blogs)
 Sitemap: ${ORIGIN}/sitemap.xml
 `;
   fs.writeFileSync(path.join(ROOT, "robots.txt"), body);
 }
 
-function writeSitemap(guideFiles) {
-  const today = new Date().toISOString().slice(0, 10);
-  const core = [
-    { loc: `${ORIGIN}/`, priority: "1.0", changefreq: "weekly" },
-    { loc: `${ORIGIN}/pages/pricing`, priority: "0.9", changefreq: "weekly" },
-    { loc: `${ORIGIN}/pages/about`, priority: "0.8", changefreq: "monthly" },
-    { loc: `${ORIGIN}/pages/customers`, priority: "0.8", changefreq: "weekly" },
-    { loc: `${ORIGIN}/pages/blog`, priority: "0.9", changefreq: "daily" },
-  ];
+/** Firebase cleanUrls: /pages/pricing.html → /pages/pricing */
+function htmlPathToLoc(filePath) {
+  const rel = path.relative(ROOT, filePath).split(path.sep).join("/");
+  if (rel === "index.html") return `${ORIGIN}/`;
+  const clean = rel.replace(/\.html$/i, "");
+  return `${ORIGIN}/${clean}`;
+}
 
-  const guides = guideFiles.map((f) => {
-    const slug = path.basename(f, ".html");
-    return {
-      loc: `${ORIGIN}/pages/guides/${slug}`,
-      priority: "0.6",
-      changefreq: "monthly",
-    };
-  });
+function lastmodFor(filePath) {
+  try {
+    return fs.statSync(filePath).mtime.toISOString().slice(0, 10);
+  } catch {
+    return new Date().toISOString().slice(0, 10);
+  }
+}
 
-  const urls = [...core, ...guides]
+function seoMetaFor(filePath) {
+  const rel = path.relative(ROOT, filePath).split(path.sep).join("/");
+  if (rel === "index.html") {
+    return { priority: "1.0", changefreq: "weekly" };
+  }
+  if (rel === "pages/blog.html") {
+    return { priority: "0.9", changefreq: "daily" };
+  }
+  if (rel === "pages/pricing.html") {
+    return { priority: "0.9", changefreq: "weekly" };
+  }
+  if (rel === "pages/about.html" || rel === "pages/customers.html") {
+    return { priority: "0.8", changefreq: "weekly" };
+  }
+  if (rel.startsWith("pages/guides/")) {
+    return { priority: "0.7", changefreq: "monthly" };
+  }
+  // sample-blog and any other public page
+  return { priority: "0.6", changefreq: "monthly" };
+}
+
+function renderUrlset(entries) {
+  const body = entries
     .map(
       (u) => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${u.lastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`,
     )
     .join("\n");
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+${body}
 </urlset>
 `;
-  fs.writeFileSync(path.join(ROOT, "sitemap.xml"), xml);
+}
+
+function writeSitemap(allHtmlFiles) {
+  const pageFiles = [];
+  const guideFiles = [];
+
+  for (const file of allHtmlFiles) {
+    const rel = path.relative(ROOT, file).split(path.sep).join("/");
+    if (rel.startsWith("pages/guides/")) guideFiles.push(file);
+    else pageFiles.push(file);
+  }
+
+  pageFiles.sort();
+  guideFiles.sort();
+
+  const toEntry = (file) => {
+    const meta = seoMetaFor(file);
+    return {
+      loc: htmlPathToLoc(file),
+      lastmod: lastmodFor(file),
+      changefreq: meta.changefreq,
+      priority: meta.priority,
+    };
+  };
+
+  const pageEntries = pageFiles.map(toEntry);
+  const guideEntries = guideFiles.map(toEntry);
+  const allEntries = [...pageEntries, ...guideEntries];
+
+  // Child sitemaps
+  fs.writeFileSync(path.join(ROOT, "sitemap-pages.xml"), renderUrlset(pageEntries));
+  fs.writeFileSync(path.join(ROOT, "sitemap-guides.xml"), renderUrlset(guideEntries));
+
+  // Full flat sitemap (GSC can submit either this or the index)
+  fs.writeFileSync(path.join(ROOT, "sitemap-all.xml"), renderUrlset(allEntries));
+
+  // Index — proper split: static pages vs all blog/guides
+  const today = new Date().toISOString().slice(0, 10);
+  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${ORIGIN}/sitemap-pages.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${ORIGIN}/sitemap-guides.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+  fs.writeFileSync(path.join(ROOT, "sitemap.xml"), indexXml);
+
+  return {
+    pages: pageEntries.length,
+    guides: guideEntries.length,
+    total: allEntries.length,
+  };
 }
 
 function main() {
   const htmlFiles = [
     path.join(ROOT, "index.html"),
     ...walkHtmlFiles(path.join(ROOT, "pages")),
-  ];
+  ].sort();
 
   let patched = 0;
   for (const file of htmlFiles) {
@@ -201,12 +276,14 @@ function main() {
     patched += 1;
   }
 
-  const guides = walkHtmlFiles(GUIDES_DIR);
   writeRobots();
-  writeSitemap(guides);
+  const counts = writeSitemap(htmlFiles);
 
-  console.log(`SEO applied: ${patched} HTML files, ${guides.length} guides in sitemap.`);
+  console.log(
+    `SEO applied: ${patched} HTML files · sitemap pages=${counts.pages} guides/blogs=${counts.guides} total=${counts.total}`,
+  );
   console.log(`Origin: ${ORIGIN}`);
+  console.log(`Index: ${ORIGIN}/sitemap.xml → sitemap-pages.xml + sitemap-guides.xml`);
 }
 
 main();

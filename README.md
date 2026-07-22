@@ -13,9 +13,18 @@ Login / Sign up CTAs open `dash.mybexo.cyou/login`.
 ## SEO
 
 ```bash
-npm run seo          # domain align + guide heads + sitemap/robots for mybexo.cyou
+npm run seo          # domain align + guide heads + full sitemaps for mybexo.cyou
 npm run generate:blogs
 ```
+
+Sitemaps (auto-built from every public HTML page):
+
+| File | Contents |
+|------|----------|
+| `sitemap.xml` | Index → pages + guides |
+| `sitemap-pages.xml` | Home, pricing, about, stories, guides hub, sample |
+| `sitemap-guides.xml` | All 100 blog/guide articles |
+| `sitemap-all.xml` | Flat urlset of everything (optional GSC submit) |
 
 Spec: [`docs/superpowers/specs/2026-07-23-portfolio-discovery-seo-design.md`](docs/superpowers/specs/2026-07-23-portfolio-discovery-seo-design.md)
 
