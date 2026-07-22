@@ -260,8 +260,16 @@ img {
 
 @media (max-width: 900px) {
   .container {
-    width: 92%;
+    width: min(1120px, 92%);
     padding: 3.5em 0;
+  }
+
+  section {
+    padding: 0.75em;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 9vw, 3.25rem);
   }
 
   .f-row {
@@ -276,5 +284,12 @@ img {
   .f-ctext {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .btn-primary,
+  .btn-ghost,
+  a.btn-primary,
+  a.btn-ghost {
+    min-height: 48px;
   }
 }

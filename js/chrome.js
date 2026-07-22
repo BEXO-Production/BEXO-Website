@@ -43,10 +43,10 @@
         "</div>" +
         '<div class="navbar-items">' +
         '<input type="checkbox" id="hamburger-toggle" />' +
-        '<label for="hamburger-toggle" class="hamburger-icon" aria-label="Open menu">' +
+        '<label for="hamburger-toggle" class="hamburger-icon" aria-label="Open menu" aria-controls="primary-nav">' +
         '<i class="ph-light ph-list"></i>' +
         "</label>" +
-        '<ul class="navbar-links">' +
+        '<ul class="navbar-links" id="primary-nav">' +
         '<li class="' +
         linkClass("home") +
         '"><a href="' +
@@ -82,6 +82,27 @@
         "</div>" +
         "</div>" +
         "</nav>";
+
+      var toggle = document.getElementById("hamburger-toggle");
+      var label = navMount.querySelector(".hamburger-icon");
+      if (toggle && label) {
+        var syncNav = function () {
+          var open = toggle.checked;
+          document.body.classList.toggle("nav-open", open);
+          label.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+          label.setAttribute("aria-expanded", open ? "true" : "false");
+        };
+        toggle.addEventListener("change", syncNav);
+        navMount.querySelectorAll(".navbar-links a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            if (toggle.checked) {
+              toggle.checked = false;
+              syncNav();
+            }
+          });
+        });
+        syncNav();
+      }
     }
 
     var footMount = document.getElementById("site-footer");

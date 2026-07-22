@@ -21,15 +21,35 @@
 
     <section class="hero">
       <div class="hero-bg" aria-hidden="true">
-        <img src="./assets/atmosphere/hero.jpg" alt="" />
+        <img
+          class="hero-poster"
+          src="./assets/atmosphere/hero-poster.jpg"
+          alt=""
+          width="1280"
+          height="720"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <video
+          class="hero-video-bg"
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="none"
+          poster="./assets/atmosphere/hero-poster.jpg"
+          disablePictureInPicture
+          disableRemotePlayback
+        ></video>
+        <div class="hero-bg-overlay"></div>
       </div>
-      <div class="container">
+      <div class="container hero-layout">
         <div class="hero-copy">
-            <p class="eyebrow">Ace Digital · BEXO</p>
+          <p class="eyebrow">Ace Digital · BEXO</p>
           <h1>Your next opportunity starts with a live portfolio.</h1>
           <p class="lede">
             Upload a resume, choose a premium template, and publish on
-            <strong style="color: #bae6fd">yourname.atbexo.com</strong> — sign in
+            <strong class="hero-accent">yourname.atbexo.com</strong> — sign in
             only when you create or edit.
           </p>
           <div class="cta-row">
@@ -312,6 +332,7 @@
 
     <script src="./js/config.js"></script>
     <script src="./js/chrome.js"></script>
+    <script src="./js/hero-video.js"></script>
     <script src="./js/handle-check.js"></script>
   </body>
 </html>
