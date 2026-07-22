@@ -1,14 +1,23 @@
-# BEXO Website (mybexo.com)
+# BEXO Website (mybexo.cyou)
 
 Static marketing site for **BEXO From Ace Digital** — Discover → Create → Share.
 
 | Environment | URL |
 |-------------|-----|
-| Production marketing | https://mybexo.com |
-| Production app | https://dash.mybexo.com |
-| Live portfolios | https://{handle}.atbexo.com |
+| Marketing | https://mybexo.cyou |
+| App / dash | https://dash.mybexo.cyou |
+| Live portfolios | https://{handle}.mybexo.cyou |
 
-Login / Sign up CTAs open `dash.mybexo.com/login`.
+Login / Sign up CTAs open `dash.mybexo.cyou/login`.
+
+## SEO
+
+```bash
+npm run seo          # domain align + guide heads + sitemap/robots for mybexo.cyou
+npm run generate:blogs
+```
+
+Spec: [`docs/superpowers/specs/2026-07-23-portfolio-discovery-seo-design.md`](docs/superpowers/specs/2026-07-23-portfolio-discovery-seo-design.md)
 
 ## Local preview
 
@@ -37,9 +46,7 @@ Regenerate posts after editing the generator:
 
 ```bash
 npm run generate:blogs
+npm run seo
 ```
 
 When the admin dashboard ships: import JSON into `marketing_blogs`, then either serve via API or rebuild static HTML from the DB.
-
-Production cutover notes live in the Onboarding-Flow repo:
-`Bexo-Onboarding-Flow/docs/prod-dash-mybexo-com.md`

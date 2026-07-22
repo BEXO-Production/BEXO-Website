@@ -2,9 +2,10 @@
   "name": "bexo-website",
   "private": true,
   "version": "1.0.0",
-  "description": "BEXO marketing site (mybexo.com)",
+  "description": "BEXO marketing site (mybexo.cyou)",
   "scripts": {
     "generate:blogs": "node scripts/generate-blogs.mjs",
+    "seo": "node scripts/apply-seo.mjs",
     "serve": "python3 -m http.server 4173"
   }
 }

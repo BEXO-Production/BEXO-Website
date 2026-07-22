@@ -10,12 +10,13 @@
 
   ready(function () {
     var cfg = window.BEXO || {
-      DASH_ORIGIN: "https://dash.mybexo.com",
+      DASH_ORIGIN: "https://dash.mybexo.cyou",
+      PORTFOLIO_DOMAIN: "mybexo.cyou",
       loginUrl: function () {
-        return "https://dash.mybexo.com/login";
+        return "https://dash.mybexo.cyou/login";
       },
       legalUrl: function (p) {
-        return "https://dash.mybexo.com/" + p;
+        return "https://dash.mybexo.cyou/" + p;
       },
     };
     var root = document.documentElement.getAttribute("data-root") || "";
@@ -164,7 +165,9 @@
         '<div class="divider"></div>' +
         '<div class="f-ctext">' +
         "<p>© 2026 BEXO From Ace Digital. All rights reserved.</p>" +
-        '<p class="f-domain">you.<span>atbexo.com</span></p>' +
+        '<p class="f-domain">you.<span>' +
+        (cfg.PORTFOLIO_DOMAIN || "mybexo.cyou") +
+        "</span></p>" +
         "</div>" +
         "</div>" +
         "</footer>";

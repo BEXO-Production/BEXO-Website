@@ -50,7 +50,7 @@ const AUTHORS = [
 /** 100 unique, user-facing titles */
 const TITLES = [
   ["Why a live portfolio beats a PDF in placement season", "placements"],
-  ["How yourname.atbexo.com makes you memorable in 3 seconds", "branding"],
+  ["How yourname.mybexo.cyou makes you memorable in 3 seconds", "branding"],
   ["Resume vs portfolio: what recruiters actually open", "recruiters"],
   ["The Hire Me page: your ATS-friendly first impression", "recruiters"],
   ["Stand out without learning Webflow overnight", "getting-started"],
@@ -163,7 +163,7 @@ const ANGLES = {
     ],
     insight: "A PDF proves you can export. A site proves you can ship and maintain — which is closer to real work.",
   },
-  "How yourname.atbexo.com makes you memorable in 3 seconds": {
+  "How yourname.mybexo.cyou makes you memorable in 3 seconds": {
     hook: "Names stick. Random Bitly links don’t. Your subdomain is the shortest brand asset you’ll ever own.",
     problem: "When ten resumes look similar, recruiters remember the person whose URL they can say out loud.",
     steps: [
@@ -428,7 +428,7 @@ function topicExtras(title, category, i) {
   }
   if (t.includes("subdomain") || t.includes("url") || t.includes("name") || t.includes("link") || t.includes("atbexo")) {
     blocks.push(`<h2>Own a sayable address</h2>
-<p><strong>yourname.atbexo.com</strong> is easier to remember than a long path. Claim it early, then stamp it on every channel you already use.</p>`);
+<p><strong>yourname.mybexo.cyou</strong> is easier to remember than a long path. Claim it early, then stamp it on every channel you already use.</p>`);
   }
   if (t.includes("privacy") || t.includes("anti-portfolio") || t.includes("never")) {
     blocks.push(`<h2>What to leave out</h2>
@@ -472,14 +472,14 @@ ${steps}
 ${extras}
 <h2>How a website helps you stand out</h2>
 <p>${play.standout}</p>
-<p>On BEXO, that path is simple: discover on <strong>mybexo.com</strong>, create on <strong>dash.mybexo.com</strong>, share on <strong>yourname.atbexo.com</strong>. Premium templates and a Hire Me page give you agency-grade presentation without becoming a full-time webmaster.</p>
+<p>On BEXO, that path is simple: discover on <strong>mybexo.cyou</strong>, create on <strong>dash.mybexo.cyou</strong>, share on <strong>yourname.mybexo.cyou</strong>. Premium templates and a Hire Me page give you agency-grade presentation without becoming a full-time webmaster.</p>
 <h2>Field checklist</h2>
 <ul>
 ${play.checklist.map((c) => `<li>${c}</li>`).join("\n")}
 </ul>
 <h2>Try this today</h2>
 <p>Open your draft (or start one), apply one change from the list above, and publish. Momentum compounds faster than waiting for “ready.”</p>
-<p><a class="btn-primary js-dash-login" href="https://dash.mybexo.com/login">Open your BEXO workspace</a></p>
+<p><a class="btn-primary js-dash-login" href="https://dash.mybexo.cyou/login">Open your BEXO workspace</a></p>
 `.trim();
 }
 
@@ -490,16 +490,30 @@ function excerptFrom(title, category, angle) {
 }
 
 function postHtmlShell(post) {
+  const origin = "https://mybexo.cyou";
+  const canonical = `${origin}/pages/guides/${post.slug}`;
+  const pageTitle = post.seo_title || `${post.title} | BEXO Guides`;
+  const description = post.seo_description || post.excerpt;
   return `<!DOCTYPE html>
 <html lang="en" data-root="../../">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${escapeHtml(post.seo_title || post.title)} — BEXO Guides</title>
-    <meta name="description" content="${escapeHtml(post.seo_description || post.excerpt)}" />
+    <title>${escapeHtml(pageTitle)}</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${escapeHtml(canonical)}" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:site_name" content="BEXO" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="${escapeHtml(post.title)}" />
-    <meta property="og:description" content="${escapeHtml(post.excerpt)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:url" content="${escapeHtml(canonical)}" />
     <meta property="og:image" content="${escapeHtml(post.cover_image_url)}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${escapeHtml(post.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${escapeHtml(post.cover_image_url)}" />
     <link rel="icon" href="../../assets/bexo-logo.png" type="image/png" />
     <link rel="stylesheet" href="../../css/navbar.css" />
     <link rel="stylesheet" href="../../main.css" />
@@ -517,7 +531,7 @@ function postHtmlShell(post) {
       </div>
     </article>
     <div class="post-cover container">
-      <img src="${escapeHtml(post.cover_image_url)}" alt="" loading="lazy" />
+      <img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" loading="lazy" />
       <p class="cover-credit">${escapeHtml(post.cover_credit || "")}</p>
     </div>
     <section class="article-body">
