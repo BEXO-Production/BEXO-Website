@@ -1,0 +1,196 @@
+/* Pricing — neat marketing layout */
+
+.section-pricing-hero .container {
+  padding-top: 7rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+}
+
+.section-pricing-hero .p-header-copy {
+  max-width: 38rem;
+  margin: 0 auto;
+}
+
+.section-pricing-hero h2 {
+  letter-spacing: -0.03em;
+}
+
+.pricing-free-band .band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1.15rem 1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pricing-free-band h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.pricing-free-band p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pricing-primary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-top: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+  align-items: stretch;
+}
+
+.p-card {
+  padding: 1.5rem;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.035);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.p-card.is-featured {
+  border-color: rgba(56, 189, 248, 0.5);
+  background:
+    radial-gradient(ellipse at top, rgba(56, 189, 248, 0.18), transparent 55%),
+    rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -30px rgba(56, 189, 248, 0.45);
+}
+
+.plan-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(186, 230, 253, 0.75);
+  margin-bottom: 0.65rem;
+}
+
+.plan-tag--hot {
+  color: #7dd3fc;
+}
+
+.p-card .price {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  color: #fff;
+  margin: 0.5rem 0 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.p-card .price .dl {
+  font-size: 1.15rem;
+  margin-right: 0.05rem;
+}
+
+.p-card .price-period {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--bexo-muted);
+  font-weight: 600;
+}
+
+.p-card .price-details {
+  font-size: 0.9rem;
+  min-height: 2.6em;
+}
+
+.p-card-info {
+  margin: 1rem 0 1.35rem;
+  flex: 1;
+}
+
+.p-card-info p {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+}
+
+.p-card-info i {
+  color: var(--bexo-sky);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.pricing-lifetime {
+  padding-top: 0.5rem;
+}
+
+.lifetime-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 1.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.1), transparent 50%),
+    rgba(11, 16, 32, 0.9);
+}
+
+.lifetime-copy {
+  flex: 1;
+  min-width: 16rem;
+}
+
+.lifetime-copy h3 {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.lifetime-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.lifetime-points li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--bexo-muted);
+}
+
+.lifetime-points i {
+  color: var(--bexo-sky);
+}
+
+.pricing-note {
+  text-align: center;
+  padding-bottom: 3.5rem;
+  padding-top: 1.5rem;
+}
+
+.pricing-note p {
+  max-width: 34rem;
+  margin: 0 auto;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 960px) {
+  .pricing-primary {
+    grid-template-columns: 1fr;
+  }
+
+  .p-card.is-featured {
+    transform: none;
+  }
+}

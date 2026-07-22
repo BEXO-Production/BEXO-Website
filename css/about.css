@@ -1,0 +1,120 @@
+/* About — marketing journey layout */
+
+.about-hero .container {
+  padding-top: 7rem;
+  padding-bottom: 1.5rem;
+  max-width: 44rem;
+}
+
+.about-hero .lede {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: rgba(244, 246, 251, 0.72);
+  line-height: 1.65;
+}
+
+.about-journey .container {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.about-journey h2 {
+  max-width: 22ch;
+  margin-bottom: 1.75rem;
+}
+
+.journey-rail {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.journey-step {
+  padding: 1.35rem 1.25rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.journey-num {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--bexo-sky);
+  margin-bottom: 0.55rem;
+}
+
+.journey-step h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.journey-host {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  margin-bottom: 0.55rem;
+}
+
+.journey-join {
+  width: 28px;
+  align-self: center;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.15), rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.15));
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 3rem;
+}
+
+.about-body .panel {
+  border-radius: 1.35rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1.5rem;
+}
+
+.about-body .panel h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.panel-cta {
+  background:
+    radial-gradient(ellipse at top right, rgba(56, 189, 248, 0.14), transparent 55%),
+    rgba(255, 255, 255, 0.04);
+  border-color: rgba(56, 189, 248, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-cta .btn-primary,
+.panel-cta .btn-ghost {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .journey-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-join {
+    width: 2px;
+    height: 24px;
+    justify-self: center;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.15), rgba(56, 189, 248, 0.65), rgba(56, 189, 248, 0.15));
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

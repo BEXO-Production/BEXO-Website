@@ -1,0 +1,48 @@
+/* Stories / customers */
+
+.stories-hero .container {
+  padding-top: 7rem;
+  max-width: 42rem;
+}
+
+.stories-grid .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.story-card {
+  padding: 1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--bexo-border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.story-card .role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bexo-sky);
+  margin-bottom: 0.5rem;
+}
+
+.story-card blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.story-card .who {
+  font-size: 0.85rem;
+  color: var(--bexo-muted);
+}
+
+@media (max-width: 900px) {
+  .stories-grid .container {
+    grid-template-columns: 1fr;
+  }
+}

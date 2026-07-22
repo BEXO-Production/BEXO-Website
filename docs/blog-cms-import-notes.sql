@@ -1,0 +1,35 @@
+-- Optional seed helper: after applying blog-cms-schema.sql, import rows via your
+-- admin tool or a script that reads content/blogs/posts/*.json.
+-- This file documents the upsert shape (slug is the natural key).
+
+-- Example single-row upsert (replace placeholders from a JSON post):
+-- INSERT INTO marketing_blogs (
+--   slug, title, excerpt, body_html, cover_image_url, cover_credit,
+--   category, tags, status, featured, author_name, author_role,
+--   seo_title, seo_description, reading_minutes, published_at
+-- ) VALUES (
+--   'why-a-live-portfolio-beats-a-pdf-in-placement-season',
+--   'Why a live portfolio beats a PDF in placement season',
+--   '…',
+--   '…',
+--   'https://images.unsplash.com/…',
+--   'Unsplash — …',
+--   'placements',
+--   ARRAY['placements','portfolio','stand-out','bexo'],
+--   'published',
+--   true,
+--   'Maya Krishnan',
+--   'Career Editor, Ace Digital',
+--   '…',
+--   '…',
+--   5,
+--   '2025-01-01T10:00:00Z'
+-- )
+-- ON CONFLICT (slug) DO UPDATE SET
+--   title = EXCLUDED.title,
+--   excerpt = EXCLUDED.excerpt,
+--   body_html = EXCLUDED.body_html,
+--   cover_image_url = EXCLUDED.cover_image_url,
+--   updated_at = NOW();
+
+SELECT 'Use scripts/generate-blogs.mjs + JSON import into marketing_blogs' AS note;
