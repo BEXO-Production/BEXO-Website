@@ -1,6 +1,7 @@
 /**
- * BEXO marketing site — production URL map (Cloudflare-style).
- * mybexo.com = this site · dash.mybexo.com = app · *.atbexo.com = portfolios
+ * BEXO marketing site — URL map.
+ * Development: mybexo.cyou + dash.mybexo.cyou + *.mybexo.cyou
+ * Production:  mybexo.com + dash.mybexo.com + *.atbexo.com
  */
 (function (global) {
   var host = typeof location !== "undefined" ? location.hostname : "";
@@ -8,15 +9,26 @@
     host === "localhost" ||
     host === "127.0.0.1" ||
     /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
+  var isCyou = host === "mybexo.cyou" || host.endsWith(".mybexo.cyou");
 
   global.BEXO = {
-    DASH_ORIGIN: isLocal ? "http://localhost:5173" : "https://dash.mybexo.com",
-    /** Public API (handle checks from marketing). Local → API; prod → dash rewrites. */
-    API_ORIGIN: isLocal ? "http://localhost:5001" : "https://dash.mybexo.com",
-    PORTFOLIO_DOMAIN: "atbexo.com",
+    DASH_ORIGIN: isLocal
+      ? "http://localhost:5173"
+      : isCyou
+        ? "https://dash.mybexo.cyou"
+        : "https://dash.mybexo.com",
+    /** Public API (handle checks from marketing). Local → API; hosted → dash rewrites. */
+    API_ORIGIN: isLocal
+      ? "http://localhost:5001"
+      : isCyou
+        ? "https://dash.mybexo.cyou"
+        : "https://dash.mybexo.com",
+    PORTFOLIO_DOMAIN: isCyou ? "mybexo.cyou" : "atbexo.com",
     MARKETING_ORIGIN: isLocal
       ? location.origin.replace(/\/$/, "")
-      : "https://mybexo.com",
+      : isCyou
+        ? "https://mybexo.cyou"
+        : "https://mybexo.com",
     BRAND: "BEXO",
     COMPANY: "Ace Digital",
   };
