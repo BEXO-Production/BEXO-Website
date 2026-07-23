@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Primary sitemap index (pages + all guides/blogs)
-Sitemap: https://mybexo.cyou/sitemap.xml
+Sitemap: https://mybexo.com/sitemap.xml

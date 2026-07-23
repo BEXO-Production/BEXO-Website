@@ -2,7 +2,7 @@
   "name": "bexo-website",
   "private": true,
   "version": "1.0.0",
-  "description": "BEXO marketing site (mybexo.cyou)",
+  "description": "BEXO marketing site (mybexo.com)",
   "scripts": {
     "generate:blogs": "node scripts/generate-blogs.mjs",
     "seo": "node scripts/apply-seo.mjs",

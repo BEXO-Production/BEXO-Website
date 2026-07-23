@@ -86,7 +86,7 @@
           ) {
             return "https://dash.mybexo.com";
           }
-          return "https://dash.mybexo.cyou";
+          return "https://dash.mybexo.com";
         }
 
         var path = location.pathname || "/";
@@ -103,7 +103,7 @@
           return;
         }
 
-        // Keep the public URL on the platform apex (mybexo.cyou/{handle} or
+        // Keep the public URL on the platform apex (mybexo.com/{handle} or
         // atbexo.com/{handle}). The dash SPA renders the free Minimal layout;
         // Cloudflare Worker can proxy the same path without this shell when
         // apex DNS is orange-clouded.

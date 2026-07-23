@@ -24,8 +24,12 @@
     var statusEl = root.querySelector("[data-handle-status]");
     var claimBtn = root.querySelector("[data-handle-claim]");
     var domain = window.BEXO.PORTFOLIO_DOMAIN || "atbexo.com";
+    var suffix = window.BEXO.PORTFOLIO_SUFFIX || "." + domain;
     var timer = null;
     var latest = "";
+
+    var suffixEl = root.querySelector(".handle-suffix, .js-portfolio-suffix");
+    if (suffixEl) suffixEl.textContent = suffix;
 
     function setStatus(kind, message) {
       statusEl.className = "handle-status handle-status--" + kind;

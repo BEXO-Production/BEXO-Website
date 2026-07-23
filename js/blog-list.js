@@ -7,6 +7,39 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function escapeAttr(value) {
+    return escapeHtml(value).replace(/`/g, "&#96;");
+  }
+
+  function safeHref(value) {
+    var href = String(value == null ? "" : value).trim();
+    if (!href) return "#";
+    // Allow relative site paths and same-origin absolute http(s) only.
+    if (/^(https?:)?\/\//i.test(href) || /^javascript:/i.test(href) || /^data:/i.test(href)) {
+      try {
+        var u = new URL(href, window.location.origin);
+        if (u.protocol !== "http:" && u.protocol !== "https:") return "#";
+        if (u.origin !== window.location.origin) return "#";
+        return escapeAttr(u.pathname + u.search + u.hash);
+      } catch (_) {
+        return "#";
+      }
+    }
+    if (href.charAt(0) === "/" || href.charAt(0) === "." || /^[a-z0-9_-]/i.test(href)) {
+      return escapeAttr(href);
+    }
+    return "#";
+  }
+
   function categoryLabel(key) {
     var map = {
       placements: "Placements",
@@ -45,24 +78,31 @@
 
       grid.innerHTML = list
         .map(function (p) {
+          var title = escapeHtml(p.title);
+          var excerpt = escapeHtml(p.excerpt);
+          var href = safeHref(p.href);
+          var cover = escapeAttr(p.cover_image_url || "");
+          var meta =
+            escapeHtml(p.category_label || categoryLabel(p.category)) +
+            " · " +
+            escapeHtml(p.reading_minutes) +
+            " min";
           return (
             '<a class="guide-card" href="' +
-            p.href +
+            href +
             '">' +
             '<div class="thumb"><img src="' +
-            p.cover_image_url +
+            cover +
             '" alt="" loading="lazy" /></div>' +
             "<div>" +
             '<p class="meta">' +
-            (p.category_label || categoryLabel(p.category)) +
-            " · " +
-            p.reading_minutes +
-            " min</p>" +
+            meta +
+            "</p>" +
             "<h3>" +
-            p.title +
+            title +
             "</h3>" +
             "<p>" +
-            p.excerpt +
+            excerpt +
             "</p>" +
             "</div></a>"
           );
@@ -81,9 +121,9 @@
             '<button type="button" class="' +
             cls +
             '" data-cat="' +
-            k +
+            escapeAttr(k) +
             '">' +
-            label +
+            escapeHtml(label) +
             "</button>"
           );
         })

@@ -10,13 +10,14 @@
 
   ready(function () {
     var cfg = window.BEXO || {
-      DASH_ORIGIN: "https://dash.mybexo.cyou",
-      PORTFOLIO_DOMAIN: "mybexo.cyou",
+      DASH_ORIGIN: "https://dash.mybexo.com",
+      PORTFOLIO_DOMAIN: "atbexo.com",
+      PORTFOLIO_SUFFIX: ".atbexo.com",
       loginUrl: function () {
-        return "https://dash.mybexo.cyou/login";
+        return "https://dash.mybexo.com/login";
       },
       legalUrl: function (p) {
-        return "https://dash.mybexo.cyou/" + p;
+        return "https://dash.mybexo.com/" + p;
       },
     };
     var root = document.documentElement.getAttribute("data-root") || "";
@@ -166,7 +167,7 @@
         '<div class="f-ctext">' +
         "<p>© 2026 BEXO From Ace Digital. All rights reserved.</p>" +
         '<p class="f-domain">you.<span>' +
-        (cfg.PORTFOLIO_DOMAIN || "mybexo.cyou") +
+        (cfg.PORTFOLIO_DOMAIN || "atbexo.com") +
         "</span></p>" +
         "</div>" +
         "</div>" +
@@ -182,6 +183,31 @@
       } else {
         el.setAttribute("href", login);
       }
+    });
+
+    // Sync portfolio / dash host copy from config (staging vs production).
+    var portfolio = cfg.PORTFOLIO_DOMAIN || "atbexo.com";
+    var suffix = cfg.PORTFOLIO_SUFFIX || "." + portfolio;
+    var dashHost = String(cfg.DASH_ORIGIN || "https://dash.mybexo.com").replace(
+      /^https?:\/\//,
+      "",
+    );
+    document.querySelectorAll(".handle-suffix, .js-portfolio-suffix").forEach(function (el) {
+      el.textContent = suffix;
+    });
+    document.querySelectorAll(".js-portfolio-domain").forEach(function (el) {
+      el.textContent = portfolio;
+    });
+    document.querySelectorAll(".js-portfolio-host").forEach(function (el) {
+      var sample = el.getAttribute("data-sample") || "yourname";
+      el.textContent = sample + "." + portfolio;
+    });
+    document.querySelectorAll(".js-dash-host").forEach(function (el) {
+      el.textContent = dashHost;
+    });
+    document.querySelectorAll(".js-marketing-host").forEach(function (el) {
+      var origin = cfg.MARKETING_ORIGIN || "https://mybexo.com";
+      el.textContent = String(origin).replace(/^https?:\/\//, "");
     });
   });
 })();

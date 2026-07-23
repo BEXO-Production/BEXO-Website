@@ -11,24 +11,28 @@
     /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
   var isCyou = host === "mybexo.cyou" || host.endsWith(".mybexo.cyou");
 
+  // Production defaults (also used when host is not staging/local).
+  var dashOrigin = "https://dash.mybexo.com";
+  var portfolioDomain = "atbexo.com";
+  var marketingOrigin = "https://mybexo.com";
+  if (isLocal) {
+    dashOrigin = "http://localhost:5173";
+    marketingOrigin = location.origin.replace(/\/$/, "");
+  } else if (isCyou) {
+    dashOrigin = "https://dash.mybexo.cyou";
+    portfolioDomain = "mybexo.cyou";
+    marketingOrigin = "https://mybexo.cyou";
+  }
+
   global.BEXO = {
-    DASH_ORIGIN: isLocal
-      ? "http://localhost:5173"
-      : isCyou
-        ? "https://dash.mybexo.cyou"
-        : "https://dash.mybexo.com",
+    DASH_ORIGIN: dashOrigin,
     /** Public API (handle checks from marketing). Local → API; hosted → dash rewrites. */
-    API_ORIGIN: isLocal
-      ? "http://localhost:5001"
-      : isCyou
-        ? "https://dash.mybexo.cyou"
-        : "https://dash.mybexo.com",
-    PORTFOLIO_DOMAIN: isCyou ? "mybexo.cyou" : "atbexo.com",
-    MARKETING_ORIGIN: isLocal
-      ? location.origin.replace(/\/$/, "")
-      : isCyou
-        ? "https://mybexo.cyou"
-        : "https://mybexo.com",
+    API_ORIGIN: isLocal ? "http://localhost:5001" : dashOrigin,
+    /** Portfolio subdomain apex, e.g. atbexo.com → yourname.atbexo.com */
+    PORTFOLIO_DOMAIN: portfolioDomain,
+    /** Leading-dot suffix for UI, e.g. ".atbexo.com" */
+    PORTFOLIO_SUFFIX: "." + portfolioDomain,
+    MARKETING_ORIGIN: marketingOrigin,
     BRAND: "BEXO",
     COMPANY: "Ace Digital",
   };
