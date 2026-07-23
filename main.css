@@ -43,7 +43,7 @@ section {
 .container {
   width: min(1120px, 92%);
   margin: 0 auto;
-  padding: 5.5em 0;
+  padding: 5.75em 0;
 }
 
 h1,
@@ -124,6 +124,11 @@ a.btn-primary {
 
 .btn-primary:hover {
   filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-ghost,
@@ -146,6 +151,7 @@ a.btn-ghost {
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
 }
 
 .cta-row {

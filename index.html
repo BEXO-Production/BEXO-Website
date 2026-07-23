@@ -84,33 +84,36 @@
   <body class="page-home" data-page="home">
     <div id="site-nav"></div>
 
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <img
-          class="hero-poster"
-          src="./assets/atmosphere/hero-poster.jpg"
-          alt="Campus and career atmosphere behind BEXO portfolios"
-          width="1280"
-          height="720"
-          decoding="async"
-          fetchpriority="high"
-        />
-        <video
-          class="hero-video-bg"
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="none"
-          poster="./assets/atmosphere/hero-poster.jpg"
-          disablePictureInPicture
-          disableRemotePlayback
-        ></video>
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-bg" data-hero-parallax>
+          <img
+            class="hero-poster"
+            src="./assets/atmosphere/hero-poster.jpg"
+            alt=""
+            width="1280"
+            height="720"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <video
+            class="hero-video-bg"
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="metadata"
+            poster="./assets/atmosphere/hero-poster.jpg"
+            disablePictureInPicture
+            disableRemotePlayback
+          ></video>
+        </div>
         <div class="hero-bg-overlay"></div>
       </div>
       <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow">Ace Digital · BEXO</p>
+          <p class="hero-brand" aria-label="BEXO">BEXO</p>
+          <p class="eyebrow">Ace Digital · Live portfolios</p>
           <h1>Your next opportunity starts with a live portfolio.</h1>
           <p class="lede">
             Upload a resume, choose a premium template, and publish on
@@ -167,9 +170,13 @@
           </div>
         </div>
       </div>
+      <a class="hero-scroll" href="#after-hero" aria-label="Scroll to explore BEXO">
+        <span>Scroll</span>
+        <i class="ph-bold ph-caret-down"></i>
+      </a>
     </section>
 
-    <div class="marquee" aria-hidden="true">
+    <div id="after-hero" class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <span>Resume to live site</span>
         <span>yourname.mybexo.cyou</span>

@@ -1,6 +1,7 @@
 /**
- * Hero background video — load only when it will actually play well.
- * Falls back to poster image on reduced-motion, Save-Data, or slow links.
+ * Hero background video — load when it will play well,
+ * and parallax the media so it drifts downward on scroll.
+ * Falls back to poster on reduced-motion, Save-Data, or slow links.
  */
 (function () {
   function ready(fn) {
@@ -9,15 +10,19 @@
   }
 
   ready(function () {
+    var hero = document.querySelector(".hero");
     var video = document.querySelector(".hero-video-bg");
-    if (!video) return;
+    var parallax = document.querySelector("[data-hero-parallax]");
+    if (!hero) return;
 
     var root = document.documentElement.getAttribute("data-root") || "";
     var src = root + "assets/atmosphere/hero-bg-web.mp4";
     var playing = false;
+    var ticking = false;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function shouldSkipVideo() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+      if (reduceMotion) return true;
       var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
       if (conn) {
         if (conn.saveData) return true;
@@ -27,12 +32,13 @@
     }
 
     function markReady() {
+      if (!video) return;
       video.classList.add("is-ready");
-      var hero = video.closest(".hero");
-      if (hero) hero.classList.add("hero--video-ready");
+      hero.classList.add("hero--video-ready");
     }
 
     function tryPlay() {
+      if (!video) return;
       video.muted = true;
       video.playsInline = true;
       var play = video.play();
@@ -51,54 +57,77 @@
       }
     }
 
-    if (shouldSkipVideo()) {
+    function updateParallax() {
+      ticking = false;
+      var rect = hero.getBoundingClientRect();
+      var viewH = window.innerHeight || 1;
+      var progress = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height, 1)));
+
+      if (progress > 0.04) hero.classList.add("is-scrolled");
+      else hero.classList.remove("is-scrolled");
+
+      if (!parallax || reduceMotion) return;
+
+      // Drift the video downward as the section scrolls away.
+      var shift = progress * viewH * 0.28;
+      parallax.style.transform = "translate3d(0, " + shift.toFixed(2) + "px, 0)";
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateParallax);
+    }
+
+    if (video && !shouldSkipVideo()) {
+      if (!video.querySelector("source")) {
+        var source = document.createElement("source");
+        source.src = src;
+        source.type = "video/mp4";
+        video.appendChild(source);
+      }
+
+      if (video.readyState >= 2) {
+        tryPlay();
+      } else {
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+        video.load();
+      }
+
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+                tryPlay();
+              } else if (playing) {
+                video.pause();
+                playing = false;
+              }
+            });
+          },
+          { threshold: [0, 0.2, 0.5] },
+        );
+        io.observe(hero);
+      }
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          video.pause();
+          playing = false;
+        } else if (!shouldSkipVideo()) {
+          tryPlay();
+        }
+      });
+    } else if (video) {
       video.removeAttribute("autoplay");
       try {
         video.pause();
       } catch (e) {}
-      return;
     }
 
-    // Defer source attach so first paint can use the poster.
-    if (!video.querySelector("source")) {
-      var source = document.createElement("source");
-      source.src = src;
-      source.type = "video/mp4";
-      video.appendChild(source);
-    }
-
-    if (video.readyState >= 2) {
-      tryPlay();
-    } else {
-      video.addEventListener("loadeddata", tryPlay, { once: true });
-      video.load();
-    }
-
-    // Pause when mostly off-screen to save battery/CPU.
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-              tryPlay();
-            } else if (playing) {
-              video.pause();
-              playing = false;
-            }
-          });
-        },
-        { threshold: [0, 0.2, 0.5] },
-      );
-      io.observe(video.closest(".hero") || video);
-    }
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        video.pause();
-        playing = false;
-      } else if (!shouldSkipVideo()) {
-        tryPlay();
-      }
-    });
+    updateParallax();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
   });
 })();
