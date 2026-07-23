@@ -40,7 +40,11 @@
     function tryPlay() {
       if (!video) return;
       video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
       video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
       var play = video.play();
       if (play && typeof play.then === "function") {
         play

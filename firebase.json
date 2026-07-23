@@ -5,7 +5,14 @@
       "firebase.json",
       "**/.*",
       "**/.DS_Store",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "README.md",
+      "package.json",
+      "docs/**",
+      "scripts/**",
+      "content/**",
+      "BEXO web bg.MP4",
+      "assets/atmosphere/hero-bg.mp4"
     ],
     "cleanUrls": true,
     "trailingSlash": false,
@@ -21,7 +28,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|css|jpg|jpeg|png|webp|svg|woff2)",
+        "source": "**/*.@(js|css|jpg|jpeg|png|webp|svg|woff2|mp4)",
         "headers": [
           {
             "key": "Cache-Control",
