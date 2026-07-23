@@ -134,53 +134,32 @@
           </div>
         </div>
         <div class="hero-panel" id="handle-check">
-          <div class="panel-header">
-            <span class="handle-badge"><i class="ph-bold ph-sparkle"></i> Instant Claim</span>
-            <div class="url-preview" aria-live="polite">
-              <span class="preview-proto">https://</span><span class="preview-sub" data-preview-handle>yourname</span><span class="preview-domain js-portfolio-suffix">.atbexo.com</span>
-            </div>
-          </div>
-
-          <div class="handle-field-wrap">
-            <label class="handle-field" for="hero-handle">
-              <span class="visually-hidden">Choose your BEXO subdomain</span>
-              <i class="ph-bold ph-globe handle-field-icon"></i>
-              <input
-                id="hero-handle"
-                data-handle-input
-                type="text"
-                inputmode="text"
-                autocomplete="off"
-                spellcheck="false"
-                maxlength="32"
-                placeholder="yourname"
-                aria-describedby="handle-status"
-              />
-              <span class="handle-suffix js-portfolio-suffix">.atbexo.com</span>
-            </label>
-            <button type="button" class="btn-check" data-check-trigger aria-label="Check availability">
-              <span>Check</span>
-              <i class="ph-bold ph-arrow-right"></i>
-            </button>
-          </div>
-
-          <div class="handle-chips" aria-label="Quick suggestions">
-            <span class="chips-title">Try:</span>
-            <button type="button" class="chip" data-chip="kavin">kavin</button>
-            <button type="button" class="chip" data-chip="alex-dev">alex-dev</button>
-            <button type="button" class="chip" data-chip="sarah-design">sarah-design</button>
-          </div>
-
+          <p class="handle-label">Claim your name on the web</p>
+          <label class="handle-field" for="hero-handle">
+            <span class="visually-hidden">Choose your BEXO subdomain</span>
+            <input
+              id="hero-handle"
+              data-handle-input
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              spellcheck="false"
+              maxlength="32"
+              placeholder="yourname"
+              aria-describedby="handle-status"
+            />
+            <span class="handle-suffix js-portfolio-suffix">.atbexo.com</span>
+          </label>
           <p id="handle-status" class="handle-status handle-status--idle" data-handle-status>
-            Type a name to check availability
+            Type a name to see if it's free.
           </p>
-
           <a
             class="btn-primary handle-claim"
             data-handle-claim
             hidden
             aria-disabled="true"
-          >Claim this name <i class="ph-bold ph-arrow-right"></i></a>
+            >Claim this name <i class="ph-bold ph-arrow-right"></i
+          ></a>
         </div>
       </div>
       <a class="hero-scroll" href="#after-hero" aria-label="Scroll to explore BEXO">
