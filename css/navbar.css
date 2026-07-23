@@ -1,3 +1,5 @@
+/* Navbar — Premium floating pill */
+
 .navbar {
   position: fixed;
   top: max(1em, env(safe-area-inset-top, 0px));
@@ -16,11 +18,19 @@
   inset: 0;
   backdrop-filter: blur(28px) saturate(140%);
   -webkit-backdrop-filter: blur(28px) saturate(140%);
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  background: rgba(5, 7, 15, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(5, 7, 15, 0.75);
   z-index: -1;
   border-radius: 999px;
-  box-shadow: 0 12px 40px -20px rgba(0, 0, 0, 0.65);
+  box-shadow:
+    0 12px 40px -20px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(56, 189, 248, 0.04);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar:hover:before {
+  border-color: rgba(148, 163, 184, 0.28);
+  background: rgba(5, 7, 15, 0.82);
 }
 
 .navbar .container {
@@ -60,6 +70,11 @@
 .navbar-logo .brand-link img {
   width: 32px;
   height: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar-logo .brand-link:hover img {
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
 }
 
 .navbar-items ul {
@@ -78,12 +93,30 @@
 .navbar-items ul li a {
   padding: 0.65em 0.85em;
   color: rgba(244, 246, 251, 0.72);
-  transition: color 0.15s ease;
+  transition: color 0.2s ease;
+  position: relative;
 }
 
 .navbar-items ul li a:hover,
 .navbar-items ul li.is-active a {
   color: #fff;
+}
+
+.navbar-items ul li.is-active a {
+  position: relative;
+}
+
+.navbar-items ul li.is-active a::after {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--bexo-sky, #38bdf8);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
 }
 
 .navbar-items .navbar-login a {
@@ -102,6 +135,25 @@
   color: #fff !important;
   font-weight: 700;
   box-shadow: 0 8px 24px -10px rgba(56, 189, 248, 0.55);
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-items .btn a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.navbar-items .btn a:hover {
+  box-shadow:
+    0 12px 32px -10px rgba(56, 189, 248, 0.6),
+    0 0 0 3px rgba(56, 189, 248, 0.2);
+  transform: translateY(-1px);
 }
 
 @media screen and (max-width: 1000px) {

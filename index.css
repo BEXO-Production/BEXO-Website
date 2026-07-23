@@ -1,7 +1,80 @@
-/* Home — BEXO marketing */
+/* Home — BEXO marketing · Premium redesign */
 
 .page-home {
   overflow-x: hidden;
+}
+
+/* ========== Scroll-reveal animations ========== */
+.reveal-target {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-target.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== Floating orbs for atmosphere ========== */
+.hero-orbs {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.4), transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation: orb-drift-1 18s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+  bottom: 10%;
+  right: -8%;
+  animation: orb-drift-2 22s ease-in-out infinite alternate;
+}
+
+.orb-3 {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%);
+  top: 50%;
+  left: 40%;
+  animation: orb-drift-3 15s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes orb-drift-2 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-50px, -30px) scale(1.1); }
+}
+
+@keyframes orb-drift-3 {
+  from { transform: translate(0, 0) scale(0.9); }
+  to { transform: translate(30px, -50px) scale(1.1); }
 }
 
 /* —— Full-viewport hero with edge-to-edge video —— */
@@ -78,23 +151,23 @@
   background:
     linear-gradient(
       108deg,
-      rgba(5, 7, 15, 0.78) 0%,
-      rgba(5, 7, 15, 0.42) 42%,
-      rgba(5, 7, 15, 0.2) 70%,
-      rgba(5, 7, 15, 0.55) 100%
+      rgba(5, 7, 15, 0.82) 0%,
+      rgba(5, 7, 15, 0.48) 42%,
+      rgba(5, 7, 15, 0.22) 70%,
+      rgba(5, 7, 15, 0.6) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(5, 7, 15, 0.45) 0%,
+      rgba(5, 7, 15, 0.5) 0%,
       rgba(5, 7, 15, 0.08) 38%,
-      rgba(5, 7, 15, 0.78) 100%
+      rgba(5, 7, 15, 0.82) 100%
     ),
-    radial-gradient(ellipse at 16% 10%, rgba(56, 189, 248, 0.18), transparent 50%);
+    radial-gradient(ellipse at 16% 10%, rgba(56, 189, 248, 0.2), transparent 50%);
 }
 
 .hero-layout {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: min(1120px, 100%);
   margin: 0 auto;
   padding: 0 !important;
@@ -118,6 +191,10 @@
   line-height: 0.92;
   color: #fff;
   text-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #fff 30%, #bae6fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-copy .eyebrow {
@@ -163,6 +240,18 @@
     inset 0 1px 0 rgba(186, 230, 253, 0.12);
   min-width: 0;
   animation: hero-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
 }
 
 .handle-label {
@@ -327,6 +416,7 @@
 /* Content below the hero sits solid so video scrolls away cleanly */
 .marquee,
 .proof,
+.social-proof,
 .feature-split,
 .why,
 .workflow,
@@ -335,6 +425,62 @@
   position: relative;
   z-index: 2;
   background: var(--bexo-ink, #05070f);
+}
+
+/* ========== Social proof stats strip ========== */
+.social-proof {
+  padding: 0 1em;
+  border-top: 1px solid rgba(56, 189, 248, 0.08);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.08);
+  background:
+    linear-gradient(180deg, rgba(56, 189, 248, 0.03), transparent 50%, rgba(56, 189, 248, 0.03)),
+    var(--bexo-ink);
+}
+
+.social-proof .container {
+  padding: 2.5rem 0;
+}
+
+.proof-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.proof-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+
+.proof-number {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 20%, var(--bexo-sky) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.proof-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bexo-muted);
+}
+
+.proof-divider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.3), transparent);
 }
 
 .proof {
@@ -355,6 +501,7 @@
   color: rgba(244, 246, 251, 0.78);
 }
 
+/* ========== Marquee ========== */
 .marquee {
   overflow: hidden;
   border: none;
@@ -389,6 +536,12 @@
   border-radius: 50%;
   background: var(--bexo-sky);
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+  animation: dot-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
 }
 
 @keyframes marquee {
@@ -400,6 +553,7 @@
   }
 }
 
+/* ========== Feature splits ========== */
 .feature-split .container,
 .workflow .container {
   display: grid;
@@ -414,11 +568,25 @@
   overflow: hidden;
   border: 1px solid var(--bexo-border);
   aspect-ratio: 4 / 3;
-  box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.75);
+  box-shadow:
+    0 30px 60px -36px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(56, 189, 248, 0.06);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.feature-split .media:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 40px 80px -36px rgba(0, 0, 0, 0.8),
+    0 0 40px -12px rgba(56, 189, 248, 0.15);
 }
 
 .feature-split .copy h2 {
   max-width: 14ch;
+}
+
+.feature-split .copy p {
+  max-width: 32ch;
 }
 
 .feature-split:nth-of-type(even) .container {
@@ -429,6 +597,29 @@
   direction: ltr;
 }
 
+/* ========== Why BEXO — benefits grid ========== */
+.why {
+  position: relative;
+}
+
+.why::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.why .container {
+  position: relative;
+  z-index: 1;
+}
+
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -437,22 +628,48 @@
 }
 
 .benefit-card {
-  padding: 1.35rem;
+  padding: 1.5rem;
   border-radius: 1.15rem;
   border: 1px solid var(--bexo-border);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .benefit-card:hover {
   border-color: rgba(56, 189, 248, 0.35);
   background: linear-gradient(180deg, rgba(56, 189, 248, 0.1), rgba(255, 255, 255, 0.03));
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px -16px rgba(56, 189, 248, 0.2);
+}
+
+.benefit-card:hover::after {
+  opacity: 1;
 }
 
 .benefit-card i {
   color: var(--bexo-sky);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+}
+
+.benefit-card h3 {
+  font-size: 1.1rem;
 }
 
 .benefit-card p {
@@ -460,6 +677,7 @@
   margin-top: 0.35rem;
 }
 
+/* ========== Workflow steps ========== */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -468,16 +686,35 @@
 }
 
 .step-card {
-  padding: 1.35rem;
+  padding: 1.5rem;
   border-radius: 1.2rem;
   background: var(--bexo-ink-elevated);
   border: 1px solid var(--bexo-border);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--bexo-sky), var(--bexo-indigo));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .step-card:hover {
   border-color: rgba(56, 189, 248, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -16px rgba(56, 189, 248, 0.15);
+}
+
+.step-card:hover::before {
+  opacity: 1;
 }
 
 .step-card .num {
@@ -488,6 +725,7 @@
   text-transform: uppercase;
 }
 
+/* ========== Pricing strip ========== */
 .pricing-strip .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -503,19 +741,41 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .plan-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px -20px rgba(0, 0, 0, 0.5);
 }
 
 .plan-card.is-featured {
   border-color: rgba(56, 189, 248, 0.45);
   background:
-    radial-gradient(ellipse at top, rgba(56, 189, 248, 0.16), transparent 55%),
+    radial-gradient(ellipse at top, rgba(56, 189, 248, 0.18), transparent 55%),
     rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 50px -28px rgba(56, 189, 248, 0.45);
+  box-shadow:
+    0 20px 50px -28px rgba(56, 189, 248, 0.45),
+    0 0 0 1px rgba(56, 189, 248, 0.12);
+}
+
+.plan-card.is-featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--bexo-sky), var(--bexo-blue), var(--bexo-indigo));
+}
+
+.plan-card.is-featured:hover {
+  box-shadow:
+    0 28px 64px -28px rgba(56, 189, 248, 0.5),
+    0 0 0 1px rgba(56, 189, 248, 0.2),
+    0 0 60px -20px rgba(56, 189, 248, 0.15);
 }
 
 .plan-card .price {
@@ -552,9 +812,23 @@
   margin-top: 0.15rem;
 }
 
+/* ========== Final CTA ========== */
 .final-cta {
   position: relative;
   isolation: isolate;
+}
+
+.final-cta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .final-cta .container {
@@ -562,9 +836,23 @@
   border-radius: 1.75rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.2), transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.22), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(99, 102, 241, 0.1), transparent 45%),
     rgba(11, 16, 32, 0.9);
-  padding: 3.5rem 1.5rem;
+  padding: 4rem 1.5rem;
+  box-shadow: 0 32px 64px -32px rgba(56, 189, 248, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta .container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
 }
 
 .final-cta .lede {
@@ -572,7 +860,7 @@
   margin: 0.75rem auto 0;
 }
 
-/* Tablet */
+/* ========== Tablet ========== */
 @media (max-width: 1024px) {
   .hero {
     align-items: center;
@@ -598,6 +886,10 @@
 
   .hero-panel {
     max-width: 34rem;
+  }
+
+  .proof-stats {
+    gap: 1.5rem;
   }
 }
 
@@ -640,6 +932,19 @@
     flex: 1 1 auto;
     min-height: 48px;
   }
+
+  .proof-divider {
+    display: none;
+  }
+
+  .proof-stats {
+    gap: 1.5rem 2rem;
+    justify-content: space-evenly;
+  }
+
+  .orb-1 { width: 250px; height: 250px; }
+  .orb-2 { width: 180px; height: 180px; }
+  .orb-3 { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -701,6 +1006,10 @@
   .hero-scroll {
     display: none;
   }
+
+  .proof-stats {
+    gap: 1.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -729,6 +1038,14 @@
   .step-card:hover,
   .plan-card:hover {
     transform: none;
+  }
+
+  .orb { display: none; }
+
+  .reveal-target {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
