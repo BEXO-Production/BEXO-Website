@@ -42,7 +42,12 @@
     var details = card.querySelector(".price-details");
     if (details && plan.subtitle) details.textContent = plan.subtitle;
 
-    if (Array.isArray(plan.features) && plan.features.length) {
+    // Keep hand-written marketing bullets unless the card opts into live features.
+    if (
+      card.getAttribute("data-live-features") === "1" &&
+      Array.isArray(plan.features) &&
+      plan.features.length
+    ) {
       var info = card.querySelector(".p-card-info, ul");
       if (info) {
         var tag = info.tagName === "UL" ? "li" : "p";

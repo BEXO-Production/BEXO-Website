@@ -39,6 +39,15 @@
     return base;
   };
 
+  /** Deep-link into dash checkout for a specific plan. */
+  global.BEXO.checkoutLoginUrl = function (plan) {
+    var clean = String(plan || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9_+-]/g, "");
+    if (!clean) return global.BEXO.loginUrl();
+    return global.BEXO.loginUrl("/checkout?plan=" + encodeURIComponent(clean));
+  };
+
   /** Sign up while carrying a handle claim into onboarding. */
   global.BEXO.claimLoginUrl = function (handle) {
     var clean = String(handle || "")

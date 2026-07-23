@@ -174,7 +174,14 @@
     }
 
     document.querySelectorAll(".js-dash-login").forEach(function (el) {
-      el.setAttribute("href", login);
+      var plan =
+        el.getAttribute("data-plan") ||
+        (el.closest("[data-plan]") && el.closest("[data-plan]").getAttribute("data-plan"));
+      if (plan && typeof cfg.checkoutLoginUrl === "function") {
+        el.setAttribute("href", cfg.checkoutLoginUrl(plan));
+      } else {
+        el.setAttribute("href", login);
+      }
     });
   });
 })();
