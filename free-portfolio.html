@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="index, follow" />
+    <title>Portfolio · BEXO</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #f8fafc;
+      }
+      iframe {
+        border: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .fallback {
+        display: none;
+        min-height: 100vh;
+        place-items: center;
+        font-family: system-ui, sans-serif;
+        color: #0f172a;
+        padding: 2rem;
+        text-align: center;
+      }
+      .fallback a {
+        color: #0f172a;
+        font-weight: 700;
+      }
+    </style>
+    <script>
+      (function () {
+        var RESERVED = {
+          pages: 1,
+          guides: 1,
+          assets: 1,
+          css: 1,
+          js: 1,
+          fonts: 1,
+          content: 1,
+          docs: 1,
+          api: 1,
+          login: 1,
+          signup: 1,
+          pricing: 1,
+          about: 1,
+          product: 1,
+          stories: 1,
+          terms: 1,
+          privacy: 1,
+          refund: 1,
+          cookies: 1,
+          contact: 1,
+          blog: 1,
+          blogs: 1,
+          dashboard: 1,
+          welcome: 1,
+          billing: 1,
+          checkout: 1,
+          step: 1,
+          "free-portfolio.html": 1,
+        };
+
+        function resolveDashOrigin() {
+          var h = (location.hostname || "").toLowerCase();
+          if (
+            h === "mybexo.cyou" ||
+            h === "www.mybexo.cyou" ||
+            h === "mybexo.web.app" ||
+            h.endsWith(".mybexo.cyou")
+          ) {
+            return "https://dash.mybexo.cyou";
+          }
+          if (
+            h === "atbexo.com" ||
+            h === "www.atbexo.com" ||
+            h.endsWith(".atbexo.com") ||
+            h === "mybexo.com" ||
+            h === "www.mybexo.com"
+          ) {
+            return "https://dash.mybexo.com";
+          }
+          return "https://dash.mybexo.cyou";
+        }
+
+        var path = location.pathname || "/";
+        var parts = path.split("/").filter(Boolean);
+        var handle =
+          parts[0] && parts[0].toLowerCase() === "hire-me" ? parts[1] : parts[0];
+        var handleOk =
+          handle &&
+          !RESERVED[handle.toLowerCase()] &&
+          /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$/i.test(handle);
+
+        if (!handleOk) {
+          location.replace("/");
+          return;
+        }
+
+        // Keep the public URL on the platform apex (mybexo.cyou/{handle} or
+        // atbexo.com/{handle}). The dash SPA renders the free Minimal layout;
+        // Cloudflare Worker can proxy the same path without this shell when
+        // apex DNS is orange-clouded.
+        var dashOrigin = resolveDashOrigin();
+        var src = dashOrigin + path + location.search + location.hash;
+
+        document.write(
+          '<iframe src="' +
+            src.replace(/"/g, "&quot;") +
+            '" title="BEXO portfolio" allow="clipboard-write" loading="eager"></iframe>',
+        );
+
+        document.write(
+          '<div class="fallback" id="bexo-fallback"><p>Open this portfolio at ' +
+            '<a href="' +
+            (location.origin + path).replace(/"/g, "&quot;") +
+            '">' +
+            (location.host + path).replace(/</g, "") +
+            "</a></p></div>",
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

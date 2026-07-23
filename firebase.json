@@ -9,6 +9,16 @@
     ],
     "cleanUrls": true,
     "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/hire-me/**",
+        "destination": "/free-portfolio.html"
+      },
+      {
+        "source": "**",
+        "destination": "/free-portfolio.html"
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(js|css|jpg|jpeg|png|webp|svg|woff2)",
@@ -16,6 +26,15 @@
           {
             "key": "Cache-Control",
             "value": "public, max-age=604800"
+          }
+        ]
+      },
+      {
+        "source": "/free-portfolio.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
           }
         ]
       }
