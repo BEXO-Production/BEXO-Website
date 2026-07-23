@@ -42,9 +42,19 @@
       video.muted = true;
       video.defaultMuted = true;
       video.autoplay = true;
+      video.loop = true;
       video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("loop", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
+      
+      video.addEventListener("ended", function () {
+        video.currentTime = 0;
+        video.play().catch(function () {});
+      });
+
       var play = video.play();
       if (play && typeof play.then === "function") {
         play
