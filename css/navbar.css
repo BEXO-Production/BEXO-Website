@@ -291,6 +291,15 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .page-home .navbar {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    transform: none;
+    box-sizing: border-box;
+  }
+
   .page-home .navbar:before {
     background: rgba(11, 18, 32, 0.94);
   }

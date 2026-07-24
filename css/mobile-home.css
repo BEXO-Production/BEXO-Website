@@ -1,192 +1,307 @@
 /* ==========================================================================
-   Mobile-dedicated home experience (≤720px)
-   Desktop layout stays untouched — this file only reflows phones.
+   Mobile home — containment + alignment (≤720px)
+   Goal: zero horizontal overflow, consistent gutters, stable claim panel.
    ========================================================================== */
 
 @media (max-width: 720px) {
-  /* —— Hero: conversion-first, not a squeezed desktop —— */
+  html {
+    overflow-x: clip;
+  }
+
+  body.page-home {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  /* Kill section side padding that stacks with .container and widens content */
+  body.page-home section {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body.page-home .container {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  /* —— Hero —— */
   .page-home .hero {
     height: auto;
     min-height: 0;
     align-items: flex-start;
     justify-content: flex-start;
+    overflow: hidden;
+    max-width: 100%;
     padding:
-      calc(4.25rem + env(safe-area-inset-top, 0px))
-      max(1rem, env(safe-area-inset-right, 0px))
-      max(1.75rem, env(safe-area-inset-bottom, 0px))
-      max(1rem, env(safe-area-inset-left, 0px)) !important;
+      calc(4.5rem + env(safe-area-inset-top, 0px))
+      max(1.25rem, env(safe-area-inset-right, 0px))
+      max(2rem, env(safe-area-inset-bottom, 0px))
+      max(1.25rem, env(safe-area-inset-left, 0px)) !important;
   }
 
-  /* Stronger ink veil so bright film frames never wash out type */
+  .page-home .hero-media,
+  .page-home .hero-bg,
+  .page-home .hero-bg-overlay {
+    max-width: 100%;
+  }
+
+  .page-home .hero-bg {
+    inset: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .page-home .hero-poster,
+  .page-home .hero-video-bg {
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
   .page-home .hero-bg-overlay {
     background:
       linear-gradient(
         180deg,
-        rgba(7, 11, 20, 0.72) 0%,
-        rgba(7, 11, 20, 0.55) 28%,
-        rgba(7, 11, 20, 0.78) 62%,
-        rgba(7, 11, 20, 0.94) 100%
+        rgba(7, 11, 20, 0.78) 0%,
+        rgba(7, 11, 20, 0.62) 32%,
+        rgba(7, 11, 20, 0.82) 68%,
+        rgba(7, 11, 20, 0.96) 100%
       ),
-      radial-gradient(ellipse at 50% 12%, rgba(47, 107, 255, 0.22), transparent 55%);
+      radial-gradient(ellipse at 50% 12%, rgba(47, 107, 255, 0.2), transparent 55%);
   }
 
   .page-home .hero-orbs {
     display: none;
   }
 
+  .page-home .hero-layout.container,
   .page-home .hero-layout {
     display: flex;
     flex-direction: column;
-    gap: 1.15rem;
-    width: 100%;
+    align-items: stretch;
+    gap: 1.25rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    margin: 0;
+    padding: 0 !important;
+    box-sizing: border-box;
   }
 
-  /* Claim panel first on mobile — primary job is get a name */
+  .page-home .hero-copy,
+  .page-home .hero-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* Claim first */
   .page-home .hero-panel {
     order: -1;
-    max-width: none;
-    width: 100%;
-    border-radius: 1.25rem;
-    padding: 1.1rem 1.05rem 1.15rem;
-    background: rgba(7, 11, 20, 0.88);
-    border: 1px solid rgba(155, 182, 255, 0.28);
+    border-radius: 1.15rem;
+    padding: 1rem 0.95rem 1.05rem;
+    background: rgba(7, 11, 20, 0.9);
+    border: 1px solid rgba(155, 182, 255, 0.26);
     box-shadow:
-      0 24px 48px -20px rgba(5, 7, 15, 0.75),
+      0 20px 40px -18px rgba(5, 7, 15, 0.7),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
   }
 
   .page-home .hero-copy {
     order: 0;
   }
 
-  /* Nav already carries the brand — keep a compact mark, not a billboard */
   .page-home .hero-brand {
-    font-size: clamp(1.75rem, 9vw, 2.15rem);
-    margin-bottom: 0.45rem;
+    font-size: clamp(1.7rem, 8vw, 2.05rem);
+    margin-bottom: 0.4rem;
     letter-spacing: -0.04em;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .page-home .hero-copy .eyebrow {
-    margin-bottom: 0.65rem;
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 0.6rem;
     font-size: 0.62rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
   }
 
   .page-home .hero-copy h1 {
-    max-width: none;
-    font-size: clamp(1.65rem, 7.2vw, 2.05rem);
-    line-height: 1.12;
-    letter-spacing: -0.03em;
+    max-width: 100%;
+    font-size: clamp(1.55rem, 6.8vw, 1.95rem);
+    line-height: 1.15;
+    letter-spacing: -0.028em;
+    overflow-wrap: break-word;
   }
 
   .page-home .hero-copy .lede {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     line-height: 1.55;
-    margin-top: 0.7rem;
+    margin-top: 0.65rem;
+    max-width: 100%;
     color: rgba(248, 250, 252, 0.78);
+    overflow-wrap: break-word;
   }
 
   .page-home .hero-copy .cta-row {
-    margin-top: 1.1rem;
+    margin-top: 1rem;
     flex-direction: column;
-    gap: 0.65rem;
+    align-items: stretch;
+    gap: 0.6rem;
+    width: 100%;
   }
 
   .page-home .hero-copy .cta-row .btn-primary,
   .page-home .hero-copy .cta-row .btn-ghost {
     width: 100%;
-    min-height: 50px;
+    max-width: 100%;
+    min-height: 48px;
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .page-home .handle-label {
     font-size: 0.65rem;
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.5rem;
   }
 
+  /* Stack domain suffix under input — never overflows narrow screens */
   .page-home .handle-field {
-    flex-wrap: nowrap;
-    gap: 0.35rem;
-    padding: 0.4rem 0.4rem 0.4rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 0.55rem;
     background: rgba(5, 7, 15, 0.72);
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .page-home .handle-field input {
-    flex: 1 1 auto;
+    width: 100%;
     min-width: 0;
-    font-size: 16px; /* prevent iOS zoom */
-    padding: 0.5rem 0;
+    flex: none;
+    font-size: 16px;
+    padding: 0.55rem 0.65rem;
+    box-sizing: border-box;
   }
 
   .page-home .handle-suffix {
-    flex-shrink: 0;
-    font-size: 0.72rem;
-    padding: 0.45rem 0.55rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 0.55rem 0.65rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .page-home .handle-status {
+    overflow-wrap: break-word;
   }
 
   .page-home .handle-perks {
     list-style: none;
     margin: 0.85rem 0 0;
-    padding: 0;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.45rem 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    min-width: 0;
   }
 
   .page-home .handle-perks li {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     line-height: 1.35;
     color: rgba(248, 250, 252, 0.55);
+    min-width: 0;
   }
 
   .page-home .handle-perks strong {
-    display: block;
+    display: inline;
     color: #f8fafc;
     font-weight: 700;
-    font-size: 0.74rem;
-    letter-spacing: 0.01em;
+    font-size: 0.78rem;
+    margin-right: 0.35rem;
+  }
+
+  .page-home .handle-claim {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .page-home .hero-scroll {
     display: none;
   }
 
-  /* Poster framing when video is off */
-  .page-home .hero-poster,
-  .page-home .hero-video-bg {
-    object-position: center 40%;
-  }
-
   html[data-bexo-hero-video="off"] .page-home .hero-video-bg {
     display: none !important;
   }
 
-  /* —— Sections —— */
+  /* —— Marquee: contain sideways scroll —— */
   .page-home .marquee {
     padding: 0.85rem 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .page-home .marquee-track span {
     font-size: 0.72rem;
   }
 
+  /* —— Proof / stats —— */
   .page-home .proof .container {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
   }
 
   .page-home .proof p {
-    font-size: 1.05rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 100%;
+    text-wrap: pretty;
+  }
+
+  .page-home .social-proof {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
   .page-home .social-proof .container {
-    padding: 1.75rem 0;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
   }
 
   .page-home .proof-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.15rem 1rem;
+    gap: 1.25rem 0.85rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .page-home .proof-stat {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .page-home .proof-divider {
@@ -194,70 +309,99 @@
   }
 
   .page-home .proof-number {
-    font-size: 1.85rem;
+    font-size: 1.75rem;
+  }
+
+  .page-home .proof-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    text-wrap: balance;
+  }
+
+  /* —— Feature / why / workflow / pricing —— */
+  .page-home .feature-split .container,
+  .page-home .workflow .container,
+  .page-home .why .container,
+  .page-home .pricing-strip .container,
+  .page-home .shore .container,
+  .page-home .final-cta .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .page-home .feature-split .container {
-    gap: 1.25rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
   }
 
   .page-home .feature-split .media {
-    border-radius: 1.1rem;
-    aspect-ratio: 16 / 10;
     order: -1;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 1rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .page-home .feature-split .copy,
+  .page-home .feature-split .copy h2,
+  .page-home .feature-split .copy p {
+    max-width: 100%;
   }
 
   .page-home .feature-split .copy h2 {
-    max-width: none;
-    font-size: clamp(1.65rem, 7vw, 2rem);
+    font-size: clamp(1.55rem, 6.5vw, 1.9rem);
   }
 
-  .page-home .feature-split .copy p {
-    max-width: none;
-  }
-
-  .page-home .benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .page-home .benefit-card {
-    padding: 1.15rem 1.1rem;
-    border-radius: 1rem;
-  }
-
-  .page-home .workflow .container {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .page-home .steps {
-    gap: 0.75rem;
-  }
-
-  .page-home .pricing-strip .cards {
-    gap: 0.85rem;
-  }
-
-  .page-home .plan-card {
-    padding: 1.25rem 1.15rem;
-  }
-
-  /* Shore / sustainability */
-  .page-home .shore .container {
-    padding-top: 3.25rem;
-    padding-bottom: 3.25rem;
-  }
-
+  .page-home .benefits-grid,
+  .page-home .steps,
+  .page-home .pricing-strip .cards,
   .page-home .shore-grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
     gap: 0.75rem;
+  }
+
+  .page-home .benefit-card,
+  .page-home .step-card,
+  .page-home .plan-card,
+  .page-home .shore-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .page-home .final-cta {
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .page-home .site-footer .container {
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
   }
 }
 
-/* Shore notes — all breakpoints */
+/* Mid phones / large phones still in mobile layout zone */
+@media (max-width: 720px) and (min-width: 400px) {
+  .page-home .handle-perks {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .page-home .handle-perks li {
+    font-size: 0.68rem;
+    text-align: center;
+  }
+
+  .page-home .handle-perks strong {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 0.15rem;
+  }
+}
+
+/* Shore notes — shared */
 .shore {
   position: relative;
   z-index: 2;
@@ -278,7 +422,6 @@
   max-width: 16ch;
 }
 
-.shore > .container > .lede,
 .shore-intro {
   max-width: 36rem;
   margin-top: 0.75rem;
@@ -310,7 +453,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.4), transparent);
   opacity: 0.7;
 }
 
@@ -319,7 +462,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #7dd3fc;
+  color: #9bb6ff;
   margin-bottom: 0.55rem;
 }
 
@@ -342,7 +485,6 @@
   }
 }
 
-/* Desktop: keep claim perks available but subtler */
 @media (min-width: 721px) {
   .page-home .handle-perks {
     list-style: none;
