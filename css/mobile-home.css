@@ -26,8 +26,8 @@
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
-    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
-    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
     box-sizing: border-box;
   }
 
@@ -41,9 +41,9 @@
     max-width: 100%;
     padding:
       calc(4.5rem + env(safe-area-inset-top, 0px))
-      max(1.25rem, env(safe-area-inset-right, 0px))
-      max(2rem, env(safe-area-inset-bottom, 0px))
-      max(1.25rem, env(safe-area-inset-left, 0px)) !important;
+      max(1.5rem, env(safe-area-inset-right, 0px))
+      max(2.25rem, env(safe-area-inset-bottom, 0px))
+      max(1.5rem, env(safe-area-inset-left, 0px)) !important;
   }
 
   .page-home .hero-media,
@@ -263,6 +263,20 @@
     padding: 0.85rem 0;
     max-width: 100%;
     overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 1.25rem,
+      #000 calc(100% - 1.25rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 1.25rem,
+      #000 calc(100% - 1.25rem),
+      transparent 100%
+    );
   }
 
   .page-home .marquee-track span {
@@ -272,7 +286,7 @@
   /* —— Proof / stats —— */
   .page-home .proof .container {
     padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
   }
 
   .page-home .proof p {
