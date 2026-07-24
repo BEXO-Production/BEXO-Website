@@ -238,10 +238,11 @@
   }
 
   #hamburger-toggle:checked ~ ul.navbar-links,
-  body.nav-open .navbar-links {
-    transform: translateX(0);
-    visibility: visible;
-    pointer-events: auto;
+  body.nav-open .navbar-links,
+  .navbar-links.is-open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
 
   body.nav-open {

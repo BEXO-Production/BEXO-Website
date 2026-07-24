@@ -90,7 +90,9 @@
       if (toggle && label) {
         var syncNav = function () {
           var open = toggle.checked;
+          var menu = document.getElementById("primary-nav");
           document.body.classList.toggle("nav-open", open);
+          if (menu) menu.classList.toggle("is-open", open);
           label.setAttribute("aria-label", open ? "Close menu" : "Open menu");
           label.setAttribute("aria-expanded", open ? "true" : "false");
           label.innerHTML = open
