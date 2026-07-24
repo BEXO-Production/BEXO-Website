@@ -359,6 +359,11 @@
   margin-top: 0.85rem;
 }
 
+.handle-perks + .handle-claim,
+.handle-claim:not([hidden]) {
+  margin-top: 0.95rem;
+}
+
 .handle-claim[hidden] {
   display: none !important;
 }

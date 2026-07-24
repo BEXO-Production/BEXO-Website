@@ -1,0 +1,369 @@
+/* ==========================================================================
+   Mobile-dedicated home experience (≤720px)
+   Desktop layout stays untouched — this file only reflows phones.
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  /* —— Hero: conversion-first, not a squeezed desktop —— */
+  .page-home .hero {
+    height: auto;
+    min-height: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding:
+      calc(4.25rem + env(safe-area-inset-top, 0px))
+      max(1rem, env(safe-area-inset-right, 0px))
+      max(1.75rem, env(safe-area-inset-bottom, 0px))
+      max(1rem, env(safe-area-inset-left, 0px)) !important;
+  }
+
+  /* Stronger ink veil so bright film frames never wash out type */
+  .page-home .hero-bg-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 11, 20, 0.72) 0%,
+        rgba(7, 11, 20, 0.55) 28%,
+        rgba(7, 11, 20, 0.78) 62%,
+        rgba(7, 11, 20, 0.94) 100%
+      ),
+      radial-gradient(ellipse at 50% 12%, rgba(47, 107, 255, 0.22), transparent 55%);
+  }
+
+  .page-home .hero-orbs {
+    display: none;
+  }
+
+  .page-home .hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    width: 100%;
+  }
+
+  /* Claim panel first on mobile — primary job is get a name */
+  .page-home .hero-panel {
+    order: -1;
+    max-width: none;
+    width: 100%;
+    border-radius: 1.25rem;
+    padding: 1.1rem 1.05rem 1.15rem;
+    background: rgba(7, 11, 20, 0.88);
+    border: 1px solid rgba(155, 182, 255, 0.28);
+    box-shadow:
+      0 24px 48px -20px rgba(5, 7, 15, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .page-home .hero-copy {
+    order: 0;
+  }
+
+  /* Nav already carries the brand — keep a compact mark, not a billboard */
+  .page-home .hero-brand {
+    font-size: clamp(1.75rem, 9vw, 2.15rem);
+    margin-bottom: 0.45rem;
+    letter-spacing: -0.04em;
+  }
+
+  .page-home .hero-copy .eyebrow {
+    margin-bottom: 0.65rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  .page-home .hero-copy h1 {
+    max-width: none;
+    font-size: clamp(1.65rem, 7.2vw, 2.05rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  .page-home .hero-copy .lede {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-top: 0.7rem;
+    color: rgba(248, 250, 252, 0.78);
+  }
+
+  .page-home .hero-copy .cta-row {
+    margin-top: 1.1rem;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .page-home .hero-copy .cta-row .btn-primary,
+  .page-home .hero-copy .cta-row .btn-ghost {
+    width: 100%;
+    min-height: 50px;
+    justify-content: center;
+  }
+
+  .page-home .handle-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .page-home .handle-field {
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    padding: 0.4rem 0.4rem 0.4rem 0.75rem;
+    background: rgba(5, 7, 15, 0.72);
+  }
+
+  .page-home .handle-field input {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px; /* prevent iOS zoom */
+    padding: 0.5rem 0;
+  }
+
+  .page-home .handle-suffix {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    padding: 0.45rem 0.55rem;
+  }
+
+  .page-home .handle-perks {
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem 0.75rem;
+  }
+
+  .page-home .handle-perks li {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: rgba(248, 250, 252, 0.55);
+  }
+
+  .page-home .handle-perks strong {
+    display: block;
+    color: #f8fafc;
+    font-weight: 700;
+    font-size: 0.74rem;
+    letter-spacing: 0.01em;
+  }
+
+  .page-home .hero-scroll {
+    display: none;
+  }
+
+  /* Poster framing when video is off */
+  .page-home .hero-poster,
+  .page-home .hero-video-bg {
+    object-position: center 40%;
+  }
+
+  html[data-bexo-hero-video="off"] .page-home .hero-video-bg {
+    display: none !important;
+  }
+
+  /* —— Sections —— */
+  .page-home .marquee {
+    padding: 0.85rem 0;
+  }
+
+  .page-home .marquee-track span {
+    font-size: 0.72rem;
+  }
+
+  .page-home .proof .container {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .page-home .proof p {
+    font-size: 1.05rem;
+  }
+
+  .page-home .social-proof .container {
+    padding: 1.75rem 0;
+  }
+
+  .page-home .proof-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.15rem 1rem;
+  }
+
+  .page-home .proof-divider {
+    display: none;
+  }
+
+  .page-home .proof-number {
+    font-size: 1.85rem;
+  }
+
+  .page-home .feature-split .container {
+    gap: 1.25rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-home .feature-split .media {
+    border-radius: 1.1rem;
+    aspect-ratio: 16 / 10;
+    order: -1;
+  }
+
+  .page-home .feature-split .copy h2 {
+    max-width: none;
+    font-size: clamp(1.65rem, 7vw, 2rem);
+  }
+
+  .page-home .feature-split .copy p {
+    max-width: none;
+  }
+
+  .page-home .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .page-home .benefit-card {
+    padding: 1.15rem 1.1rem;
+    border-radius: 1rem;
+  }
+
+  .page-home .workflow .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-home .steps {
+    gap: 0.75rem;
+  }
+
+  .page-home .pricing-strip .cards {
+    gap: 0.85rem;
+  }
+
+  .page-home .plan-card {
+    padding: 1.25rem 1.15rem;
+  }
+
+  /* Shore / sustainability */
+  .page-home .shore .container {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .page-home .shore-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Shore notes — all breakpoints */
+.shore {
+  position: relative;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(47, 107, 255, 0.1), transparent 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(14, 116, 144, 0.12), transparent 45%),
+    var(--bexo-ink-elevated, #070b14);
+  border-top: 1px solid rgba(47, 107, 255, 0.1);
+  border-bottom: 1px solid rgba(47, 107, 255, 0.08);
+}
+
+.shore .container {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.shore h2 {
+  max-width: 16ch;
+}
+
+.shore > .container > .lede,
+.shore-intro {
+  max-width: 36rem;
+  margin-top: 0.75rem;
+  color: rgba(248, 250, 252, 0.68);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.shore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.shore-card {
+  border-radius: 1.15rem;
+  border: 1px solid rgba(155, 182, 255, 0.16);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  padding: 1.35rem 1.25rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.shore-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.35), transparent);
+  opacity: 0.7;
+}
+
+.shore-card .shore-kicker {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  margin-bottom: 0.55rem;
+}
+
+.shore-card h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.45rem;
+  color: #f8fafc;
+}
+
+.shore-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(248, 250, 252, 0.62);
+}
+
+@media (max-width: 900px) {
+  .shore-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Desktop: keep claim perks available but subtler */
+@media (min-width: 721px) {
+  .page-home .handle-perks {
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.55rem;
+  }
+
+  .page-home .handle-perks li {
+    font-size: 0.72rem;
+    color: rgba(248, 250, 252, 0.5);
+    line-height: 1.35;
+  }
+
+  .page-home .handle-perks strong {
+    display: block;
+    color: rgba(248, 250, 252, 0.88);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+}

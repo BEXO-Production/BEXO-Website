@@ -1,12 +1,45 @@
 /**
- * Hero background video — load when it will play well,
- * and parallax the media so it drifts downward on scroll.
- * Falls back to poster on reduced-motion, Save-Data, or slow links.
+ * Hero background video — only when the device can play it smoothly.
+ * Mobile / low-power / Save-Data / reduced-motion → poster still only.
  */
 (function () {
   function ready(fn) {
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
+  }
+
+  function isCoarseMobile() {
+    try {
+      if (window.matchMedia("(pointer: coarse)").matches && window.innerWidth < 900) return true;
+    } catch (e) {}
+    return (navigator.maxTouchPoints || 0) > 1 && window.innerWidth < 900;
+  }
+
+  function shouldSkipVideo() {
+    try {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+    } catch (e) {}
+
+    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn) {
+      if (conn.saveData) return true;
+      if (/^(slow-2g|2g)$/.test(conn.effectiveType || "")) return true;
+      if (typeof conn.downlink === "number" && conn.downlink > 0 && conn.downlink < 0.7) return true;
+    }
+
+    var memory = typeof navigator.deviceMemory === "number" ? navigator.deviceMemory : null;
+    var cores = navigator.hardwareConcurrency || null;
+    if ((memory !== null && memory <= 2) || (cores !== null && cores <= 2)) return true;
+
+    // Phones: default to still — decode + glass UI often tanks older devices.
+    if (isCoarseMobile()) {
+      if (memory !== null && memory <= 4) return true;
+      if (memory === null && cores !== null && cores <= 6) return true;
+      // Unknown mid phones: still skip video for a snappier first paint.
+      return true;
+    }
+
+    return false;
   }
 
   ready(function () {
@@ -20,17 +53,10 @@
     var playing = false;
     var ticking = false;
     var loopBound = false;
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var skip = shouldSkipVideo();
 
-    function shouldSkipVideo() {
-      if (reduceMotion) return true;
-      var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      if (conn) {
-        if (conn.saveData) return true;
-        if (/^(slow-2g|2g)$/.test(conn.effectiveType || "")) return true;
-      }
-      return false;
-    }
+    document.documentElement.dataset.bexoHeroVideo = skip ? "off" : "on";
+    if (isCoarseMobile()) document.documentElement.classList.add("is-mobile-ua");
 
     function markReady() {
       if (!video) return;
@@ -39,7 +65,7 @@
     }
 
     function tryPlay() {
-      if (!video) return;
+      if (!video || skip) return;
       video.muted = true;
       video.defaultMuted = true;
       video.autoplay = true;
@@ -50,7 +76,7 @@
       video.setAttribute("loop", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      // Seamless loop: some browsers still fire "ended" even with the loop attribute.
+
       if (!loopBound) {
         loopBound = true;
         video.addEventListener("ended", function () {
@@ -84,10 +110,12 @@
       if (progress > 0.04) hero.classList.add("is-scrolled");
       else hero.classList.remove("is-scrolled");
 
-      if (!parallax || reduceMotion) return;
+      if (!parallax || skip) return;
+      try {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      } catch (e) {}
 
-      // Drift the video downward as the section scrolls away.
-      var shift = progress * viewH * 0.28;
+      var shift = progress * viewH * 0.22;
       parallax.style.transform = "translate3d(0, " + shift.toFixed(2) + "px, 0)";
     }
 
@@ -97,7 +125,7 @@
       window.requestAnimationFrame(updateParallax);
     }
 
-    if (video && !shouldSkipVideo()) {
+    if (video && !skip) {
       if (!video.querySelector("source")) {
         var source = document.createElement("source");
         source.src = src;
@@ -105,9 +133,8 @@
         video.appendChild(source);
       }
 
-      if (video.readyState >= 2) {
-        tryPlay();
-      } else {
+      if (video.readyState >= 2) tryPlay();
+      else {
         video.addEventListener("loadeddata", tryPlay, { once: true });
         video.load();
       }
@@ -116,9 +143,8 @@
         var io = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
-              if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-                tryPlay();
-              } else if (playing) {
+              if (entry.isIntersecting && entry.intersectionRatio > 0.2) tryPlay();
+              else if (playing) {
                 video.pause();
                 playing = false;
               }
@@ -133,15 +159,17 @@
         if (document.hidden) {
           video.pause();
           playing = false;
-        } else if (!shouldSkipVideo()) {
-          tryPlay();
-        }
+        } else if (!skip) tryPlay();
       });
     } else if (video) {
       video.removeAttribute("autoplay");
+      video.removeAttribute("src");
+      while (video.firstChild) video.removeChild(video.firstChild);
       try {
         video.pause();
+        video.load();
       } catch (e) {}
+      hero.classList.add("hero--still");
     }
 
     updateParallax();
