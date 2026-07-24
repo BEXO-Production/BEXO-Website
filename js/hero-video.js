@@ -19,6 +19,7 @@
     var src = root + "assets/atmosphere/hero-bg-web.mp4";
     var playing = false;
     var ticking = false;
+    var loopBound = false;
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function shouldSkipVideo() {
@@ -49,11 +50,14 @@
       video.setAttribute("loop", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
-      
-      video.addEventListener("ended", function () {
-        video.currentTime = 0;
-        video.play().catch(function () {});
-      });
+      // Seamless loop: some browsers still fire "ended" even with the loop attribute.
+      if (!loopBound) {
+        loopBound = true;
+        video.addEventListener("ended", function () {
+          video.currentTime = 0;
+          video.play().catch(function () {});
+        });
+      }
 
       var play = video.play();
       if (play && typeof play.then === "function") {

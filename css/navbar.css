@@ -24,7 +24,7 @@
   border-radius: 999px;
   box-shadow:
     0 12px 40px -20px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(56, 189, 248, 0.04);
+    0 0 0 1px rgba(47, 107, 255, 0.06);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .navbar-logo .brand-link:hover img {
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 28px rgba(47, 107, 255, 0.5);
 }
 
 .navbar-items ul {
@@ -115,12 +115,12 @@
   width: 16px;
   height: 2px;
   border-radius: 1px;
-  background: var(--bexo-sky, #38bdf8);
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  background: var(--bexo-accent, #2f6bff);
+  box-shadow: 0 0 8px rgba(47, 107, 255, 0.5);
 }
 
 .navbar-items .navbar-login a {
-  color: rgba(186, 230, 253, 0.95);
+  color: var(--bexo-accent-soft, #9bb6ff);
 }
 
 .navbar-items .btn {
@@ -130,11 +130,11 @@
 
 .navbar-items .btn a {
   padding: 0.55em 1.1em !important;
-  background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #6366f1 100%);
+  background: var(--bexo-accent, #2f6bff);
   border-radius: 999px;
   color: #fff !important;
   font-weight: 700;
-  box-shadow: 0 8px 24px -10px rgba(56, 189, 248, 0.55);
+  box-shadow: 0 8px 24px -10px rgba(47, 107, 255, 0.55);
   transition: box-shadow 0.2s ease, transform 0.15s ease;
   position: relative;
   overflow: hidden;
@@ -151,9 +151,10 @@
 
 .navbar-items .btn a:hover {
   box-shadow:
-    0 12px 32px -10px rgba(56, 189, 248, 0.6),
-    0 0 0 3px rgba(56, 189, 248, 0.2);
+    0 12px 32px -10px rgba(47, 107, 255, 0.55),
+    0 0 0 3px rgba(47, 107, 255, 0.2);
   transform: translateY(-1px);
+  background: var(--bexo-accent-hover, #2558e0);
 }
 
 @media screen and (max-width: 1000px) {
@@ -247,5 +248,50 @@
     display: block;
     padding: 0.95em 1em;
     min-height: 48px;
+  }
+}
+
+/* Home — ink glass over intro film, brand blue accents */
+.page-home .navbar:before {
+  background: rgba(11, 18, 32, 0.58);
+  border-color: rgba(155, 182, 255, 0.18);
+  box-shadow:
+    0 12px 40px -20px rgba(5, 7, 15, 0.65),
+    0 0 0 1px rgba(47, 107, 255, 0.06);
+}
+
+.page-home .navbar:hover:before {
+  background: rgba(11, 18, 32, 0.78);
+  border-color: rgba(155, 182, 255, 0.28);
+}
+
+.page-home .navbar-items ul li.is-active a::after {
+  background: var(--bexo-accent, #2f6bff);
+  box-shadow: 0 0 8px rgba(47, 107, 255, 0.5);
+}
+
+.page-home .navbar-items .navbar-login a {
+  color: var(--bexo-accent-soft, #9bb6ff);
+}
+
+.page-home .navbar-logo .brand-link:hover img {
+  box-shadow: 0 0 28px rgba(47, 107, 255, 0.45);
+}
+
+.page-home .navbar-items .btn a {
+  background: var(--bexo-accent, #2f6bff);
+  box-shadow: 0 8px 24px -10px rgba(47, 107, 255, 0.55);
+}
+
+.page-home .navbar-items .btn a:hover {
+  background: var(--bexo-accent-hover, #2558e0);
+  box-shadow:
+    0 12px 32px -10px rgba(47, 107, 255, 0.55),
+    0 0 0 3px rgba(47, 107, 255, 0.18);
+}
+
+@media screen and (max-width: 1000px) {
+  .page-home .navbar:before {
+    background: rgba(11, 18, 32, 0.94);
   }
 }

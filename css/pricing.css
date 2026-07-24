@@ -13,7 +13,7 @@
   width: 800px;
   height: 800px;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(47, 107, 255, 0.15), transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
@@ -62,7 +62,7 @@
 .pricing-free-band h3 {
   margin: 0 0 0.35rem;
   font-size: 1.2rem;
-  background: linear-gradient(135deg, #fff 30%, #bae6fd 100%);
+  background: linear-gradient(135deg, #fff 30%, #9bb6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -103,14 +103,14 @@
 }
 
 .p-card.is-featured {
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(47, 107, 255, 0.5);
   background:
-    radial-gradient(ellipse at top, rgba(56, 189, 248, 0.18), transparent 55%),
+    radial-gradient(ellipse at top, rgba(47, 107, 255, 0.18), transparent 55%),
     rgba(255, 255, 255, 0.05);
   transform: translateY(-8px);
   box-shadow:
-    0 32px 64px -24px rgba(56, 189, 248, 0.35),
-    0 0 0 1px rgba(56, 189, 248, 0.15);
+    0 32px 64px -24px rgba(47, 107, 255, 0.35),
+    0 0 0 1px rgba(47, 107, 255, 0.15);
 }
 
 .p-card.is-featured::before {
@@ -126,9 +126,9 @@
 .p-card.is-featured:hover {
   transform: translateY(-12px);
   box-shadow:
-    0 40px 80px -24px rgba(56, 189, 248, 0.45),
-    0 0 0 1px rgba(56, 189, 248, 0.25),
-    0 0 80px -20px rgba(56, 189, 248, 0.2);
+    0 40px 80px -24px rgba(47, 107, 255, 0.45),
+    0 0 0 1px rgba(47, 107, 255, 0.25),
+    0 0 80px -20px rgba(47, 107, 255, 0.2);
 }
 
 .plan-tag {
@@ -142,7 +142,7 @@
 
 .plan-tag--hot {
   color: #7dd3fc;
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+  text-shadow: 0 0 12px rgba(47, 107, 255, 0.5);
 }
 
 .p-card .price {
@@ -189,7 +189,7 @@
   margin-top: 0.2rem;
   flex-shrink: 0;
   font-size: 1.1rem;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+  filter: drop-shadow(0 0 6px rgba(47, 107, 255, 0.4));
 }
 
 .pricing-lifetime {
@@ -205,11 +205,11 @@
   flex-wrap: wrap;
   padding: 2.5rem;
   border-radius: 1.75rem;
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(47, 107, 255, 0.35);
   background:
-    linear-gradient(135deg, rgba(56, 189, 248, 0.12), transparent 60%),
+    linear-gradient(135deg, rgba(47, 107, 255, 0.12), transparent 60%),
     rgba(11, 16, 32, 0.9);
-  box-shadow: 0 24px 60px -20px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 24px 60px -20px rgba(47, 107, 255, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -221,7 +221,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.5), transparent);
 }
 
 .lifetime-copy {
@@ -235,7 +235,7 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   margin: 0.35rem 0 0.75rem;
-  background: linear-gradient(135deg, #fff 30%, #bae6fd 100%);
+  background: linear-gradient(135deg, #fff 30%, #9bb6ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -260,7 +260,7 @@
 .lifetime-points i {
   color: var(--bexo-sky);
   font-size: 1.1rem;
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+  filter: drop-shadow(0 0 6px rgba(47, 107, 255, 0.4));
 }
 
 .pricing-note {

@@ -11,6 +11,7 @@
       "docs/**",
       "scripts/**",
       "BEXO web bg.MP4",
+      "BEXO Intro.mp4",
       "assets/atmosphere/hero-bg.mp4"
     ],
     "cleanUrls": true,

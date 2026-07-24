@@ -27,8 +27,8 @@
 
 .guides-chip:hover,
 .guides-chip.is-active {
-  border-color: rgba(56, 189, 248, 0.45);
-  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(47, 107, 255, 0.45);
+  background: rgba(47, 107, 255, 0.12);
   color: #fff;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .guide-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
+  border-color: rgba(47, 107, 255, 0.35);
   background: rgba(255, 255, 255, 0.06);
 }
 

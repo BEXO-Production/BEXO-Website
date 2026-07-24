@@ -1,18 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
+/* Match bexo-web landing tokens: ink · paper · #2F6BFF */
 :root {
-  --bexo-ink: #05070f;
-  --bexo-ink-elevated: #0b1020;
+  --bexo-ink: #0b1220;
+  --bexo-ink-elevated: #070b14;
+  --bexo-ink-deep: #05070f;
+  --bexo-paper: #f7f4ef;
   --bexo-panel: rgba(255, 255, 255, 0.06);
-  --bexo-border: rgba(255, 255, 255, 0.14);
-  --bexo-text: #f4f6fb;
-  --bexo-muted: rgba(244, 246, 251, 0.62);
-  --bexo-sky: #38bdf8;
-  --bexo-blue: #3b82f6;
-  --bexo-indigo: #6366f1;
-  --bexo-grad: linear-gradient(135deg, #38bdf8 0%, #3b82f6 48%, #6366f1 100%);
+  --bexo-border: rgba(255, 255, 255, 0.12);
+  --bexo-text: #f8fafc;
+  --bexo-muted: rgba(248, 250, 252, 0.62);
+  --bexo-accent: #2f6bff;
+  --bexo-accent-hover: #2558e0;
+  --bexo-accent-soft: #9bb6ff;
+  --bexo-sky: #2f6bff;
+  --bexo-blue: #2f6bff;
+  --bexo-indigo: #2558e0;
+  --bexo-grad: linear-gradient(135deg, #4d82ff 0%, #2f6bff 52%, #2558e0 100%);
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --radius-lg: 1.15rem;
+  --shadow-glow: 0 14px 40px -14px rgba(47, 107, 255, 0.45);
 }
 
 * {
@@ -35,14 +43,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle noise texture overlay for premium feel */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -97,11 +104,11 @@ p#callout,
 .eyebrow {
   width: max-content;
   max-width: 100%;
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(47, 107, 255, 0.12);
   padding: 0.35em 0.95em;
-  border: 1px solid rgba(56, 189, 248, 0.22);
+  border: 1px solid rgba(47, 107, 255, 0.28);
   border-radius: 999px;
-  color: #bae6fd;
+  color: var(--bexo-accent-soft);
   margin: 0 0 1em;
   font-size: 0.7rem;
   font-weight: 700;
@@ -125,17 +132,15 @@ a.btn-primary {
   justify-content: center;
   gap: 0.5rem;
   border: none;
-  background: var(--bexo-grad);
+  background: var(--bexo-accent);
   color: #fff !important;
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.85em 1.45em;
   cursor: pointer;
-  box-shadow:
-    0 14px 36px -12px rgba(56, 189, 248, 0.55),
-    0 0 0 1px rgba(56, 189, 248, 0.15);
-  transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-glow);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
 }
@@ -144,17 +149,15 @@ a.btn-primary {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 55%);
   border-radius: inherit;
   pointer-events: none;
 }
 
 .btn-primary:hover {
-  filter: brightness(1.08);
+  background: var(--bexo-accent-hover);
   transform: translateY(-2px);
-  box-shadow:
-    0 20px 48px -12px rgba(56, 189, 248, 0.6),
-    0 0 0 1px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 20px 48px -12px rgba(47, 107, 255, 0.55);
 }
 
 .btn-primary:active {
@@ -168,7 +171,7 @@ a.btn-ghost {
   justify-content: center;
   gap: 0.4rem;
   border: 1px solid var(--bexo-border);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--bexo-text) !important;
   border-radius: 999px;
   font-size: 0.9rem;
@@ -179,10 +182,10 @@ a.btn-ghost {
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(155, 182, 255, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.35);
 }
 
 .cta-row {
@@ -201,7 +204,14 @@ img {
 .divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--bexo-border), rgba(56, 189, 248, 0.25), var(--bexo-border), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--bexo-border),
+    rgba(47, 107, 255, 0.35),
+    var(--bexo-border),
+    transparent
+  );
 }
 
 .brand-link {
@@ -219,14 +229,13 @@ img {
   height: 36px;
   border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 24px rgba(47, 107, 255, 0.35);
 }
 
-/* ========== Footer ========== */
 .site-footer {
   position: relative;
   z-index: 2;
-  background: var(--bexo-ink);
+  background: var(--bexo-ink-elevated);
 }
 
 .site-footer::before {
@@ -236,7 +245,7 @@ img {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.28), transparent);
 }
 
 .site-footer .container {
@@ -266,7 +275,7 @@ img {
 }
 
 .site-footer a:hover {
-  color: var(--bexo-text);
+  color: var(--bexo-accent-soft);
 }
 
 .site-footer .f-links-col p {
@@ -316,7 +325,7 @@ img {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(47, 107, 255, 0.22), transparent);
 }
 
 .f-ctext p {
@@ -324,7 +333,7 @@ img {
 }
 
 .f-domain span {
-  color: var(--bexo-sky);
+  color: var(--bexo-accent-soft);
   font-weight: 700;
 }
 
