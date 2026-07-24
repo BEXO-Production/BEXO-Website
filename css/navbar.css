@@ -55,6 +55,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
+  position: relative;
+  z-index: 10002;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #hamburger-toggle {
@@ -65,6 +68,8 @@
 
 .navbar-logo .brand-link {
   font-size: 1.05rem;
+  position: relative;
+  z-index: 10002;
 }
 
 .navbar-logo .brand-link img {
@@ -160,16 +165,20 @@
 @media screen and (max-width: 1000px) {
   .navbar {
     width: 100%;
+    max-width: 100%;
     top: 0;
     left: 0;
+    right: 0;
     transform: none;
     border-radius: 0;
+    box-sizing: border-box;
     padding:
       env(safe-area-inset-top, 0px)
-      max(1rem, env(safe-area-inset-right, 0px))
+      max(1.25rem, env(safe-area-inset-right, 0px))
       0
-      max(1rem, env(safe-area-inset-left, 0px));
+      max(1.25rem, env(safe-area-inset-left, 0px));
     height: calc(56px + env(safe-area-inset-top, 0px));
+    z-index: 10001;
   }
 
   .navbar:before {
@@ -178,55 +187,77 @@
     border-right: none;
     border-top: none;
     border-bottom-color: rgba(148, 163, 184, 0.2);
-    background: rgba(5, 7, 15, 0.92);
+    background: rgba(5, 7, 15, 0.96);
   }
 
   .navbar .container {
     height: 56px;
+    position: relative;
+    z-index: 2;
   }
 
+  /* Full-viewport mobile menu sheet — covers page completely */
   .navbar-links {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     position: fixed;
+    inset: 0;
     width: 100%;
-    height: calc(100dvh - 56px - env(safe-area-inset-top, 0px));
+    width: 100dvw;
+    max-width: 100%;
+    height: 100%;
+    height: 100dvh;
+    min-height: 100%;
+    min-height: 100dvh;
+    margin: 0;
     padding:
-      1.5rem
-      max(1rem, env(safe-area-inset-right, 0px))
+      calc(56px + env(safe-area-inset-top, 0px) + 1.25rem)
+      max(1.5rem, env(safe-area-inset-right, 0px))
       max(2rem, env(safe-area-inset-bottom, 0px))
-      max(1rem, env(safe-area-inset-left, 0px));
-    top: calc(56px + env(safe-area-inset-top, 0px));
-    left: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(5, 7, 15, 0.96);
-    backdrop-filter: blur(28px) saturate(140%);
-    -webkit-backdrop-filter: blur(28px) saturate(140%);
+      max(1.5rem, env(safe-area-inset-left, 0px));
+    border: none;
+    background: #070b14;
     text-align: center;
-    transition: left 0.3s ease;
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
     z-index: 10000;
-    gap: 0.25rem;
+    gap: 0.15rem;
+    overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .hamburger-icon {
     display: inline-flex;
   }
 
-  #hamburger-toggle:checked ~ ul {
-    left: 0%;
+  #hamburger-toggle:checked ~ ul.navbar-links,
+  body.nav-open .navbar-links {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   body.nav-open {
     overflow: hidden;
+    touch-action: none;
+  }
+
+  body.nav-open .navbar:before {
+    background: #070b14;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
   }
 
   .navbar-items .btn {
     margin-left: 0;
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     line-height: 1.2;
     width: min(100%, 16rem);
   }
@@ -242,12 +273,18 @@
   .navbar-items ul li {
     line-height: 1.2;
     width: 100%;
+    max-width: 20rem;
   }
 
   .navbar-items ul li a {
     display: block;
     padding: 0.95em 1em;
     min-height: 48px;
+    box-sizing: border-box;
+  }
+
+  .navbar-items ul li.is-active a::after {
+    bottom: 8px;
   }
 }
 
@@ -291,18 +328,15 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .page-home .navbar {
-    width: 100%;
-    max-width: 100%;
-    left: 0;
-    right: 0;
-    transform: none;
-    box-sizing: border-box;
-    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
-    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  .page-home .navbar:before {
+    background: rgba(11, 18, 32, 0.96);
   }
 
-  .page-home .navbar:before {
-    background: rgba(11, 18, 32, 0.94);
+  body.nav-open.page-home .navbar:before {
+    background: #070b14;
+  }
+
+  .page-home .navbar-links {
+    background: #070b14;
   }
 }

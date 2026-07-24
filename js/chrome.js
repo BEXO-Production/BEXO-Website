@@ -93,6 +93,9 @@
           document.body.classList.toggle("nav-open", open);
           label.setAttribute("aria-label", open ? "Close menu" : "Open menu");
           label.setAttribute("aria-expanded", open ? "true" : "false");
+          label.innerHTML = open
+            ? '<i class="ph-light ph-x" aria-hidden="true"></i>'
+            : '<i class="ph-light ph-list" aria-hidden="true"></i>';
         };
         toggle.addEventListener("change", syncNav);
         navMount.querySelectorAll(".navbar-links a").forEach(function (a) {
@@ -102,6 +105,12 @@
               syncNav();
             }
           });
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && toggle.checked) {
+            toggle.checked = false;
+            syncNav();
+          }
         });
         syncNav();
       }
