@@ -523,3 +523,41 @@
     font-weight: 700;
   }
 }
+
+/* —— Touch feel + low-power motion (phones) —— */
+@media (max-width: 720px) {
+  body.page-home {
+    overscroll-behavior-y: contain;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body.page-home a,
+  body.page-home button,
+  body.page-home .btn,
+  body.page-home input,
+  body.page-home [role="button"] {
+    touch-action: manipulation;
+  }
+
+  body.page-home .btn,
+  body.page-home button:not(.nav-toggle) {
+    min-height: 44px;
+  }
+
+  body.page-home input,
+  body.page-home textarea,
+  body.page-home select {
+    font-size: 16px !important; /* prevent iOS zoom-on-focus */
+  }
+}
+
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+  body.page-home *,
+  body.page-home *::before,
+  body.page-home *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
