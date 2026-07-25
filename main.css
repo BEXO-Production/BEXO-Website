@@ -378,3 +378,132 @@ img {
     min-height: 48px;
   }
 }
+
+/* ==========================================================================
+   Site-wide mobile layer (all marketing pages import main.css)
+   Fixes: horizontal overflow from decorative glows, hero rhythm under the
+   floating pill nav, consistent gutters, and touch-friendly controls.
+   ========================================================================== */
+@media (max-width: 720px) {
+  /* Root cause of "content shifted left": 600–800px decorative glows spill
+     past a ~390px viewport. Clip horizontally instead of hiding (keeps
+     vertical scroll healthy on iOS). */
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  /* Every marketing section becomes its own horizontal clip boundary so a
+     section's decorative ::before glow can never widen the page. */
+  section {
+    overflow-x: clip;
+    padding: 0.5em 0;
+  }
+
+  /* One consistent gutter, honoring notches on both edges. */
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Inner-page heroes: tighten the top gap under the floating pill nav and
+     calm the oversized decorative glows. */
+  .stories-hero .container,
+  .section-pricing-hero .container,
+  .about-hero .container,
+  .contact-hero .container,
+  .blog-hero .container {
+    padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 1.75rem;
+  }
+
+  .stories-hero::before,
+  .section-pricing-hero::before,
+  .about-hero::before {
+    width: min(120vw, 34rem);
+    height: min(120vw, 34rem);
+    opacity: 0.7;
+  }
+
+  /* Headlines: never let a long word push the page wide. */
+  h1,
+  h2,
+  h3,
+  .stories-hero h1,
+  .about-hero h1,
+  .section-pricing-hero h1 {
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  /* Card padding that reads generous on desktop is cramped-then-tall on
+     phones — bring it into a comfortable single-column rhythm. */
+  .story-card,
+  .p-card,
+  .journey-step,
+  .about-body .panel {
+    padding: 1.5rem 1.35rem;
+    border-radius: 1.15rem;
+  }
+
+  .story-card blockquote {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Bands stack cleanly and center. */
+  .pricing-free-band .band,
+  .lifetime-band {
+    padding: 1.35rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  /* Touch ergonomics + iOS zoom prevention on the contact form. */
+  a,
+  button,
+  .btn,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  .contact-form {
+    padding: 1.25rem;
+  }
+
+  .contact-form .btn-submit {
+    min-height: 48px;
+  }
+
+  body {
+    overscroll-behavior-y: contain;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Honor reduced-motion for the shared hero-rise entrance across all pages. */
+@media (prefers-reduced-motion: reduce) {
+  [class*="hero"] .container,
+  .stories-grid .container,
+  .pricing-primary,
+  .pricing-free-band,
+  .pricing-lifetime,
+  .pricing-note,
+  .about-journey .container,
+  .about-grid {
+    animation: none !important;
+  }
+}
