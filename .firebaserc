@@ -1,5 +1,17 @@
 {
   "projects": {
-    "default": "mybexo"
-  }
+    "default": "bexo-from-ace-digital",
+    "production": "bexo-from-ace-digital",
+    "legacy-mybexo": "mybexo"
+  },
+  "targets": {
+    "bexo-from-ace-digital": {
+      "hosting": {
+        "marketing": [
+          "bexo-marketing"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
