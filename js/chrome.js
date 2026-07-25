@@ -74,6 +74,11 @@
         '"><a href="' +
         root +
         'pages/blog.html">Guides</a></li>' +
+        '<li class="' +
+        linkClass("contact") +
+        '"><a href="' +
+        root +
+        'pages/contact.html">Contact</a></li>' +
         '<li class="navbar-item navbar-login"><a class="js-dash-login" href="' +
         login +
         '">Log in</a></li>' +
@@ -158,7 +163,10 @@
         'pages/customers.html">Stories</a><br />' +
         '<a href="' +
         root +
-        'pages/blog.html">Guides</a>' +
+        'pages/blog.html">Guides</a><br />' +
+        '<a href="' +
+        root +
+        'pages/contact.html">Contact</a>' +
         "</div>" +
         '<div class="f-links-col">' +
         "<p>Legal</p>" +

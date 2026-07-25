@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — BEXO</title>
+    <meta
+      name="description"
+      content="Contact the BEXO team for campus partnerships, product questions, or support. We reply by email."
+    />
+    <link rel="canonical" href="https://mybexo.com/pages/contact" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:site_name" content="BEXO" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact Us — BEXO" />
+    <meta
+      property="og:description"
+      content="Reach Ace Digital’s BEXO team — partnerships, product questions, and support."
+    />
+    <meta property="og:url" content="https://mybexo.com/pages/contact" />
+    <meta property="og:image" content="https://mybexo.com/assets/og-default.jpg" />
+    <link rel="icon" href="../assets/bexo-logo.png" type="image/png" />
+    <link rel="stylesheet" href="../css/navbar.css?v=20260725c" />
+    <link rel="stylesheet" href="../main.css?v=20260725c" />
+    <link rel="stylesheet" href="../css/contact.css?v=20260725c" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body data-page="contact">
+    <div id="site-nav"></div>
+
+    <section class="contact-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Talk to the BEXO team.</h1>
+        <p class="lede">
+          Campus partnerships, product questions, billing help — send a note and we’ll get back by
+          email.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-body">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <h2>We’re here for</h2>
+          <ul>
+            <li>Campus &amp; placement partnerships</li>
+            <li>Plan and Autopay questions</li>
+            <li>Product feedback</li>
+            <li>Press &amp; collaboration</li>
+          </ul>
+          <p class="muted">
+            Already have an account?
+            <a class="js-dash-login" href="https://dash.mybexo.com/login">Open the dashboard</a>
+            and use <strong>Contact support</strong> on Billing for ticketed help.
+          </p>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <label>
+            Name
+            <input type="text" name="name" required maxlength="120" autocomplete="name" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required maxlength="200" autocomplete="email" />
+          </label>
+          <label>
+            Phone <span class="optional">(optional)</span>
+            <input type="tel" name="phone" maxlength="40" autocomplete="tel" />
+          </label>
+          <label>
+            Subject <span class="optional">(optional)</span>
+            <input type="text" name="subject" maxlength="160" />
+          </label>
+          <label>
+            Message
+            <textarea name="message" required rows="5" maxlength="4000"></textarea>
+          </label>
+          <button type="submit" class="btn-submit" id="contact-submit">Send message</button>
+          <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+    <script src="../js/config.js"></script>
+    <script src="../js/chrome.js?v=20260725c"></script>
+    <script src="../js/contact.js?v=20260725c"></script>
+  </body>
+</html>
