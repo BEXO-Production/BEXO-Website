@@ -21,10 +21,6 @@
       {
         "source": "/hire-me/**",
         "destination": "/free-portfolio.html"
-      },
-      {
-        "source": "**",
-        "destination": "/free-portfolio.html"
       }
     ],
     "headers": [

@@ -178,7 +178,10 @@
         '">Privacy</a><br />' +
         '<a href="' +
         cfg.legalUrl("refund") +
-        '">Refunds</a>' +
+        '">Refunds</a><br />' +
+        '<a href="' +
+        cfg.legalUrl("cookies") +
+        '">Cookies</a>' +
         "</div>" +
         "</div>" +
         "</div>" +
