@@ -11,6 +11,13 @@
           "bexo-marketing"
         ]
       }
+    },
+    "mybexo": {
+      "hosting": {
+        "marketing": [
+          "mybexo"
+        ]
+      }
     }
   },
   "etags": {}

@@ -688,25 +688,6 @@ input, textarea, select, button {
 }
 
 /* --------------------------------------------------------------------------
-   Responsive Helpers
-   -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  [data-bx-stack] {
-    position: static !important;
-    margin-bottom: 20px !important;
-  }
-  [data-bx-stack] > a {
-    transform: none !important;
-  }
-  [data-hero-card] {
-    width: 100%;
-    display: flex !important;
-    justify-content: center;
-    margin-top: 12px;
-  }
-}
-
-/* --------------------------------------------------------------------------
    Contrast Safeguards for Headings & Dark Sections
    -------------------------------------------------------------------------- */
 [data-screen-label="SPiD"],
@@ -726,3 +707,356 @@ input, textarea, select, button {
 [data-theme="light"] [data-screen-label="SPiD"] p {
   color: oklch(97% 0.01 258) !important;
 }
+
+/* ==========================================================================
+   METAMUSE MOBILE & TABLET RESPONSIVE ENGINE (Awwwards / Linear Grade)
+   ========================================================================== */
+
+/* 1. Global Touch & Viewport Safeguards */
+html, body {
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--bexo-accent, #2f6bff);
+  outline-offset: 2px;
+}
+
+/* 2. Navigation Touch Targets */
+.bx-nav-burger {
+  width: 44px;
+  height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease;
+}
+
+.bx-nav-burger:active {
+  transform: scale(0.92);
+}
+
+.bx-overlay-close {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 3. Hero Card Flip Responsive Physics */
+.bx-card-flip-container {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.bx-card-flip-container:active {
+  transform: scale(0.98);
+}
+
+/* Tablet & Mobile Navigation Breakpoint (<= 939px) */
+@media (max-width: 939px) {
+  .bx-nav-wrap {
+    padding: 14px 16px;
+  }
+  .bx-nav {
+    height: 52px;
+    padding: 0 8px 0 14px;
+  }
+  .bx-nav-links, .bx-nav-actions {
+    display: none !important;
+  }
+  .bx-nav-burger {
+    display: flex !important;
+  }
+  .bx-nav-overlay {
+    padding: max(20px, env(safe-area-inset-top, 20px)) clamp(20px, 6vw, 40px) max(32px, env(safe-area-inset-bottom, 32px));
+  }
+}
+
+/* Tablet & Smaller Breakpoint (<= 900px) */
+@media (max-width: 900px) {
+  [data-bx-stack] {
+    position: static !important;
+    margin-bottom: 20px !important;
+  }
+  [data-bx-stack] > a {
+    transform: none !important;
+  }
+  [data-hero-card] {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-top: 14px !important;
+  }
+}
+
+/* Mobile Breakpoint (<= 768px) */
+@media (max-width: 768px) {
+  /* Hero Section */
+  #hero {
+    min-height: auto !important;
+    padding-top: clamp(88px, 18vw, 112px) !important;
+    padding-bottom: 56px !important;
+  }
+  #bxHeroInner {
+    gap: 32px !important;
+  }
+  #hero h1 {
+    font-size: clamp(34px, 9.2vw, 52px) !important;
+    line-height: 1.02 !important;
+    margin-bottom: 20px !important;
+  }
+  #hero p {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 28px !important;
+  }
+
+  /* Form & Input */
+  .bx-hero-form {
+    padding: 20px 16px !important;
+  }
+  #bxHandleInput {
+    font-size: clamp(20px, 6vw, 32px) !important;
+    width: auto !important;
+    max-width: 55vw !important;
+  }
+  .bx-hero-form span[style*=".atbexo.com"] {
+    font-size: clamp(20px, 6vw, 32px) !important;
+  }
+  .bx-claim-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3D Physical Business Card */
+  #bxHeroFlippingCard {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: 222px !important;
+  }
+  .bx-card-face {
+    padding: 20px 22px !important;
+    border-radius: 18px !important;
+  }
+  .bx-card-face-front h3 {
+    font-size: 26px !important;
+    margin-bottom: 3px !important;
+  }
+  .bx-card-face-front p[style*="MANAGING DIRECTOR"] {
+    font-size: 10.5px !important;
+  }
+  .bx-card-face-front div[style*="CONNECT"] {
+    font-size: 9.5px !important;
+    letter-spacing: 0.14em !important;
+    padding-top: 6px !important;
+  }
+
+  /* Back Face Responsive Sizing */
+  .bx-card-face-back {
+    padding: 18px 20px !important;
+  }
+  .bx-card-face-back div[style*="height:100px"] {
+    height: 72px !important;
+  }
+  .bx-card-face-back div[style*="width:120px; height:120px"] {
+    width: 96px !important;
+    height: 96px !important;
+    border-radius: 13px !important;
+    padding: 6px !important;
+  }
+  .bx-card-face-back div[style*="width:30px; height:30px"] {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .bx-card-face-back div[style*="width:30px; height:30px"] img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .bx-card-face-back p[style*="Your Network."] {
+    font-size: 12px !important;
+  }
+  .bx-card-face-back p[style*="Smarter Than Ever."] {
+    font-size: 12px !important;
+  }
+  .bx-card-face-back span[style*="Tap or Scan to connect"] {
+    font-size: 8.5px !important;
+  }
+
+  /* Section 01 Problem */
+  #problem {
+    padding: 64px 20px 80px !important;
+  }
+  #problem h2 {
+    font-size: clamp(26px, 7vw, 38px) !important;
+  }
+
+  /* Section 02 Pillars */
+  .bx-pillar-card {
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+  }
+  .bx-pillar-card h3 {
+    font-size: clamp(24px, 6vw, 32px) !important;
+  }
+  .bx-pillar-card p {
+    font-size: 14.5px !important;
+  }
+
+  /* Section 03 Expression / Marquee Cards */
+  [data-screen-label="Expression"] {
+    padding: 64px 0 !important;
+  }
+  .bx-framer-card {
+    height: 310px !important;
+    border-radius: 18px !important;
+    touch-action: pan-y !important;
+  }
+  .bx-framer-card[style*="width:480px"] { width: 330px !important; }
+  .bx-framer-card[style*="width:440px"] { width: 310px !important; }
+  .bx-framer-card[style*="width:520px"] { width: 340px !important; }
+  .bx-framer-card[style*="width:420px"] { width: 300px !important; }
+  .bx-framer-card[style*="width:290px"],
+  .bx-framer-card[style*="width:300px"],
+  .bx-framer-card[style*="width:310px"],
+  .bx-framer-card[style*="width:280px"] { width: 230px !important; }
+  .bx-framer-card p[style*="font-size:32px"],
+  .bx-framer-card p[style*="font-size:28px"],
+  .bx-framer-card p[style*="font-size:36px"],
+  .bx-framer-card p[style*="font-size:38px"] {
+    font-size: 22px !important;
+  }
+  .bx-framer-glass-bar {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+
+  /* Section 04 Cinema / Atmosphere */
+  #bxCinema {
+    height: 160vh !important;
+  }
+  #bxCineFrame {
+    width: 90% !important;
+    height: 52vh !important;
+    border-radius: 16px !important;
+  }
+  #bxCineCopy {
+    left: 20px !important;
+    right: 20px !important;
+    bottom: 24px !important;
+  }
+  #bxCineCopy p[style*="var(--serif)"] {
+    font-size: clamp(22px, 6vw, 34px) !important;
+  }
+
+  /* Section 05 SPiD */
+  [data-screen-label="SPiD"] {
+    padding: 64px 20px 80px !important;
+  }
+  [data-screen-label="SPiD"] h2 {
+    font-size: clamp(26px, 7vw, 38px) !important;
+  }
+  #bxSpidGraph {
+    height: 310px !important;
+  }
+  .bx-spid-node {
+    padding: 5px 9px !important;
+    font-size: 10.5px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Section 06 Proof / Studio */
+  [data-screen-label="Proof"] {
+    padding: 64px 20px 80px !important;
+  }
+  [data-screen-label="Proof"] h2 {
+    font-size: clamp(26px, 7vw, 38px) !important;
+  }
+
+  /* Section 07 CTA */
+  #bxCtaSection {
+    padding: 80px 20px 96px !important;
+  }
+  #bxCtaSection h2 {
+    font-size: clamp(28px, 7.8vw, 44px) !important;
+    margin-bottom: 28px !important;
+  }
+  #bxCtaSection div[style*="display:flex; gap:16px"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    gap: 12px !important;
+  }
+  .bx-cta-primary, .bx-cta-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 15px 20px !important;
+  }
+
+  /* Footer */
+  footer {
+    padding: 56px 20px max(32px, env(safe-area-inset-bottom, 32px)) !important;
+  }
+  footer div[style*="display:grid"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 18px !important;
+  }
+  footer div[style*="justify-content:space-between; align-items:flex-end"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+
+  /* Cookie Banner Mobile */
+  #bxCookieBanner {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: max(14px, env(safe-area-inset-bottom, 14px)) !important;
+    max-width: none !important;
+    padding: 16px 18px !important;
+    border-radius: 18px !important;
+  }
+  #bxCookieBanner button {
+    min-height: 42px !important;
+  }
+}
+
+/* Extra Small Phones (<= 380px: iPhone SE, etc) */
+@media (max-width: 380px) {
+  #bxHeroFlippingCard {
+    max-width: 318px !important;
+    height: 208px !important;
+  }
+  .bx-card-face {
+    padding: 15px 16px !important;
+  }
+  .bx-card-face-front h3 {
+    font-size: 23px !important;
+  }
+  .bx-card-face-back div[style*="width:120px; height:120px"] {
+    width: 84px !important;
+    height: 84px !important;
+    padding: 5px !important;
+  }
+  .bx-card-face-back div[style*="height:100px"] {
+    height: 60px !important;
+  }
+  footer div[style*="display:grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+

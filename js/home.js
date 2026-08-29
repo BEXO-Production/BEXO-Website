@@ -242,9 +242,12 @@
       var cp = Math.max(0, Math.min(1, -cineRect.top / run));
       var ce = cp * cp * (3 - 2 * cp);
       var copyP = Math.max(0, Math.min(1, (cp - 0.42) / 0.28));
-      cineFrame.style.width = (62 + 38 * ce).toFixed(2) + "%";
-      cineFrame.style.height = (66 + 34 * ce).toFixed(2) + "vh";
-      cineFrame.style.borderRadius = (20 - 20 * ce).toFixed(1) + "px";
+      var isMobile = (window.innerWidth || 1024) <= 768;
+      var baseW = isMobile ? 90 : 62;
+      var baseH = isMobile ? 54 : 66;
+      cineFrame.style.width = (baseW + (100 - baseW) * ce).toFixed(2) + "%";
+      cineFrame.style.height = (baseH + (100 - baseH) * ce).toFixed(2) + "vh";
+      cineFrame.style.borderRadius = (isMobile ? (16 - 16 * ce) : (20 - 20 * ce)).toFixed(1) + "px";
       if (cineImg) cineImg.style.transform = "scale(" + (1.22 - 0.22 * ce).toFixed(3) + ")";
       if (cineVeil) cineVeil.style.background = "linear-gradient(180deg, oklch(6% 0.02 258 / 0.15), oklch(6% 0.02 258 / " + (0.25 + 0.45 * ce).toFixed(2) + "))";
       if (cineCopy) {
