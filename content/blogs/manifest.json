@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-07-22T12:26:43.601Z",
+  "generated_at": "2026-08-29T03:54:58.162Z",
   "count": 100,
   "note": "Mirrors marketing_blogs table. Import JSON into Postgres when admin CMS ships.",
   "posts": [
@@ -1268,7 +1268,7 @@
       "id": "seed-002",
       "slug": "how-yourname-atbexo-com-makes-you-memorable-in-3-seconds",
       "title": "How yourname.atbexo.com makes you memorable in 3 seconds",
-      "excerpt": "Names stick. Random Bitly links don’t. Your subdomain is the shortest brand asset you’ll ever own. Practical notes for personal brand.",
+      "excerpt": "Most advice on this topic is vague. This guide is a field note: what to change on your site this week so you stand out for the right reasons. Practical notes for personal brand.",
       "cover_image_url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
       "category": "branding",
       "category_label": "Personal brand",

@@ -50,7 +50,7 @@ const AUTHORS = [
 /** 100 unique, user-facing titles */
 const TITLES = [
   ["Why a live portfolio beats a PDF in placement season", "placements"],
-  ["How yourname.mybexo.cyou makes you memorable in 3 seconds", "branding"],
+  ["How yourname.atbexo.com makes you memorable in 3 seconds", "branding"],
   ["Resume vs portfolio: what recruiters actually open", "recruiters"],
   ["The Hire Me page: your ATS-friendly first impression", "recruiters"],
   ["Stand out without learning Webflow overnight", "getting-started"],
@@ -490,62 +490,177 @@ function excerptFrom(title, category, angle) {
 }
 
 function postHtmlShell(post) {
-  const origin = "https://mybexo.cyou";
+  const origin = "https://atbexo.com";
   const canonical = `${origin}/pages/guides/${post.slug}`;
   const pageTitle = post.seo_title || `${post.title} | BEXO Guides`;
   const description = post.seo_description || post.excerpt;
   return `<!DOCTYPE html>
 <html lang="en" data-root="../../">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${escapeHtml(pageTitle)}</title>
-    <meta name="description" content="${escapeHtml(description)}" />
-    <link rel="canonical" href="${escapeHtml(canonical)}" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta property="og:site_name" content="BEXO" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="${escapeHtml(post.title)}" />
-    <meta property="og:description" content="${escapeHtml(description)}" />
-    <meta property="og:url" content="${escapeHtml(canonical)}" />
-    <meta property="og:image" content="${escapeHtml(post.cover_image_url)}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${escapeHtml(post.title)}" />
-    <meta name="twitter:description" content="${escapeHtml(description)}" />
-    <meta name="twitter:image" content="${escapeHtml(post.cover_image_url)}" />
-    <link rel="icon" href="../../assets/bexo-logo.png" type="image/png" />
-    <link rel="stylesheet" href="../../css/navbar.css" />
-    <link rel="stylesheet" href="../../main.css" />
-    <link rel="stylesheet" href="../../css/sample-blog.css" />
-    <link rel="stylesheet" href="../../css/blog.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
-  <body data-page="guides">
-    <div id="site-nav"></div>
-    <article class="article-hero">
-      <div class="container">
-        <p class="eyebrow">${escapeHtml(categoryLabel(post.category))}</p>
-        <h1>${escapeHtml(post.title)}</h1>
-        <p class="post-meta">${escapeHtml(post.author_name)} · ${post.reading_minutes} min read · ${post.published_at.slice(0, 10)}</p>
-      </div>
-    </article>
-    <div class="post-cover container">
-      <img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" loading="lazy" />
-      <p class="cover-credit">${escapeHtml(post.cover_credit || "")}</p>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${escapeHtml(pageTitle)}</title>
+<meta name="description" content="${escapeHtml(description)}">
+<link rel="canonical" href="${escapeHtml(canonical)}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="BEXO">
+<meta property="og:locale" content="en_IN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="${escapeHtml(post.title)}">
+<meta property="og:description" content="${escapeHtml(description)}">
+<meta property="og:url" content="${escapeHtml(canonical)}">
+<meta property="og:image" content="${escapeHtml(post.cover_image_url)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escapeHtml(post.title)}">
+<meta name="twitter:description" content="${escapeHtml(description)}">
+<meta name="twitter:image" content="${escapeHtml(post.cover_image_url)}">
+<link rel="icon" href="../../assets/bexo-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<link rel="stylesheet" href="../../css/tokens.css">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+  .guide-article-body { font-size:16.5px; line-height:1.75; color:var(--ink-2); }
+  .guide-article-body h2 { font-family:var(--serif); font-size:clamp(22px,2.6vw,32px); font-weight:400; color:var(--ink); margin:40px 0 16px; }
+  .guide-article-body p { margin:0 0 20px; }
+  .guide-article-body ul { margin:0 0 24px; padding-left:20px; }
+  .guide-article-body li { margin-bottom:10px; }
+  .guide-article-body strong { color:var(--ink); }
+  .guide-article-body a { color:var(--green-deep); text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+
+  <!-- Noise filter -->
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
+  <div id="bxProgress" style="position:fixed; top:0; left:0; height:2px; width:0%; background:var(--green); z-index:250;"></div>
+
+  <!-- ===== Nav ===== -->
+  <div data-bx-nav data-active="blog">
+    <div class="bx-nav-wrap" id="bxNavWrap">
+      <nav class="bx-nav">
+        <a href="../../index.html" class="bx-nav-logo"><img src="../../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</a>
+        <ul class="bx-nav-links">
+          <li><a href="../product.html" class="bx-nav-link" data-key="product">Product</a></li>
+          <li><a href="../pricing.html" class="bx-nav-link" data-key="pricing">Pricing</a></li>
+          <li><a href="../about.html" class="bx-nav-link" data-key="about">About</a></li>
+          <li><a href="../contact.html" class="bx-nav-link" data-key="contact">Contact</a></li>
+        </ul>
+        <div class="bx-nav-actions">
+          <a href="https://dash.mybexo.com" class="bx-nav-cta">Create My Card</a>
+        </div>
+        <button class="bx-nav-burger" aria-label="Open menu" aria-expanded="false">
+          <span class="bx-burger-line" id="bxBurgerLine1"></span>
+          <span class="bx-burger-line" id="bxBurgerLine2"></span>
+        </button>
+      </nav>
     </div>
-    <section class="article-body">
-      <div class="container post-body">
-        ${post.body_html}
-      </div>
-    </section>
-    <div class="container" style="max-width:42rem;padding-bottom:3rem">
-      <p><a href="../blog.html">← All guides</a></p>
+  </div>
+  <div class="bx-nav-overlay" id="bxNavOverlay" hidden>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span class="bx-overlay-logo"><img src="../../assets/bexo-logo.png" alt="" style="width:24px; height:24px; border-radius:8px;">BEXO</span>
+      <button aria-label="Close menu" id="bxOverlayClose" class="bx-overlay-close">&times;</button>
     </div>
-    <div id="site-footer"></div>
-    <script src="../../js/config.js"></script>
-    <script src="../../js/chrome.js"></script>
-  </body>
+    <div class="bx-overlay-links">
+      <a href="../../index.html" class="bx-mlink" data-key="home">Home</a>
+      <a href="../product.html" class="bx-mlink" data-key="product">Product</a>
+      <a href="../pricing.html" class="bx-mlink" data-key="pricing">Pricing</a>
+      <a href="../about.html" class="bx-mlink" data-key="about">About</a>
+      <a href="../contact.html" class="bx-mlink" data-key="contact">Contact</a>
+    </div>
+    <div class="bx-overlay-footer">
+      <a href="https://dash.mybexo.com" class="bx-overlay-cta" style="width:100%; text-align:center;">Create My Card</a>
+    </div>
+  </div>
+
+  <!-- ===== Article Hero ===== -->
+  <article style="padding:clamp(140px,16vw,210px) clamp(20px,5vw,64px) clamp(60px,8vw,100px); max-width:860px; margin:0 auto;">
+    <div style="margin-bottom:32px;">
+      <span style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--green-deep); font-weight:700; background:oklch(58% 0.19 264 / 0.12); padding:5px 14px; border-radius:20px;">${escapeHtml(categoryLabel(post.category))}</span>
+    </div>
+    <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(32px,5.2vw,62px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 24px; color:var(--ink);">${escapeHtml(post.title)}</h1>
+    <p style="font-size:14.5px; color:var(--ink-3); margin:0 0 40px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <span>By ${escapeHtml(post.author_name)}</span>
+      <span>&middot;</span>
+      <span>${post.reading_minutes} min read</span>
+      <span>&middot;</span>
+      <span>${post.published_at.slice(0, 10)}</span>
+    </p>
+
+    <!-- Cover Image -->
+    <div style="border-radius:18px; overflow:hidden; margin-bottom:44px; border:1px solid var(--line);">
+      <img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" loading="lazy" style="width:100%; height:clamp(240px,40vw,420px); object-fit:cover; display:block;">
+      ${post.cover_credit ? `<p style="font-size:11.5px; color:var(--ink-3); padding:8px 16px; margin:0; background:var(--paper-2);">${escapeHtml(post.cover_credit)}</p>` : ''}
+    </div>
+
+    <!-- Article Content -->
+    <div class="guide-article-body">
+      ${post.body_html}
+    </div>
+
+    <!-- Back to all guides -->
+    <div style="margin-top:60px; padding-top:30px; border-top:1px solid var(--line);">
+      <a href="../blog.html" style="display:inline-flex; align-items:center; gap:8px; font-size:15px; color:var(--ink); font-weight:500;"><i class="ph-bold ph-arrow-left"></i> All guides &amp; field notes</a>
+    </div>
+  </article>
+
+  <!-- ===== Footer ===== -->
+  <footer style="background:var(--bexo-ink-deep); color:var(--bexo-text); padding:clamp(72px,9vw,120px) clamp(20px,5vw,64px) 40px; font-family:var(--font-sans); border-top:1px solid var(--bexo-border);">
+    <div style="max-width:1120px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:56px; padding-bottom:56px; border-bottom:1px solid var(--bexo-border);">
+        <div>
+          <p style="font-family:var(--font-serif); font-size:22px; font-weight:600; margin:0 0 14px; display:flex; align-items:center; gap:9px;"><img src="../../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</p>
+          <p style="font-size:14px; line-height:1.65; color:var(--bexo-muted); margin:0; max-width:28ch;">Professional identity and real-world connection. Built by Ace Digital.</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Product</p>
+          <a href="../product.html" class="bx-footer-link">How BEXO works</a>
+          <a href="../pricing.html" class="bx-footer-link">Pricing</a>
+          <a href="#" class="bx-footer-link">Open dashboard</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Company</p>
+          <a href="../about.html" class="bx-footer-link">About</a>
+          <a href="../contact.html" class="bx-footer-link">Contact</a>
+          <a href="../blog.html" class="bx-footer-link">Guides</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Legal</p>
+          <a href="../terms.html" class="bx-footer-link">Terms of Service</a>
+          <a href="../privacy.html" class="bx-footer-link">Privacy Policy</a>
+          <a href="../refunds.html" class="bx-footer-link">Refund Policy</a>
+          <a href="../cookies.html" class="bx-footer-link">Cookie Policy</a>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding-top:32px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p style="font-size:13px; color:var(--bexo-muted); margin:0;">&copy; 2026 BEXO from Ace Digital. All rights reserved.</p>
+          <p style="font-size:12.5px; color:rgba(248,250,252,.4); margin:0;">Made near the coast, for the professional web.</p>
+        </div>
+        <p style="font-family:var(--font-serif); font-size:clamp(26px,6vw,58px); line-height:1; margin:0; color:rgba(255,255,255,.18); font-weight:600;">you.<span style="color:var(--bexo-accent-soft);">atbexo.com</span></p>
+        <button data-bx-theme-toggle aria-label="Switch to dark mode" class="bx-theme-toggle"><i class="ph-fill ph-moon"></i><span data-theme-text>Dark mode</span></button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../../js/cookie-utils.js"></script>
+<script src="../../js/theme.js"></script>
+<script src="../../js/nav.js"></script>
+<script src="../../js/footer.js"></script>
+<script src="../../js/transitions.js"></script>
+<script src="../../js/cookies-consent.js"></script>
+</body>
 </html>
 `;
 }

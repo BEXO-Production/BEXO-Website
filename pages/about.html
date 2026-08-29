@@ -1,126 +1,276 @@
 <!DOCTYPE html>
-<html lang="en" data-root="../">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About BEXO — Ace Digital’s portfolio platform</title>
-    <meta
-      name="description"
-      content="BEXO from Ace Digital turns a resume into a live portfolio recruiters open — for campus placements, career switches, and first clients."
-    />
-    <link rel="canonical" href="https://mybexo.com/pages/about" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta property="og:site_name" content="BEXO" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="About BEXO — Ace Digital’s portfolio platform" />
-    <meta
-      property="og:description"
-      content="Why the link you send should feel as sharp as you. Discover on mybexo.com, create on dash, share your live portfolio."
-    />
-    <meta property="og:url" content="https://mybexo.com/pages/about" />
-    <meta property="og:image" content="https://mybexo.com/assets/og-default.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="About BEXO — Ace Digital’s portfolio platform" />
-    <meta
-      name="twitter:description"
-      content="Resume to live portfolio for students and professionals — by Ace Digital."
-    />
-    <meta name="twitter:image" content="https://mybexo.com/assets/og-default.jpg" />
-    <link rel="icon" href="../assets/bexo-logo.png" type="image/png" />
-    <link rel="stylesheet" href="../css/navbar.css?v=20260725d" />
-    <link rel="stylesheet" href="../main.css?v=20260725d" />
-    <link rel="stylesheet" href="../css/about.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
-  <body data-page="about">
-    <div id="site-nav"></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — BEXO: Identity, Connection & Philosophy</title>
+<meta name="description" content="Why BEXO exists: people meet, time passes, and the thread goes quiet. We build tools so fewer good relationships are lost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 
-    <section class="about-hero">
-      <div class="container">
-        <p class="eyebrow">About BEXO</p>
-        <h1>Made for the link you send when it matters.</h1>
-        <p class="lede">
-          Campus placements. Career switches. First freelancing clients. BEXO
-          turns your resume into a polished site you can share with confidence —
-          designed by Ace Digital for people who don’t want another website
-          builder.
-        </p>
+<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+
+  <!-- Noise & Liquid SVG filters -->
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
+  <svg aria-hidden="true" style="position:absolute; width:0; height:0; overflow:hidden;"><defs><filter id="bx-liquid"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="7" result="turb"><animate attributeName="baseFrequency" values="0.012 0.09;0.02 0.14;0.012 0.09" dur="2.4s" repeatCount="indefinite"></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="turb" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
+
+  <!-- Page transition curtain & cursor -->
+  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 258); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
+    <div id="bxCurtainGlow" style="position:absolute; width:130px; height:130px; border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); filter:blur(22px); opacity:1; transition:opacity 0.4s ease; animation:bx-logo-pulse 1.8s ease-in-out infinite; pointer-events:none;"></div>
+    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.19 264 / 0.6); pointer-events:none;">
+    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 258); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
+  </div>
+  <div id="bxProgress" style="position:fixed; top:0; left:0; height:2px; width:0%; background:var(--green); z-index:250;"></div>
+  <div id="bxBlackhole" aria-hidden="true" style="position:fixed; inset:0; z-index:500; pointer-events:none; opacity:0; clip-path:circle(0px at 50% 50%); background:radial-gradient(circle at 50% 50%, oklch(22% 0.02 60) 0%, oklch(11% 0.015 60) 55%, oklch(4% 0.01 60) 100%);"></div>
+  <div id="bxRingA" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--green); opacity:0; transform:translate(-50%,-50%);"></div>
+  <div id="bxRingB" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--amber); opacity:0; transform:translate(-50%,-50%);"></div>
+  <div id="bxCursor" aria-hidden="true" style="position:fixed; top:0; left:0; width:34px; height:34px; margin:-17px 0 0 -17px; border:1px solid oklch(6% 0.02 258 / 0.45); border-radius:50%; pointer-events:none; z-index:380; opacity:0; display:flex; align-items:center; justify-content:center; transition:width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1), margin 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;"><span id="bxCursorLabel" style="opacity:0; font-size:9.5px; letter-spacing:0.14em; font-weight:700; color:#050505; transition:opacity 0.2s ease; white-space:nowrap;">VIEW</span></div>
+
+  <!-- ===== Nav ===== -->
+  <div data-bx-nav data-active="about">
+    <div class="bx-nav-wrap" id="bxNavWrap">
+      <nav class="bx-nav">
+        <a href="../index.html" data-page-link class="bx-nav-logo"><img src="../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</a>
+        <ul class="bx-nav-links">
+          <li><a href="product.html" data-page-link class="bx-nav-link" data-key="product">Product</a></li>
+          <li><a href="pricing.html" data-page-link class="bx-nav-link" data-key="pricing">Pricing</a></li>
+          <li><a href="about.html" data-page-link class="bx-nav-link" data-key="about">About</a></li>
+          <li><a href="contact.html" data-page-link class="bx-nav-link" data-key="contact">Contact</a></li>
+        </ul>
+        <div class="bx-nav-actions"><a href="https://dash.mybexo.com" class="bx-nav-cta">Create My Card</a></div>
+        <button class="bx-nav-burger" aria-label="Open menu" aria-expanded="false">
+          <span class="bx-burger-line" id="bxBurgerLine1"></span>
+          <span class="bx-burger-line" id="bxBurgerLine2"></span>
+        </button>
+      </nav>
+    </div>
+  </div>
+  <div class="bx-nav-overlay" id="bxNavOverlay" hidden>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span class="bx-overlay-logo"><img src="../assets/bexo-logo.png" alt="" style="width:24px; height:24px; border-radius:8px;">BEXO</span>
+      <button aria-label="Close menu" id="bxOverlayClose" class="bx-overlay-close">&times;</button>
+    </div>
+    <div class="bx-overlay-links">
+      <a href="../index.html" data-page-link class="bx-mlink" data-key="home">Home</a>
+      <a href="product.html" data-page-link class="bx-mlink" data-key="product">Product</a>
+      <a href="pricing.html" data-page-link class="bx-mlink" data-key="pricing">Pricing</a>
+      <a href="about.html" data-page-link class="bx-mlink" data-key="about">About</a>
+      <a href="contact.html" data-page-link class="bx-mlink" data-key="contact">Contact</a>
+    </div>
+    <div class="bx-overlay-footer"><a href="https://dash.mybexo.com" class="bx-overlay-cta" style="width:100%; text-align:center;">Create My Card</a></div>
+  </div>
+
+  <!-- ===== About Hero ===== -->
+  <section data-screen-label="About hero" style="padding:clamp(150px,17vw,230px) clamp(20px,5vw,64px) clamp(70px,9vw,120px);">
+    <div id="bxHeroInner" style="max-width:1320px; margin:0 auto; opacity:0; transform:translateY(28px); transition:opacity 1s ease 0.35s, transform 1s cubic-bezier(0.16,1,0.3,1) 0.35s;">
+      <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 34px; display:flex; align-items:center; gap:12px;"><span style="width:28px; height:1px; background:var(--ink-3); display:inline-block;"></span>About</p>
+      <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(40px,6.6vw,92px); line-height:0.99; letter-spacing:-0.022em; margin:0; max-width:15ch;">People meet. Time passes. The thread goes quiet.</h1>
+    </div>
+  </section>
+
+  <!-- ===== Why BEXO Exists ===== -->
+  <section data-screen-label="Why" style="padding:0 clamp(20px,5vw,64px) clamp(90px,11vw,160px);">
+    <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,6vw,90px);">
+      <div><span class="bx-badge-eyebrow">Why BEXO exists</span></div>
+      <div style="max-width:58ch;">
+        <p style="font-family:var(--serif); font-weight:300; font-size:clamp(22px,2.6vw,32px); line-height:1.35; color:var(--ink); margin:0 0 28px;">Most professional relationships don't end in a decision. They end in a gap &mdash; the moment you can't remember enough to reach back out.</p>
+        <p style="font-size:17px; line-height:1.7; color:var(--ink-2); margin:0 0 20px;">You met someone worth knowing. You remember the conversation, roughly where you were, maybe a first name. That's usually not enough to find them again, so the relationship quietly disappears &mdash; not because either of you wanted it to.</p>
+        <p style="font-size:17px; line-height:1.7; color:var(--ink-2); margin:0;">BEXO is built around that gap. A card that represents you properly, a way to connect in the second you meet, a record of the context, and an engine that can work backwards from fragments. The goal isn't more contacts. It's fewer lost ones.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="about-journey">
-      <div class="container">
-        <p class="eyebrow">Your path</p>
-        <h2>One product. Three places. Zero confusion.</h2>
-        <div class="journey-rail">
-          <article class="journey-step">
-            <span class="journey-num">01</span>
-            <h3>Discover</h3>
-            <p class="journey-host js-marketing-host">mybexo.com</p>
-            <p>See templates, pricing, and claim your name — no account needed.</p>
-          </article>
-          <div class="journey-join" aria-hidden="true"></div>
-          <article class="journey-step">
-            <span class="journey-num">02</span>
-            <h3>Create</h3>
-            <p class="journey-host js-dash-host">dash.mybexo.com</p>
-            <p>Sign in, shape your story, pick a look, and publish when ready.</p>
-          </article>
-          <div class="journey-join" aria-hidden="true"></div>
-          <article class="journey-step">
-            <span class="journey-num">03</span>
-            <h3>Share</h3>
-            <p class="journey-host js-portfolio-host" data-sample="you">you.atbexo.com</p>
-            <p>The link recruiters open — your live portfolio and Hire Me page.</p>
-          </article>
+  <!-- ===== Statement Section ===== -->
+  <section data-screen-label="Statement" style="padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px); background:oklch(6% 0.025 258); color:var(--ink); position:relative; overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; top:-30%; right:-6%; width:min(620px,66vw); height:min(620px,66vw); border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); opacity:0.13; filter:blur(80px); pointer-events:none;"></div>
+    <div style="max-width:1320px; margin:0 auto; position:relative; z-index:1;">
+      <div data-reveal="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(28px,5vw,72px); align-items:end;">
+        <p style="font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(24px,3.6vw,50px); line-height:1.2; color:oklch(97% 0.01 258); margin:0; max-width:30ch;">Most of what we build starts as a note about something that went wrong for someone, including us.</p>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <span style="width:44px; height:1px; background:var(--green);"></span>
+          <p style="font-size:15.5px; line-height:1.65; color:oklch(80% 0.01 72); margin:0; max-width:38ch;">That note usually starts with a sentence like "I met someone at a thing last spring and I cannot for the life of me remember who." Every part of BEXO traces back to one of those.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="about-body">
-      <div class="container about-grid">
-        <article class="panel">
-          <h3>What you get</h3>
-          <p>
-            A placement-ready presence: premium templates, a memorable URL, and
-            a Hire Me page recruiters can scan in seconds — not a blank canvas
-            you have to design from scratch.
-          </p>
-        </article>
-        <article class="panel">
-          <h3>Who it’s for</h3>
-          <p>
-            Students preparing for campus drives, professionals refreshing their
-            story, and freelancers who need a sharp personal site without
-            learning Webflow overnight.
-          </p>
-        </article>
-        <article class="panel">
-          <h3>By Ace Digital</h3>
-          <p>
-            BEXO is built and operated by Ace Digital — so the brand behind your
-            portfolio is clear to you, and trustworthy when you share it.
-          </p>
-        </article>
-        <aside class="panel panel-cta">
-          <h3>Ready when you are</h3>
-          <p>
-            Start on the marketing site, create in your workspace, shine on your
-            subdomain.
-          </p>
-          <a class="btn-primary js-dash-login" href="https://dash.mybexo.com/login"
-            >Open your workspace</a
-          >
-          <a class="btn-ghost" href="../index.html" style="margin-top: 0.65rem; width: 100%"
-            >Back to product</a
-          >
-        </aside>
+  <!-- ===== What We Hold To (Principles) ===== -->
+  <section data-screen-label="Principles" style="background:oklch(6% 0.025 258); color:var(--ink); padding:clamp(90px,11vw,170px) clamp(20px,5vw,64px);">
+    <div style="max-width:1320px; margin:0 auto;">
+      <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(28px,4.2vw,56px); line-height:1.05; letter-spacing:-0.018em; margin:0 0 clamp(50px,7vw,80px); max-width:16ch;">What we hold to.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px; background:oklch(30% 0.03 258);">
+        <div data-reveal="true" style="background:oklch(9% 0.03 258); padding:36px 30px;">
+          <p style="font-size:12px; letter-spacing:0.1em; color:var(--green); margin:0 0 16px;">01</p>
+          <h3 style="font-family:var(--serif); font-weight:400; font-size:22px; margin:0 0 12px;">Human before clever</h3>
+          <p style="font-size:14.5px; line-height:1.65; color:oklch(75% 0.01 72); margin:0;">The problem is a human one &mdash; forgetting. Whatever runs underneath should stay out of the way.</p>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.08s; background:oklch(9% 0.03 258); padding:36px 30px;">
+          <p style="font-size:12px; letter-spacing:0.1em; color:var(--green); margin:0 0 16px;">02</p>
+          <h3 style="font-family:var(--serif); font-weight:400; font-size:22px; margin:0 0 12px;">Your relationships are yours</h3>
+          <p style="font-size:14.5px; line-height:1.65; color:oklch(75% 0.01 72); margin:0;">Your connections and the moments around them belong to you, not to a feed.</p>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.16s; background:oklch(9% 0.03 258); padding:36px 30px;">
+          <p style="font-size:12px; letter-spacing:0.1em; color:var(--green); margin:0 0 16px;">03</p>
+          <h3 style="font-family:var(--serif); font-weight:400; font-size:22px; margin:0 0 12px;">Light enough to be used</h3>
+          <p style="font-size:14.5px; line-height:1.65; color:oklch(75% 0.01 72); margin:0;">One API, compressed media, no junk carousels. It should open fast on a three-year-old phone.</p>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.24s; background:oklch(9% 0.03 258); padding:36px 30px;">
+          <p style="font-size:12px; letter-spacing:0.1em; color:var(--green); margin:0 0 16px;">04</p>
+          <h3 style="font-family:var(--serif); font-weight:400; font-size:22px; margin:0 0 12px;">Say less, show more</h3>
+          <p style="font-size:14.5px; line-height:1.65; color:oklch(75% 0.01 72); margin:0;">No invented statistics, no borrowed logos. The product should be the argument.</p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div id="site-footer"></div>
-    <script src="../js/config.js"></script>
-    <script src="../js/chrome.js?v=20260724b"></script>
-  </body>
+  <!-- ===== Timeline: How We Got Here ===== -->
+  <section data-screen-label="Timeline" style="padding:clamp(90px,11vw,170px) clamp(20px,5vw,64px); position:relative; overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; top:-10%; left:-8%; width:min(500px,58vw); height:min(500px,58vw); border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); opacity:0.07; filter:blur(70px); pointer-events:none;"></div>
+    <div style="max-width:1320px; margin:0 auto; position:relative; z-index:1;">
+      <div style="display:flex; gap:clamp(24px,6vw,90px); flex-wrap:wrap; margin-bottom:clamp(44px,6vw,72px);">
+        <span style="display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-2); background:var(--paper-2); border:1px solid var(--line); border-radius:20px; padding:6px 14px; height:fit-content; min-width:fit-content;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>How we got here</span>
+        <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(28px,4.2vw,56px); line-height:1.05; letter-spacing:-0.018em; max-width:18ch; margin:0;">Four steps, each one a complaint we kept hearing.</h2>
+      </div>
+
+      <div style="display:flex; flex-direction:column;">
+        <div data-reveal="true" style="display:grid; grid-template-columns:clamp(60px,12vw,150px) 1fr; gap:clamp(18px,4vw,56px); padding:clamp(24px,3vw,38px) 0; border-top:1px solid var(--line); align-items:baseline;">
+          <p style="font-family:var(--serif); font-size:clamp(20px,2.4vw,30px); color:var(--green-deep); margin:0;">01</p>
+          <div>
+            <h3 style="font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.4vw,28px); margin:0 0 10px;">A portfolio that was never current</h3>
+            <p style="font-size:15.5px; line-height:1.65; color:var(--ink-2); margin:0; max-width:56ch;">People were sending PDFs from eighteen months ago because updating the real thing meant a weekend of work. So we made the card the easy option.</p>
+          </div>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.08s; display:grid; grid-template-columns:clamp(60px,12vw,150px) 1fr; gap:clamp(18px,4vw,56px); padding:clamp(24px,3vw,38px) 0; border-top:1px solid var(--line); align-items:baseline;">
+          <p style="font-family:var(--serif); font-size:clamp(20px,2.4vw,30px); color:var(--green-deep); margin:0;">02</p>
+          <div>
+            <h3 style="font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.4vw,28px); margin:0 0 10px;">Contacts that arrived as photographs</h3>
+            <p style="font-size:15.5px; line-height:1.65; color:var(--ink-2); margin:0; max-width:56ch;">Camera rolls full of business cards nobody ever typed up. eConnect exists because the exchange has to finish before the conversation does.</p>
+          </div>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.16s; display:grid; grid-template-columns:clamp(60px,12vw,150px) 1fr; gap:clamp(18px,4vw,56px); padding:clamp(24px,3vw,38px) 0; border-top:1px solid var(--line); align-items:baseline;">
+          <p style="font-family:var(--serif); font-size:clamp(20px,2.4vw,30px); color:var(--green-deep); margin:0;">03</p>
+          <div>
+            <h3 style="font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.4vw,28px); margin:0 0 10px;">A name with no memory attached</h3>
+            <p style="font-size:15.5px; line-height:1.65; color:var(--ink-2); margin:0; max-width:56ch;">A saved contact is not a relationship. Moment Capture keeps the note, the place and the hour, because that is what you actually search by later.</p>
+          </div>
+        </div>
+        <div data-reveal="true" style="transition-delay:0.24s; display:grid; grid-template-columns:clamp(60px,12vw,150px) 1fr; gap:clamp(18px,4vw,56px); padding:clamp(24px,3vw,38px) 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); align-items:baseline;">
+          <p style="font-family:var(--serif); font-size:clamp(20px,2.4vw,30px); color:var(--green-deep); margin:0;">04</p>
+          <div>
+            <h3 style="font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.4vw,28px); margin:0 0 10px;">Fragments that led nowhere</h3>
+            <p style="font-size:15.5px; line-height:1.65; color:var(--ink-2); margin:0; max-width:56ch;">"I met someone at a fintech thing in Lisbon" should be a lead, not a dead end. That sentence is the whole brief for SPiD.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Who's Building It ===== -->
+  <section data-screen-label="Who" style="padding:clamp(90px,11vw,170px) clamp(20px,5vw,64px);">
+    <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,6vw,90px);">
+      <div><span class="bx-badge-eyebrow">Who's building it</span></div>
+      <div style="max-width:56ch;">
+        <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(26px,3.4vw,44px); line-height:1.1; letter-spacing:-0.016em; margin:0 0 24px;">Ace Digital &mdash; a small studio near the coast.</h2>
+        <p style="font-size:17px; line-height:1.7; color:var(--ink-2); margin:0 0 20px;">We're a small team, not a platform company. We ship carefully, we answer our own support mail, and we care about the water we grew up beside &mdash; which mostly shows up as keeping BEXO lean rather than as a badge on a website.</p>
+        <p style="font-size:17px; line-height:1.7; color:var(--ink-2); margin:0 0 32px;">Where it goes next: more of the connection layer, more ways to bring your existing relationships in, and a card that keeps getting better at representing a whole professional life.</p>
+        <a href="contact.html" data-page-link style="display:inline-flex; align-items:center; gap:10px; font-size:16px; color:var(--ink); border-bottom:1px solid var(--green); padding-bottom:4px;">Talk to the team <i class="ph-bold ph-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Parallax Atmosphere Photo Band ===== -->
+  <section data-screen-label="Parallax" style="padding:0;">
+    <div id="bxParallaxWrap" style="position:relative; height:clamp(340px,46vw,620px); overflow:hidden;">
+      <img id="bxParallaxImg" src="../assets/atmosphere/templates.jpg" alt="Design templates layout" style="position:absolute; left:0; top:-14%; width:100%; height:128%; object-fit:cover; will-change:transform;">
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, oklch(6% 0.02 258 / 0.62) 0%, oklch(6% 0.02 258 / 0.6) 45%, oklch(6% 0.02 258 / 0.82) 100%);"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(90deg, oklch(6% 0.02 258 / 0.8) 0%, oklch(6% 0.02 258 / 0.6) 46%, oklch(6% 0.02 258 / 0) 80%);"></div>
+      <div style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,6vw,90px); max-width:1320px; margin:0 auto;">
+        <p data-reveal="true" style="font-size:12.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:oklch(94% 0.008 258); margin:0 0 20px;">Built for the long term</p>
+        <p data-reveal="true" style="font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(24px,4vw,58px); line-height:1.1; color:oklch(97% 0.01 258); margin:0; max-width:26ch;">The address you choose today will be the address people find you at in ten years.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA Section ===== -->
+  <section data-screen-label="CTA" style="padding:clamp(110px,13vw,190px) clamp(20px,5vw,64px); background:var(--paper-2); text-align:center;">
+    <div style="max-width:760px; margin:0 auto;">
+      <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(32px,5.4vw,68px); line-height:1.03; letter-spacing:-0.022em; margin:0 0 40px;">Fewer lost connections. Start with yours.</h2>
+      <a href="../index.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:17px 30px; border-radius:999px; font-weight:500; font-size:16px; display:inline-block; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Create My Card</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer style="background:var(--bexo-ink-deep); color:var(--bexo-text); padding:clamp(72px,9vw,120px) clamp(20px,5vw,64px) 40px; font-family:var(--font-sans); border-top:1px solid var(--bexo-border);">
+    <div style="max-width:1120px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:56px; padding-bottom:56px; border-bottom:1px solid var(--bexo-border);">
+        <div>
+          <p style="font-family:var(--font-serif); font-size:22px; font-weight:600; margin:0 0 14px; display:flex; align-items:center; gap:9px;"><img src="../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</p>
+          <p style="font-size:14px; line-height:1.65; color:var(--bexo-muted); margin:0; max-width:28ch;">Professional identity and real-world connection. Built by Ace Digital.</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Product</p>
+          <a href="product.html" data-page-link class="bx-footer-link">How BEXO works</a>
+          <a href="pricing.html" data-page-link class="bx-footer-link">Pricing</a>
+          <a href="https://dash.mybexo.com" class="bx-footer-link">Open dashboard</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Company</p>
+          <a href="about.html" data-page-link class="bx-footer-link">About</a>
+          <a href="contact.html" data-page-link class="bx-footer-link">Contact</a>
+          <a href="blog.html" class="bx-footer-link">Guides</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Legal</p>
+          <a href="terms.html" data-page-link class="bx-footer-link">Terms of Service</a>
+          <a href="privacy.html" data-page-link class="bx-footer-link">Privacy Policy</a>
+          <a href="refunds.html" data-page-link class="bx-footer-link">Refund Policy</a>
+          <a href="cookies.html" data-page-link class="bx-footer-link">Cookie Policy</a>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding-top:32px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p style="font-size:13px; color:var(--bexo-muted); margin:0;">&copy; 2026 BEXO from Ace Digital. All rights reserved.</p>
+          <p style="font-size:12.5px; color:rgba(248,250,252,.4); margin:0;">Made near the coast, for the professional web.</p>
+        </div>
+        <p style="font-family:var(--font-serif); font-size:clamp(26px,6vw,58px); line-height:1; margin:0; color:rgba(255,255,255,.18); font-weight:600;">you.<span style="color:var(--bexo-accent-soft);">atbexo.com</span></p>
+        <button data-bx-theme-toggle aria-label="Switch to dark mode" class="bx-theme-toggle"><i class="ph-fill ph-moon"></i><span data-theme-text>Dark mode</span></button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../js/cookie-utils.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/transitions.js"></script>
+<script src="../js/cookies-consent.js"></script>
+<script>
+  // Parallax scroll handler
+  const parallaxWrap = document.getElementById('bxParallaxWrap');
+  const parallaxImg = document.getElementById('bxParallaxImg');
+  if (parallaxWrap && parallaxImg) {
+    window.addEventListener('scroll', function () {
+      const r = parallaxWrap.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      if (r.bottom > -200 && r.top < vh + 200) {
+        const p = (vh - r.top) / (vh + r.height);
+        parallaxImg.style.transform = `translateY(${((p - 0.5) * -11).toFixed(2)}%) scale(1.04)`;
+      }
+    }, { passive: true });
+  }
+</script>
+</body>
 </html>

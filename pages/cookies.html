@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookie Policy — BEXO</title>
+<meta name="description" content="We use very few cookies, and none of them follow you off this site. Here is the complete list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+
+  <!-- Noise & Liquid SVG filters -->
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
+  <svg aria-hidden="true" style="position:absolute; width:0; height:0; overflow:hidden;"><defs><filter id="bx-liquid"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="7" result="turb"><animate attributeName="baseFrequency" values="0.012 0.09;0.02 0.14;0.012 0.09" dur="2.4s" repeatCount="indefinite"></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="turb" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
+
+  <!-- Page transition curtain & cursor -->
+  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 258); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
+    <div id="bxCurtainGlow" style="position:absolute; width:130px; height:130px; border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); filter:blur(22px); opacity:1; transition:opacity 0.4s ease; animation:bx-logo-pulse 1.8s ease-in-out infinite; pointer-events:none;"></div>
+    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.19 264 / 0.6); pointer-events:none;">
+    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 258); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
+  </div>
+  <div id="bxProgress" style="position:fixed; top:0; left:0; height:2px; width:0%; background:var(--green); z-index:250;"></div>
+  <div id="bxBlackhole" aria-hidden="true" style="position:fixed; inset:0; z-index:500; pointer-events:none; opacity:0; clip-path:circle(0px at 50% 50%); background:radial-gradient(circle at 50% 50%, oklch(22% 0.02 60) 0%, oklch(11% 0.015 60) 55%, oklch(4% 0.01 60) 100%);"></div>
+  <div id="bxRingA" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--green); opacity:0; transform:translate(-50%,-50%);"></div>
+  <div id="bxRingB" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--amber); opacity:0; transform:translate(-50%,-50%);"></div>
+  <div id="bxCursor" aria-hidden="true" style="position:fixed; top:0; left:0; width:34px; height:34px; margin:-17px 0 0 -17px; border:1px solid oklch(6% 0.02 258 / 0.45); border-radius:50%; pointer-events:none; z-index:380; opacity:0; display:flex; align-items:center; justify-content:center; transition:width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1), margin 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;"><span id="bxCursorLabel" style="opacity:0; font-size:9.5px; letter-spacing:0.14em; font-weight:700; color:#050505; transition:opacity 0.2s ease; white-space:nowrap;">VIEW</span></div>
+
+  <!-- ===== Nav ===== -->
+  <div data-bx-nav data-active="legal">
+    <div class="bx-nav-wrap" id="bxNavWrap">
+      <nav class="bx-nav">
+        <a href="../index.html" data-page-link class="bx-nav-logo"><img src="../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</a>
+        <ul class="bx-nav-links">
+          <li><a href="product.html" data-page-link class="bx-nav-link" data-key="product">Product</a></li>
+          <li><a href="pricing.html" data-page-link class="bx-nav-link" data-key="pricing">Pricing</a></li>
+          <li><a href="about.html" data-page-link class="bx-nav-link" data-key="about">About</a></li>
+          <li><a href="contact.html" data-page-link class="bx-nav-link" data-key="contact">Contact</a></li>
+        </ul>
+        <div class="bx-nav-actions"><a href="https://dash.mybexo.com" class="bx-nav-cta">Create My Card</a></div>
+        <button class="bx-nav-burger" aria-label="Open menu" aria-expanded="false">
+          <span class="bx-burger-line" id="bxBurgerLine1"></span>
+          <span class="bx-burger-line" id="bxBurgerLine2"></span>
+        </button>
+      </nav>
+    </div>
+  </div>
+  <div class="bx-nav-overlay" id="bxNavOverlay" hidden>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span class="bx-overlay-logo"><img src="../assets/bexo-logo.png" alt="" style="width:24px; height:24px; border-radius:8px;">BEXO</span>
+      <button aria-label="Close menu" id="bxOverlayClose" class="bx-overlay-close">&times;</button>
+    </div>
+    <div class="bx-overlay-links">
+      <a href="../index.html" data-page-link class="bx-mlink" data-key="home">Home</a>
+      <a href="product.html" data-page-link class="bx-mlink" data-key="product">Product</a>
+      <a href="pricing.html" data-page-link class="bx-mlink" data-key="pricing">Pricing</a>
+      <a href="about.html" data-page-link class="bx-mlink" data-key="about">About</a>
+      <a href="contact.html" data-page-link class="bx-mlink" data-key="contact">Contact</a>
+    </div>
+    <div class="bx-overlay-footer"><a href="https://dash.mybexo.com" class="bx-overlay-cta" style="width:100%; text-align:center;">Create My Card</a></div>
+  </div>
+
+  <!-- ===== Legal Hero ===== -->
+  <section data-screen-label="Legal hero" style="padding:clamp(140px,16vw,210px) clamp(20px,5vw,64px) clamp(50px,6vw,80px); border-bottom:1px solid var(--line); position:relative; overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; top:-20%; right:-6%; width:min(520px,60vw); height:min(520px,60vw); border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); opacity:0.08; filter:blur(60px); pointer-events:none;"></div>
+    <div id="bxHeroInner" style="max-width:1320px; margin:0 auto; opacity:0; transform:translateY(28px); transition:opacity 1s ease 0.35s, transform 1s cubic-bezier(0.16,1,0.3,1) 0.35s;">
+      <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 30px; display:flex; align-items:center; gap:12px;"><span style="width:28px; height:1px; background:var(--ink-3); display:inline-block;"></span>Legal</p>
+      <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(38px,6vw,84px); line-height:1; letter-spacing:-0.022em; margin:0 0 22px;">Cookie Policy</h1>
+      <p style="font-size:16.5px; line-height:1.6; color:var(--ink-2); max-width:56ch; margin:0;">We use very few cookies, and none of them follow you off this site. Here is the complete list.</p>
+      <p style="font-size:13.5px; color:var(--ink-3); margin:20px 0 0;">Last updated 26 August 2026</p>
+    </div>
+  </section>
+
+  <!-- ===== Cookie Table ===== -->
+  <section data-screen-label="Cookie table" style="padding:clamp(50px,6vw,80px) clamp(20px,5vw,64px) 0;">
+    <div style="max-width:1320px; margin:0 auto;">
+
+      <!-- Essential cookies -->
+      <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin:0 0 16px; display:flex; align-items:center; gap:10px;"><span style="width:8px; height:8px; border-radius:50%; background:var(--green); display:inline-block;"></span>Essential — always active</p>
+      <div data-reveal="true" style="border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-bottom:36px;">
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:16px clamp(18px,2.4vw,28px); background:var(--green); color:var(--ink);">
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">Cookie</p>
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">What it does</p>
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">Life</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:20px clamp(18px,2.4vw,28px); border-bottom:1px solid var(--line); align-items:start; background:var(--paper);">
+          <p style="font-size:14.5px; font-weight:600; margin:0;"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px;">bx_consent</code></p>
+          <p style="font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0;">Records your cookie-consent choice (<em>all</em>, <em>essential</em>, or <em>dismissed</em>) so we don&rsquo;t ask again on every page.</p>
+          <p style="font-size:14px; color:var(--ink-3); margin:0;">1 year</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:20px clamp(18px,2.4vw,28px); align-items:start; background:var(--paper);">
+          <p style="font-size:14.5px; font-weight:600; margin:0;"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px;">bx_theme</code></p>
+          <p style="font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0;">Remembers whether you chose light or dark mode so the page doesn&rsquo;t flash on reload.</p>
+          <p style="font-size:14px; color:var(--ink-3); margin:0;">1 year</p>
+        </div>
+      </div>
+
+      <!-- Functional cookies -->
+      <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin:0 0 16px; display:flex; align-items:center; gap:10px;"><span style="width:8px; height:8px; border-radius:50%; background:var(--amber); display:inline-block;"></span>Functional — only with your consent</p>
+      <div data-reveal="true" style="border:1px solid var(--line); border-radius:18px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:16px clamp(18px,2.4vw,28px); background:var(--amber); color:oklch(16% 0.03 258);">
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">Cookie</p>
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">What it does</p>
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin:0; font-weight:700;">Life</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:20px clamp(18px,2.4vw,28px); border-bottom:1px solid var(--line); align-items:start; background:var(--paper);">
+          <p style="font-size:14.5px; font-weight:600; margin:0;"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px;">bx_prefs</code></p>
+          <p style="font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0;">Stores small UI preferences &mdash; reduced-motion setting, browser locale, and when you last visited &mdash; so the site feels familiar when you return.</p>
+          <p style="font-size:14px; color:var(--ink-3); margin:0;">1 year</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1.1fr 1.4fr 0.7fr; gap:16px; padding:20px clamp(18px,2.4vw,28px); align-items:start; background:var(--paper);">
+          <p style="font-size:14.5px; font-weight:600; margin:0;"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px;">bx_count</code></p>
+          <p style="font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0;">An anonymous page-view counter so we know which parts of the site get used. Contains only a count and timestamp &mdash; no profile, no identifier we can trace to you.</p>
+          <p style="font-size:14px; color:var(--ink-3); margin:0;">24 hours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Legal Body ===== -->
+  <section data-screen-label="Legal body" style="padding:clamp(50px,7vw,90px) clamp(20px,5vw,64px) clamp(90px,11vw,150px);">
+    <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(32px,5vw,80px); align-items:start;">
+
+      <!-- Sidebar Sticky Table of Contents -->
+      <aside class="bx-toc" style="position:sticky; top:110px; max-width:300px;">
+        <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-3); margin:0 0 18px;">On this page</p>
+        <nav style="display:flex; flex-direction:column; gap:11px;">
+          <a href="#what" style="font-size:14.5px; color:var(--ink-2);">What a cookie is</a>
+          <a href="#how" style="font-size:14.5px; color:var(--ink-2);">How consent works</a>
+          <a href="#none" style="font-size:14.5px; color:var(--ink-2);">What we do not use</a>
+          <a href="#control" style="font-size:14.5px; color:var(--ink-2);">Turning them off</a>
+          <a href="#cards" style="font-size:14.5px; color:var(--ink-2);">Cookies on public cards</a>
+          <a href="#dash" style="font-size:14.5px; color:var(--ink-2);">Dashboard cookies</a>
+        </nav>
+        <a href="privacy.html" data-page-link style="display:inline-flex; align-items:center; gap:9px; margin-top:28px; padding-top:22px; border-top:1px solid var(--line); font-size:14px; color:var(--ink);">Read the Privacy Policy <i class="ph-bold ph-arrow-right"></i></a>
+      </aside>
+
+      <!-- Articles -->
+      <article style="max-width:68ch; display:flex; flex-direction:column; gap:clamp(36px,4vw,52px);">
+        <div id="what" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">What a cookie is</h2>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0;">A small file your browser keeps for a site. Ours exist to remember your consent choice, keep the theme consistent, note a UI preference, and count pages anonymously. That is the full extent of it.</p>
+        </div>
+
+        <div id="how" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">How consent works</h2>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0 0 14px;">On your first visit a small banner asks whether you accept <strong style="color:var(--ink);">all</strong> cookies or <strong style="color:var(--ink);">essential only</strong>. Your answer is stored in the <code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:14px;">bx_consent</code> cookie for one year.</p>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-check" style="color:var(--green); margin-top:3px; flex-shrink:0;"></i><strong style="color:var(--ink);">Accept all</strong>&ensp;&rarr;&ensp;essential + functional cookies are set.</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-check" style="color:var(--green); margin-top:3px; flex-shrink:0;"></i><strong style="color:var(--ink);">Essential only</strong>&ensp;&rarr;&ensp;only <code style="font-size:13px;">bx_consent</code> and <code style="font-size:13px;">bx_theme</code> are set. Functional cookies are never written.</li>
+          </ul>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:18px 0 0;">If you dismiss the banner (×), we treat it as <em>essential only</em>.</p>
+        </div>
+
+        <div id="none" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">What we do not use</h2>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-x" style="color:oklch(80% 0.1 15); margin-top:3px; flex-shrink:0;"></i>Advertising or retargeting pixels of any kind.</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-x" style="color:oklch(80% 0.1 15); margin-top:3px; flex-shrink:0;"></i>Cross-site trackers that follow you after you leave.</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-x" style="color:oklch(80% 0.1 15); margin-top:3px; flex-shrink:0;"></i>Social embeds that phone home before you click them.</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-x" style="color:oklch(80% 0.1 15); margin-top:3px; flex-shrink:0;"></i>Session recording or heatmap scripts watching your mouse.</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><i class="ph-bold ph-x" style="color:oklch(80% 0.1 15); margin-top:3px; flex-shrink:0;"></i>Google Analytics, Facebook Pixel, or any third-party analytics.</li>
+          </ul>
+        </div>
+
+        <div id="control" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">Turning them off</h2>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0 0 14px;">You can block or clear cookies from your browser settings at any time. Blocking <code style="font-size:13px;">bx_consent</code> means the consent banner will reappear on each visit. Blocking <code style="font-size:13px;">bx_theme</code> means the page may flash briefly while loading your preferred theme.</p>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0;">Blocking <code style="font-size:13px;">bx_prefs</code> or <code style="font-size:13px;">bx_count</code> costs you nothing. Everything still works.</p>
+        </div>
+
+        <div id="cards" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">Cookies on public cards</h2>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0;">When someone opens a card at yourname.atbexo.com, we set no cookies on their browser at all. A card can be read without leaving a trace &mdash; that is deliberate, and it is how we would want our own card read.</p>
+        </div>
+
+        <div id="dash" data-reveal="true">
+          <h2 style="font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,30px); margin:0 0 16px;">Dashboard cookies</h2>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:0 0 14px;">When you sign in to the BEXO dashboard at <strong style="color:var(--ink);">dash.mybexo.com</strong>, the server sets additional cookies for authentication and security:</p>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px; flex-shrink:0;">bx_session</code>Keeps you signed in (30 days).</li>
+            <li style="display:flex; gap:12px; font-size:15.5px; line-height:1.6; color:var(--ink-2);"><code style="background:var(--paper-2); padding:2px 7px; border-radius:6px; font-size:13px; flex-shrink:0;">bx_csrf</code>Security token to prevent cross-site request forgery (session-length).</li>
+          </ul>
+          <p style="font-size:16px; line-height:1.7; color:var(--ink-2); margin:16px 0 0;">These are set only on the dashboard origin, not on this marketing site.</p>
+        </div>
+
+        <div data-reveal="true" style="background:var(--paper-2); border:1px solid var(--line); border-radius:16px; padding:clamp(24px,3vw,34px);">
+          <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin:0 0 12px;">Plain summary</p>
+          <p style="font-family:var(--serif); font-size:clamp(19px,2.2vw,25px); line-height:1.4; color:var(--ink); margin:0;">Four cookies on this site &mdash; two essential, two functional with your consent. Zero for advertising. Visitors reading your card get none.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer style="background:var(--bexo-ink-deep); color:var(--bexo-text); padding:clamp(72px,9vw,120px) clamp(20px,5vw,64px) 40px; font-family:var(--font-sans); border-top:1px solid var(--bexo-border);">
+    <div style="max-width:1120px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:56px; padding-bottom:56px; border-bottom:1px solid var(--bexo-border);">
+        <div>
+          <p style="font-family:var(--font-serif); font-size:22px; font-weight:600; margin:0 0 14px; display:flex; align-items:center; gap:9px;"><img src="../assets/bexo-logo.png" alt="BEXO" style="width:26px; height:26px; border-radius:8px; object-fit:cover;">BEXO</p>
+          <p style="font-size:14px; line-height:1.65; color:var(--bexo-muted); margin:0; max-width:28ch;">Professional identity and real-world connection. Built by Ace Digital.</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Product</p>
+          <a href="product.html" data-page-link class="bx-footer-link">How BEXO works</a>
+          <a href="pricing.html" data-page-link class="bx-footer-link">Pricing</a>
+          <a href="https://dash.mybexo.com" class="bx-footer-link">Open dashboard</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Company</p>
+          <a href="about.html" data-page-link class="bx-footer-link">About</a>
+          <a href="contact.html" data-page-link class="bx-footer-link">Contact</a>
+          <a href="blog.html" class="bx-footer-link">Guides</a>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:13px;">
+          <p style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bexo-muted); margin:0 0 6px;">Legal</p>
+          <a href="terms.html" data-page-link class="bx-footer-link">Terms of Service</a>
+          <a href="privacy.html" data-page-link class="bx-footer-link">Privacy Policy</a>
+          <a href="refunds.html" data-page-link class="bx-footer-link">Refund Policy</a>
+          <a href="cookies.html" data-page-link class="bx-footer-link">Cookie Policy</a>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding-top:32px;">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p style="font-size:13px; color:var(--bexo-muted); margin:0;">&copy; 2026 BEXO from Ace Digital. All rights reserved.</p>
+          <p style="font-size:12.5px; color:rgba(248,250,252,.4); margin:0;">Made near the coast, for the professional web.</p>
+        </div>
+        <p style="font-family:var(--font-serif); font-size:clamp(26px,6vw,58px); line-height:1; margin:0; color:rgba(255,255,255,.18); font-weight:600;">you.<span style="color:var(--bexo-accent-soft);">atbexo.com</span></p>
+        <button data-bx-theme-toggle aria-label="Switch to dark mode" class="bx-theme-toggle"><i class="ph-fill ph-moon"></i><span data-theme-text>Dark mode</span></button>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="../js/cookie-utils.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/footer.js"></script>
+<script src="../js/transitions.js"></script>
+<script src="../js/cookies-consent.js"></script>
+</body>
+</html>

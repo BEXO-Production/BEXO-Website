@@ -1,9 +1,11 @@
 /**
- * BEXO marketing site — URL map.
- * Development: mybexo.cyou + dash.mybexo.cyou + *.mybexo.cyou
- * Production:  mybexo.com + dash.mybexo.com + *.atbexo.com
+ * BEXO — Global Configuration and URL Router
+ * Development: mybexo.cyou + dash.mybexo.cyou
+ * Production:  atbexo.com + mybexo.com + dash.mybexo.com
  */
 (function (global) {
+  "use strict";
+
   var host = typeof location !== "undefined" ? location.hostname : "";
   var isLocal =
     host === "localhost" ||
@@ -11,10 +13,11 @@
     /^\d{1,3}(\.\d{1,3}){3}$/.test(host);
   var isCyou = host === "mybexo.cyou" || host.endsWith(".mybexo.cyou");
 
-  // Production defaults (also used when host is not staging/local).
+  // Production defaults
   var dashOrigin = "https://dash.mybexo.com";
   var portfolioDomain = "atbexo.com";
-  var marketingOrigin = "https://mybexo.com";
+  var marketingOrigin = "https://atbexo.com";
+
   if (isLocal) {
     dashOrigin = "http://localhost:5173";
     marketingOrigin = location.origin.replace(/\/$/, "");
@@ -26,15 +29,12 @@
 
   global.BEXO = {
     DASH_ORIGIN: dashOrigin,
-    /** Public API (handle checks from marketing). Local → API; hosted → dash rewrites. */
     API_ORIGIN: isLocal ? "http://localhost:5001" : dashOrigin,
-    /** Portfolio subdomain apex, e.g. atbexo.com → yourname.atbexo.com */
     PORTFOLIO_DOMAIN: portfolioDomain,
-    /** Leading-dot suffix for UI, e.g. ".atbexo.com" */
     PORTFOLIO_SUFFIX: "." + portfolioDomain,
     MARKETING_ORIGIN: marketingOrigin,
     BRAND: "BEXO",
-    COMPANY: "Ace Digital",
+    COMPANY: "Ace Digital"
   };
 
   global.BEXO.loginUrl = function (next) {
@@ -43,16 +43,12 @@
     return base;
   };
 
-  /** Deep-link into dash checkout for a specific plan. */
   global.BEXO.checkoutLoginUrl = function (plan) {
-    var clean = String(plan || "")
-      .toLowerCase()
-      .replace(/[^a-z0-9_+-]/g, "");
+    var clean = String(plan || "").toLowerCase().replace(/[^a-z0-9_+-]/g, "");
     if (!clean) return global.BEXO.loginUrl();
     return global.BEXO.loginUrl("/checkout?plan=" + encodeURIComponent(clean));
   };
 
-  /** Sign up while carrying a handle claim into onboarding. */
   global.BEXO.claimLoginUrl = function (handle) {
     var clean = String(handle || "")
       .toLowerCase()
@@ -69,7 +65,27 @@
     return global.BEXO.API_ORIGIN.replace(/\/$/, "") + p;
   };
 
-  global.BEXO.legalUrl = function (path) {
-    return global.BEXO.DASH_ORIGIN + "/" + String(path || "").replace(/^\//, "");
-  };
+  // Wire all login and dashboard links on page load
+  function wireInteractiveLinks() {
+    var loginUrl = global.BEXO.loginUrl();
+    var dashUrl = global.BEXO.DASH_ORIGIN;
+
+    document.querySelectorAll(".bx-nav-login, [data-bx-login]").forEach(function (el) {
+      if (!el.getAttribute("href") || el.getAttribute("href") === "#") {
+        el.setAttribute("href", loginUrl);
+      }
+    });
+
+    document.querySelectorAll(".bx-footer-link").forEach(function (el) {
+      if (el.textContent.trim().toLowerCase() === "open dashboard") {
+        el.setAttribute("href", dashUrl);
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wireInteractiveLinks);
+  } else {
+    wireInteractiveLinks();
+  }
 })(typeof window !== "undefined" ? window : this);
