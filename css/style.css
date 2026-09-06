@@ -591,6 +591,16 @@ input, textarea, select, button {
   transform: rotateY(180deg);
 }
 
+.bx-card-flip-container.is-flipped .bx-card-face-front,
+.bx-card-flip-container:hover .bx-card-face-front {
+  visibility: hidden;
+}
+
+.bx-card-flip-container.is-flipped .bx-card-face-back,
+.bx-card-flip-container:hover .bx-card-face-back {
+  visibility: visible;
+}
+
 .bx-card-face {
   position: absolute;
   inset: 0;
@@ -599,9 +609,22 @@ input, textarea, select, button {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 20px;
+  /* backface-visibility:hidden alone is known to misbehave once an
+     ancestor gets overflow:hidden (needed to contain the flip's 3D bulge
+     — see #bxHeroCardWrap) — some browsers stop hiding the rotated-away
+     face, showing its mirrored content as a "ghost" detached from the
+     card. Explicitly hide whichever face isn't current, switching at the
+     rotation's midpoint (half of the 0.8s flip) so it's invisible right
+     when it's edge-on anyway. */
+  transition: visibility 0s linear 0.4s;
+}
+
+.bx-card-face-front {
+  visibility: visible;
 }
 
 .bx-card-face-back {
+  visibility: hidden;
   transform: rotateY(180deg);
 }
 
