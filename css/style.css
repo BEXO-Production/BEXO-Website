@@ -13,10 +13,19 @@
 
 body {
   margin: 0;
-  background: oklch(16% 0.03 258);
+  background: oklch(16% 0.03 68);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Retint the blue 3D "B" mark to the warm copper signal, everywhere it appears
+   as an inline image. Browser-chrome icons (favicon, apple-touch-icon) are
+   unaffected by CSS and are the one piece of the old palette left to replace
+   with dedicated copper-toned exports. */
+img[src*="bexo-logo"],
+img[src*="b-3d-blue-logo"] {
+  filter: hue-rotate(157deg) saturate(0.82) brightness(1.03);
 }
 
 * {
@@ -24,13 +33,13 @@ body {
 }
 
 a {
-  color: oklch(48% 0.19 264);
+  color: #a35f28;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: oklch(58% 0.19 264);
+  color: #c9793d;
 }
 
 input, textarea, select, button {
@@ -38,7 +47,7 @@ input, textarea, select, button {
 }
 
 ::selection {
-  background: oklch(58% 0.19 264 / 0.22);
+  background: oklch(58% 0.129 55 / 0.22);
 }
 
 /* --------------------------------------------------------------------------
@@ -55,8 +64,8 @@ input, textarea, select, button {
 }
 
 @keyframes bx-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(58% 0.19 264 / 0.45); }
-  50% { box-shadow: 0 0 0 13px oklch(58% 0.19 264 / 0); }
+  0%, 100% { box-shadow: 0 0 0 0 oklch(58% 0.129 55 / 0.45); }
+  50% { box-shadow: 0 0 0 13px oklch(58% 0.129 55 / 0); }
 }
 
 @keyframes bx-tip {
@@ -93,17 +102,17 @@ input, textarea, select, button {
 }
 
 @keyframes px-glow {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(58% 0.19 264 / 0.4); }
-  50% { box-shadow: 0 0 0 7px oklch(58% 0.19 264 / 0); }
+  0%, 100% { box-shadow: 0 0 0 0 oklch(58% 0.129 55 / 0.4); }
+  50% { box-shadow: 0 0 0 7px oklch(58% 0.129 55 / 0); }
 }
 
 /* --------------------------------------------------------------------------
    Badges
    -------------------------------------------------------------------------- */
 .bx-badge-eyebrow {
-  background: rgba(47, 107, 255, 0.12);
-  border: 1px solid rgba(47, 107, 255, 0.28);
-  color: var(--bexo-accent-soft, #9bb6ff);
+  background: rgba(201, 121, 61, 0.12);
+  border: 1px solid rgba(201, 121, 61, 0.28);
+  color: var(--bexo-accent-soft, #e8b98c);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -116,9 +125,9 @@ input, textarea, select, button {
 }
 
 .bx-badge-plan {
-  background: rgba(47, 107, 255, 0.18);
-  border: 1px solid rgba(47, 107, 255, 0.4);
-  color: var(--green, #2f6bff);
+  background: rgba(201, 121, 61, 0.18);
+  border: 1px solid rgba(201, 121, 61, 0.4);
+  color: var(--green, #c9793d);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -173,7 +182,7 @@ input, textarea, select, button {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--serif, 'Fraunces', Georgia, serif);
   font-size: 19px;
   font-weight: 600;
   color: var(--ink, #0b1220);
@@ -254,19 +263,19 @@ input, textarea, select, button {
 }
 
 .bx-nav-cta {
-  background: var(--bexo-accent, #2f6bff);
+  background: var(--bexo-accent, #c9793d);
   color: #fff !important;
   padding: 0.6em 1.15em;
   border-radius: 999px;
   font-size: 13.5px;
   font-weight: 700;
-  box-shadow: 0 14px 40px -14px rgba(47, 107, 255, 0.45);
+  box-shadow: 0 14px 40px -14px rgba(201, 121, 61, 0.45);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
 }
 
 .bx-nav-cta:hover {
   transform: translateY(-2px);
-  background: var(--bexo-accent-hover, #2558e0);
+  background: var(--bexo-accent-hover, #a35f28);
   color: #fff !important;
 }
 
@@ -356,7 +365,7 @@ input, textarea, select, button {
 }
 
 .bx-overlay-logo {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--serif, 'Fraunces', Georgia, serif);
   font-size: 20px;
   font-weight: 600;
   display: flex;
@@ -384,7 +393,7 @@ input, textarea, select, button {
 }
 
 .bx-mlink {
-  font-family: var(--serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--serif, 'Fraunces', Georgia, serif);
   font-size: clamp(32px, 8.5vw, 52px);
   font-weight: 600;
   color: #fff;
@@ -400,7 +409,7 @@ input, textarea, select, button {
 }
 
 .bx-mlink.is-active {
-  color: var(--bexo-accent-soft, #9bb6ff);
+  color: var(--bexo-accent-soft, #e8b98c);
 }
 
 .bx-nav-overlay.is-visible .bx-mlink {
@@ -429,14 +438,14 @@ input, textarea, select, button {
 }
 
 .bx-overlay-cta {
-  background: var(--bexo-accent, #2f6bff);
+  background: var(--bexo-accent, #c9793d);
   color: #fff !important;
   padding: 15px 22px;
   border-radius: 999px;
   text-align: center;
   font-weight: 700;
   font-size: 16px;
-  box-shadow: 0 14px 40px -14px rgba(47, 107, 255, 0.45);
+  box-shadow: 0 14px 40px -14px rgba(201, 121, 61, 0.45);
   transition: transform 0.25s ease;
 }
 
@@ -455,7 +464,7 @@ input, textarea, select, button {
 }
 
 .bx-footer-link:hover {
-  color: var(--bexo-accent-soft, #9bb6ff);
+  color: var(--bexo-accent-soft, #e8b98c);
   transform: translateX(4px);
 }
 
@@ -471,7 +480,7 @@ input, textarea, select, button {
   padding: 9px 18px;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 16px -4px oklch(6% 0.02 258 / 0.25);
+  box-shadow: 0 4px 16px -4px oklch(6% 0.02 68 / 0.25);
   transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -480,7 +489,7 @@ input, textarea, select, button {
   color: var(--paper);
   border-color: var(--ink);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -6px oklch(6% 0.02 258 / 0.4);
+  box-shadow: 0 8px 24px -6px oklch(6% 0.02 68 / 0.4);
 }
 
 .bx-theme-toggle:active {
@@ -497,8 +506,8 @@ input, textarea, select, button {
 }
 
 @keyframes bx-cta-shimmer {
-  0%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); }
-  50% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 48px -12px oklch(58% 0.19 264 / 0.75); }
+  0%, 100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); }
+  50% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 20px 48px -12px oklch(58% 0.129 55 / 0.75); }
 }
 
 .bx-cta-primary {
@@ -509,11 +518,11 @@ input, textarea, select, button {
    Interactive Cards, Buttons & Elements
    -------------------------------------------------------------------------- */
 .bx-hero-form:hover {
-  box-shadow: 0 38px 74px -34px oklch(6% 0.02 258 / 0.42) !important;
+  box-shadow: 0 38px 74px -34px oklch(6% 0.02 68 / 0.42) !important;
 }
 
 .bx-hero-card:hover {
-  box-shadow: 0 56px 104px -38px oklch(6% 0.02 258 / 0.5) !important;
+  box-shadow: 0 56px 104px -38px oklch(6% 0.02 68 / 0.5) !important;
 }
 
 .bx-claim-btn:hover {
@@ -535,12 +544,12 @@ input, textarea, select, button {
 
 .bx-pillar-card:hover {
   border-color: var(--green) !important;
-  box-shadow: 0 42px 84px -34px oklch(6% 0.02 258 / 0.4) !important;
+  box-shadow: 0 42px 84px -34px oklch(6% 0.02 68 / 0.4) !important;
   transform: translateY(-6px);
 }
 
 .bx-pillar-card.is-dark:hover {
-  box-shadow: 0 42px 84px -34px oklch(6% 0.02 258 / 0.55) !important;
+  box-shadow: 0 42px 84px -34px oklch(6% 0.02 68 / 0.55) !important;
 }
 
 .bx-pillar-card:hover .bx-pillar-accent {
@@ -629,7 +638,7 @@ input, textarea, select, button {
 }
 
 .bx-cta-primary:hover {
-  box-shadow: 0 20px 48px -14px oklch(58% 0.19 264 / 0.65) !important;
+  box-shadow: 0 20px 48px -14px oklch(58% 0.129 55 / 0.65) !important;
   transform: translateY(-3px);
 }
 
@@ -643,11 +652,11 @@ input, textarea, select, button {
 }
 
 .bx-fragment:hover {
-  box-shadow: 0 26px 50px -20px oklch(6% 0.02 258 / 0.5);
+  box-shadow: 0 26px 50px -20px oklch(6% 0.02 68 / 0.5);
 }
 
 .bx-fragment.is-active:hover {
-  box-shadow: 0 0 0 5px oklch(58% 0.19 264 / 0.22), 0 30px 54px -20px oklch(6% 0.02 258 / 0.6);
+  box-shadow: 0 0 0 5px oklch(58% 0.129 55 / 0.22), 0 30px 54px -20px oklch(6% 0.02 68 / 0.6);
 }
 
 .bx-spid-node {
@@ -698,14 +707,14 @@ input, textarea, select, button {
 .is-dark h1,
 .is-dark h2,
 .is-dark h3 {
-  color: oklch(97% 0.01 258) !important;
+  color: oklch(97% 0.01 68) !important;
 }
 
 [data-theme="light"] [data-screen-label="SPiD"] h2,
 [data-theme="light"] [data-screen-label="SPiD"] h1,
 [data-theme="light"] [data-screen-label="SPiD"] h3,
 [data-theme="light"] [data-screen-label="SPiD"] p {
-  color: oklch(97% 0.01 258) !important;
+  color: oklch(97% 0.01 68) !important;
 }
 
 /* ==========================================================================
@@ -722,7 +731,7 @@ html, body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--bexo-accent, #2f6bff);
+  outline: 2px solid var(--bexo-accent, #c9793d);
   outline-offset: 2px;
 }
 
@@ -809,7 +818,23 @@ html, body {
     padding-bottom: 56px !important;
   }
   #bxHeroInner {
-    gap: 32px !important;
+    gap: 28px !important;
+    flex-direction: column-reverse !important;
+  }
+  #bxHeroInner > div:first-child {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  #bxHeroCardWrap {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    /* The 3D rotateY() flip visually bulges past its flat 2D box mid-turn
+       (correct CSS 3D behavior, not a layout bug) — on mobile the card sits
+       directly above the headline with little clearance, so that transient
+       bulge could paint over the text below. Clip it to this box. */
+    overflow: hidden !important;
+    padding-bottom: 24px !important;
   }
   #hero h1 {
     font-size: clamp(34px, 9.2vw, 52px) !important;
@@ -901,6 +926,17 @@ html, body {
   }
   #problem h2 {
     font-size: clamp(26px, 7vw, 38px) !important;
+  }
+  /* The scroll-jacked fragment reveal reserves a tall runway (200vh) and a
+     full-final-layout stage height even in its initial "stacked" state,
+     which reads as a big dead blank area on a short mobile viewport.
+     Shorten the runway and tighten the sticky offset so the clump sits
+     closer to the heading instead of stranded mid-screen. */
+  #bxScrub {
+    height: 130vh !important;
+  }
+  #bxScrub > div {
+    top: 8vh !important;
   }
 
   /* Section 02 Pillars */

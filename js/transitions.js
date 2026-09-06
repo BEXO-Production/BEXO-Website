@@ -118,8 +118,8 @@
           cursor.style.width = '72px';
           cursor.style.height = '72px';
           cursor.style.margin = '-36px 0 0 -36px';
-          cursor.style.background = 'oklch(58% 0.19 264 / 0.85)';
-          cursor.style.borderColor = 'oklch(58% 0.19 264)';
+          cursor.style.background = 'oklch(58% 0.129 55 / 0.85)';
+          cursor.style.borderColor = 'oklch(58% 0.129 55)';
           if (cursorLabel) cursorLabel.style.opacity = '1';
         });
         el.addEventListener('mouseleave', function () {
@@ -127,7 +127,7 @@
           cursor.style.height = '34px';
           cursor.style.margin = '-17px 0 0 -17px';
           cursor.style.background = 'transparent';
-          cursor.style.borderColor = 'oklch(6% 0.02 258 / 0.45)';
+          cursor.style.borderColor = 'oklch(6% 0.02 68 / 0.45)';
           if (cursorLabel) cursorLabel.style.opacity = '0';
         });
       });

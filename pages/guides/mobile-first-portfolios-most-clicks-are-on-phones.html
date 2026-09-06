@@ -21,11 +21,11 @@
 <link rel="icon" href="../../assets/bexo-logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<link rel="stylesheet" href="../../css/tokens.css">
-<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/tokens.css?v=20260906">
+<link rel="stylesheet" href="../../css/style.css?v=20260906c">
 <style>
   .guide-article-body { font-size:16.5px; line-height:1.75; color:var(--ink-2); }
   .guide-article-body h2 { font-family:var(--serif); font-size:clamp(22px,2.6vw,32px); font-weight:400; color:var(--ink); margin:40px 0 16px; }
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+<div data-bx-theme-root="true" style="--paper:#1a1611; --paper-2:#221c15; --ink:#f3ede1; --ink-2:#cabfab; --ink-3:#948a76; --green:#c9793d; --green-deep:#e0925a; --amber:#4f8a7d; --line:rgba(243,237,225,.14); --serif:'Fraunces',Georgia,serif; --sans:'Work Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
 
   <!-- Noise filter -->
   <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
@@ -85,7 +85,7 @@
   <!-- ===== Article Hero ===== -->
   <article style="padding:clamp(140px,16vw,210px) clamp(20px,5vw,64px) clamp(60px,8vw,100px); max-width:860px; margin:0 auto;">
     <div style="margin-bottom:32px;">
-      <span style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--green-deep); font-weight:700; background:oklch(58% 0.19 264 / 0.12); padding:5px 14px; border-radius:20px;">Practical tips</span>
+      <span style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--green-deep); font-weight:700; background:oklch(58% 0.129 55 / 0.12); padding:5px 14px; border-radius:20px;">Practical tips</span>
     </div>
     <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(32px,5.2vw,62px); line-height:1.08; letter-spacing:-0.02em; margin:0 0 24px; color:var(--ink);">Mobile-first portfolios: most clicks are on phones</h1>
     <p style="font-size:14.5px; color:var(--ink-3); margin:0 0 40px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
@@ -182,11 +182,12 @@
 
 </div>
 
-<script src="../../js/cookie-utils.js"></script>
-<script src="../../js/theme.js"></script>
+<script src="../../js/config.js?v=20260906"></script>
+<script src="../../js/cookie-utils.js?v=20260906"></script>
+<script src="../../js/theme.js?v=20260906"></script>
 <script src="../../js/nav.js"></script>
 <script src="../../js/footer.js"></script>
 <script src="../../js/transitions.js"></script>
-<script src="../../js/cookies-consent.js"></script>
+<script src="../../js/cookies-consent.js?v=20260906"></script>
 </body>
 </html>

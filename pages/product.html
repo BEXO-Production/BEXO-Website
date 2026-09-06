@@ -7,11 +7,11 @@
 <meta name="description" content="BEXO is four parts working as one: BEXO Card, eConnect instant exchange, Moment Capture context, and the SPiD Engine.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/tokens.css?v=20260906">
+<link rel="stylesheet" href="../css/style.css?v=20260906c">
 <script type="importmap">
 {
   "imports": {
@@ -22,23 +22,17 @@
 </head>
 <body>
 
-<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+<div data-bx-theme-root="true" style="--paper:#1a1611; --paper-2:#221c15; --ink:#f3ede1; --ink-2:#cabfab; --ink-3:#948a76; --green:#c9793d; --green-deep:#e0925a; --amber:#4f8a7d; --line:rgba(243,237,225,.14); --serif:'Fraunces',Georgia,serif; --sans:'Work Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
 
   <!-- Noise & Liquid SVG filters -->
-  <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
-  <svg aria-hidden="true" style="position:absolute; width:0; height:0; overflow:hidden;"><defs><filter id="bx-liquid"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="7" result="turb"><animate attributeName="baseFrequency" values="0.012 0.09;0.02 0.14;0.012 0.09" dur="2.4s" repeatCount="indefinite"></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="turb" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
 
   <!-- Page transition curtain & cursor -->
-  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 258); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
+  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 68); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
     <div id="bxCurtainGlow" style="position:absolute; width:130px; height:130px; border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); filter:blur(22px); opacity:1; transition:opacity 0.4s ease; animation:bx-logo-pulse 1.8s ease-in-out infinite; pointer-events:none;"></div>
-    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.19 264 / 0.6); pointer-events:none;">
-    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 258); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
+    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.129 55 / 0.6); pointer-events:none;">
+    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 68); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
   </div>
   <div id="bxProgress" style="position:fixed; top:0; left:0; height:2px; width:0%; background:var(--green); z-index:250;"></div>
-  <div id="bxBlackhole" aria-hidden="true" style="position:fixed; inset:0; z-index:500; pointer-events:none; opacity:0; clip-path:circle(0px at 50% 50%); background:radial-gradient(circle at 50% 50%, oklch(22% 0.02 60) 0%, oklch(11% 0.015 60) 55%, oklch(4% 0.01 60) 100%);"></div>
-  <div id="bxRingA" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--green); opacity:0; transform:translate(-50%,-50%);"></div>
-  <div id="bxRingB" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--amber); opacity:0; transform:translate(-50%,-50%);"></div>
-  <div id="bxCursor" aria-hidden="true" style="position:fixed; top:0; left:0; width:34px; height:34px; margin:-17px 0 0 -17px; border:1px solid oklch(6% 0.02 258 / 0.45); border-radius:50%; pointer-events:none; z-index:380; opacity:0; display:flex; align-items:center; justify-content:center; transition:width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1), margin 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;"><span id="bxCursorLabel" style="opacity:0; font-size:9.5px; letter-spacing:0.14em; font-weight:700; color:#050505; transition:opacity 0.2s ease; white-space:nowrap;">VIEW</span></div>
 
   <!-- ===== Nav ===== -->
   <div data-bx-nav data-active="product">
@@ -83,23 +77,24 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,5vw,72px); align-items:center;">
         <div>
           <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 30px; display:flex; align-items:center; gap:12px;"><span style="width:28px; height:1px; background:var(--ink-3); display:inline-block;"></span>The product</p>
-          <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(38px,5.8vw,82px); line-height:0.99; letter-spacing:-0.022em; margin:0 0 28px; max-width:16ch;">Identity, connection, context, and the thread between them.</h1>
-          <p style="font-size:clamp(16.5px,1.5vw,19px); line-height:1.6; color:var(--ink-2); max-width:50ch; margin:0 0 36px;">BEXO is four parts working as one: a card that represents you, a way to connect in person, a record of the moment, and an engine that finds the way back.</p>
+          <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(38px,5.8vw,82px); line-height:0.99; letter-spacing:-0.022em; margin:0 0 28px; max-width:16ch;">One tap in, and the whole conversation comes back later.</h1>
+          <p style="font-size:clamp(16.5px,1.5vw,19px); line-height:1.6; color:var(--ink-2); max-width:50ch; margin:0 0 36px;">Your card. The tap that exchanges it. The note that remembers why it mattered. The nudge that brings it back before you need it.</p>
           <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <a href="contact.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:15px 26px; border-radius:999px; font-size:15px; font-weight:500; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Create your Card</a>
+            <a href="contact.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); padding:15px 26px; border-radius:999px; font-size:15px; font-weight:500; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Create your Card</a>
             <a href="#card-detail" style="border:1px solid var(--line); color:var(--ink); padding:15px 26px; border-radius:999px; font-size:15px; transition:border-color 0.3s ease, background 0.3s ease;">See how it works</a>
           </div>
         </div>
 
-        <!-- 3D Three.js Container -->
-        <div id="bxThreeContainer" style="width:100%; height:clamp(320px,42vw,520px); position:relative;">
+        <!-- Signal Orb: fixed 1:1 stage so it can never be clipped by a flexible grid cell -->
+        <div id="bxOrbStage" style="width:100%; max-width:420px; aspect-ratio:1; margin:0 auto; position:relative;">
+          <div id="bxOrbCanvasWrap" style="position:absolute; inset:0;"></div>
           <div id="bxThreeHint" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;">
-            <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-3); opacity:0.5;">Interactive 3D Identity Model</span>
+            <span style="font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-3); opacity:0.5;">The signal orb</span>
           </div>
         </div>
       </div>
 
-      <p style="font-size:12.5px; color:var(--ink-3); margin:clamp(20px,3vw,32px) 0 0; display:flex; align-items:center; gap:8px;"><i class="ph-fill ph-cursor" style="font-size:14px;"></i>Move your cursor to turn the card.</p>
+      <p style="font-size:12.5px; color:var(--ink-3); margin:clamp(20px,3vw,32px) 0 0; display:flex; align-items:center; gap:8px;"><i class="ph-fill ph-cursor" style="font-size:14px;"></i>Move your cursor near it — the signal follows.</p>
     </div>
   </section>
 
@@ -107,7 +102,7 @@
   <section id="card-detail" data-screen-label="Card" style="padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px); border-top:1px solid var(--line);">
     <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,6vw,90px); align-items:center;">
       <div>
-        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">01 &mdash; BEXO Card</p>
+        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">BEXO Card</p>
         <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(30px,4.2vw,54px); line-height:1.05; letter-spacing:-0.018em; margin:0 0 24px; max-width:15ch;">A living identity, not a static file.</h2>
         <p style="font-size:17px; line-height:1.65; color:var(--ink-2); max-width:46ch; margin:0 0 28px;">Your role, your company, your work, your links, your contact points &mdash; on one address that stays current when everything else changes.</p>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
@@ -117,7 +112,7 @@
         </ul>
       </div>
       <div data-reveal="true" style="display:flex; justify-content:center;">
-        <div class="bx-tilt" style="width:min(360px,90vw); background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 44px 80px -42px oklch(6% 0.02 258 / 0.45); transition:transform 0.18s ease-out; will-change:transform;">
+        <div class="bx-tilt" style="width:min(360px,90vw); background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:0 44px 80px -42px oklch(6% 0.02 68 / 0.45); transition:transform 0.18s ease-out; will-change:transform;">
           <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;">
             <span style="display:flex; align-items:center; gap:8px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-deep); font-weight:600;"><span style="width:7px; height:7px; border-radius:50%; background:var(--green); animation:bx-pulse 2.2s ease-in-out infinite;"></span>Active</span>
             <i class="ph-fill ph-broadcast" style="color:var(--ink-3); font-size:16px;"></i>
@@ -144,7 +139,7 @@
   <section data-screen-label="eConnect" style="padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px); background:var(--paper-2);">
     <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,6vw,90px); align-items:center;">
       <div data-reveal="true" style="position:relative; order:2; display:flex; align-items:center; justify-content:center; gap:clamp(14px,4vw,36px); padding:56px 0 20px;">
-        <div style="width:clamp(108px,30vw,150px); padding:clamp(12px,2.4vw,17px); background:var(--paper); border:1px solid var(--line); border-radius:12px; box-shadow:0 20px 40px -22px oklch(6% 0.02 258 / 0.3); display:flex; flex-direction:column; gap:10px; flex-shrink:0;">
+        <div style="width:clamp(108px,30vw,150px); padding:clamp(12px,2.4vw,17px); background:var(--paper); border:1px solid var(--line); border-radius:12px; box-shadow:0 20px 40px -22px oklch(6% 0.02 68 / 0.3); display:flex; flex-direction:column; gap:10px; flex-shrink:0;">
           <div style="width:28px; height:28px; border-radius:50%; background:var(--green);"></div>
           <div style="width:72%; height:6px; background:var(--line); border-radius:3px;"></div>
           <div style="width:46%; height:6px; background:var(--line); border-radius:3px;"></div>
@@ -152,7 +147,7 @@
         <div style="flex:1 1 40px; max-width:120px; min-width:24px; position:relative; height:1px; background:var(--line);">
           <div style="position:absolute; top:-5px; left:4%; width:11px; height:11px; border-radius:50%; background:var(--green); animation:bx-tap 2.8s ease-in-out infinite;"></div>
         </div>
-        <div style="width:clamp(108px,30vw,150px); padding:clamp(12px,2.4vw,17px); background:var(--paper); border:1px solid var(--line); border-radius:12px; box-shadow:0 20px 40px -22px oklch(6% 0.02 258 / 0.3); display:flex; flex-direction:column; gap:10px; flex-shrink:0;">
+        <div style="width:clamp(108px,30vw,150px); padding:clamp(12px,2.4vw,17px); background:var(--paper); border:1px solid var(--line); border-radius:12px; box-shadow:0 20px 40px -22px oklch(6% 0.02 68 / 0.3); display:flex; flex-direction:column; gap:10px; flex-shrink:0;">
           <div style="width:28px; height:28px; border-radius:50%; background:var(--amber);"></div>
           <div style="width:72%; height:6px; background:var(--line); border-radius:3px;"></div>
           <div style="width:46%; height:6px; background:var(--line); border-radius:3px;"></div>
@@ -162,7 +157,7 @@
         </div>
       </div>
       <div style="order:1;">
-        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">02 &mdash; eConnect</p>
+        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">eConnect</p>
         <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(30px,4.2vw,54px); line-height:1.05; letter-spacing:-0.018em; margin:0 0 24px; max-width:15ch;">The exchange takes a second. It lasts years.</h2>
         <p style="font-size:17px; line-height:1.65; color:var(--ink-2); max-width:46ch; margin:0 0 28px;">Tap two phones or scan a code. Both cards are saved, both sides get the context, and nobody types a phone number into a notes app again.</p>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
@@ -178,11 +173,11 @@
   <section data-screen-label="Parallax" style="padding:0;">
     <div id="bxParallaxWrap" style="position:relative; height:clamp(340px,46vw,620px); overflow:hidden;">
       <img id="bxParallaxImg" src="../assets/atmosphere/publish.jpg" alt="Glass office towers photographed from street level, looking up" style="position:absolute; left:0; top:-14%; width:100%; height:128%; object-fit:cover; will-change:transform;">
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg, oklch(6% 0.02 258 / 0.62) 0%, oklch(6% 0.02 258 / 0.6) 45%, oklch(6% 0.02 258 / 0.82) 100%);"></div>
-      <div style="position:absolute; inset:0; background:linear-gradient(90deg, oklch(6% 0.02 258 / 0.8) 0%, oklch(6% 0.02 258 / 0.6) 46%, oklch(6% 0.02 258 / 0) 80%);"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, oklch(6% 0.02 68 / 0.62) 0%, oklch(6% 0.02 68 / 0.6) 45%, oklch(6% 0.02 68 / 0.82) 100%);"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(90deg, oklch(6% 0.02 68 / 0.8) 0%, oklch(6% 0.02 68 / 0.6) 46%, oklch(6% 0.02 68 / 0) 80%);"></div>
       <div style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,6vw,90px); max-width:1320px; margin:0 auto;">
-        <p data-reveal="true" style="font-size:12.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:oklch(94% 0.008 258); margin:0 0 20px;">The professional web</p>
-        <p data-reveal="true" style="font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(24px,4vw,58px); line-height:1.1; color:oklch(97% 0.01 258); margin:0; max-width:26ch;">Somewhere in a building like this is the person you are trying to remember.</p>
+        <p data-reveal="true" style="font-size:12.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:oklch(94% 0.008 68); margin:0 0 20px;">The professional web</p>
+        <p data-reveal="true" style="font-family:var(--serif); font-weight:300; font-style:italic; font-size:clamp(24px,4vw,58px); line-height:1.1; color:oklch(97% 0.01 68); margin:0; max-width:26ch;">Somewhere in a building like this is the person you are trying to remember.</p>
       </div>
     </div>
   </section>
@@ -191,7 +186,7 @@
   <section data-screen-label="Moment" style="padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
     <div style="max-width:1320px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,6vw,90px); align-items:center;">
       <div>
-        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">03 &mdash; Moment Capture</p>
+        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-deep); margin:0 0 22px;">Moment Capture</p>
         <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(30px,4.2vw,54px); line-height:1.05; letter-spacing:-0.018em; margin:0 0 24px; max-width:15ch;">Context is what makes a memory findable.</h2>
         <p style="font-size:17px; line-height:1.65; color:var(--ink-2); max-width:46ch; margin:0 0 28px;">A note, a photo, a voice memo &mdash; plus the place and the hour, captured automatically. Six months later that's the difference between "someone at a meetup" and a name.</p>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -202,12 +197,12 @@
         </div>
       </div>
       <div data-reveal="true" style="display:flex; justify-content:center;">
-        <div class="bx-tilt" style="width:min(380px,90vw); background:var(--paper); border:1px solid var(--line); border-radius:16px; box-shadow:0 40px 76px -42px oklch(6% 0.02 258 / 0.4); padding:22px; transition:transform 0.18s ease-out; will-change:transform;">
+        <div class="bx-tilt" style="width:min(380px,90vw); background:var(--paper); border:1px solid var(--line); border-radius:16px; box-shadow:0 40px 76px -42px oklch(6% 0.02 68 / 0.4); padding:22px; transition:transform 0.18s ease-out; will-change:transform;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; font-size:12px; color:var(--ink-3);">
             <span style="display:flex; align-items:center; gap:6px;"><i class="ph-fill ph-map-pin"></i>Fintech meetup &middot; Lisbon</span>
             <span style="display:flex; align-items:center; gap:6px;"><i class="ph-fill ph-clock"></i>2:40 PM</span>
           </div>
-          <div style="height:140px; background:linear-gradient(155deg, var(--paper-2), oklch(88% 0.02 258)); border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;"><i class="ph-fill ph-image-square" style="font-size:30px; color:var(--ink-3);"></i></div>
+          <div style="height:140px; background:linear-gradient(155deg, var(--paper-2), oklch(88% 0.02 68)); border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;"><i class="ph-fill ph-image-square" style="font-size:30px; color:var(--ink-3);"></i></div>
           <p style="font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0 0 16px;">Talked about design systems at scale &mdash; wants an intro to the Nord team.</p>
           <div style="display:flex; gap:9px; padding-top:14px; border-top:1px solid var(--line);">
             <span style="width:32px; height:32px; border-radius:50%; background:var(--paper-2); display:flex; align-items:center; justify-content:center;"><i class="ph-fill ph-microphone" style="font-size:14px; color:var(--ink-2);"></i></span>
@@ -220,29 +215,29 @@
   </section>
 
   <!-- ===== 04 SPiD Engine ===== -->
-  <section data-screen-label="SPiD" style="background:oklch(6% 0.025 258); color:var(--ink); padding:clamp(100px,12vw,180px) clamp(20px,5vw,64px);">
+  <section data-screen-label="SPiD" style="background:oklch(6% 0.025 68); color:var(--ink); padding:clamp(100px,12vw,180px) clamp(20px,5vw,64px);">
     <div style="max-width:1320px; margin:0 auto;">
-      <div style="margin:0 0 22px;"><span class="bx-badge-eyebrow">04 &mdash; SPiD Engine</span></div>
+      <div style="margin:0 0 22px;"><span class="bx-badge-eyebrow">SPiD Engine</span></div>
       <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(30px,4.6vw,62px); line-height:1.04; letter-spacing:-0.018em; max-width:17ch; margin:0 0 24px;">Signal &middot; Proximity &middot; Inference &middot; Decision</h2>
       <p style="font-size:17px; line-height:1.6; color:oklch(78% 0.01 72); max-width:56ch; margin:0 0 clamp(50px,7vw,80px);">You rarely remember everything. SPiD works with what you do remember &mdash; and with the context BEXO already holds &mdash; to narrow the field to the right person and suggest the natural way back.</p>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:oklch(30% 0.03 258);">
-        <div data-reveal="true" style="background:oklch(9% 0.03 258); padding:32px 28px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:oklch(30% 0.03 68);">
+        <div data-reveal="true" style="background:oklch(9% 0.03 68); padding:32px 28px;">
           <p style="font-family:var(--serif); font-size:34px; color:var(--green); margin:0 0 14px;">S</p>
           <h3 style="font-size:16px; font-weight:600; margin:0 0 10px;">Signal</h3>
           <p style="font-size:14.5px; line-height:1.6; color:oklch(75% 0.01 72); margin:0;">The fragments you still hold &mdash; a name, a company, a topic.</p>
         </div>
-        <div data-reveal="true" style="transition-delay:0.08s; background:oklch(9% 0.03 258); padding:32px 28px;">
+        <div data-reveal="true" style="transition-delay:0.08s; background:oklch(9% 0.03 68); padding:32px 28px;">
           <p style="font-family:var(--serif); font-size:34px; color:var(--green); margin:0 0 14px;">P</p>
           <h3 style="font-size:16px; font-weight:600; margin:0 0 10px;">Proximity</h3>
           <p style="font-size:14.5px; line-height:1.6; color:oklch(75% 0.01 72); margin:0;">Where and when you were in the same room.</p>
         </div>
-        <div data-reveal="true" style="transition-delay:0.16s; background:oklch(9% 0.03 258); padding:32px 28px;">
+        <div data-reveal="true" style="transition-delay:0.16s; background:oklch(9% 0.03 68); padding:32px 28px;">
           <p style="font-family:var(--serif); font-size:34px; color:var(--green); margin:0 0 14px;">i</p>
           <h3 style="font-size:16px; font-weight:600; margin:0 0 10px;">Inference</h3>
           <p style="font-size:14.5px; line-height:1.6; color:oklch(75% 0.01 72); margin:0;">Incomplete details, read together instead of separately.</p>
         </div>
-        <div data-reveal="true" style="transition-delay:0.24s; background:oklch(9% 0.03 258); padding:32px 28px;">
+        <div data-reveal="true" style="transition-delay:0.24s; background:oklch(9% 0.03 68); padding:32px 28px;">
           <p style="font-family:var(--serif); font-size:34px; color:var(--green); margin:0 0 14px;">D</p>
           <h3 style="font-size:16px; font-weight:600; margin:0 0 10px;">Decision</h3>
           <p style="font-size:14.5px; line-height:1.6; color:oklch(75% 0.01 72); margin:0;">One person, and a way to open the conversation again.</p>
@@ -256,7 +251,7 @@
     <div style="max-width:760px; margin:0 auto;">
       <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(32px,5.4vw,68px); line-height:1.03; letter-spacing:-0.022em; margin:0 0 40px;">Start with the card. The rest follows.</h2>
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:17px 30px; border-radius:999px; font-weight:500; font-size:16px; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Create My Card</a>
+        <a href="contact.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); padding:17px 30px; border-radius:999px; font-weight:500; font-size:16px; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Create My Card</a>
         <a href="pricing.html" data-page-link class="bx-cta-secondary" style="border:1px solid var(--ink); color:var(--ink); padding:17px 30px; border-radius:999px; font-size:16px; transition:background 0.3s ease, color 0.3s ease;">See pricing</a>
       </div>
     </div>
@@ -307,26 +302,37 @@
 
 </div>
 
-<script src="../js/cookie-utils.js"></script>
-<script src="../js/theme.js"></script>
+<script src="../js/config.js?v=20260906"></script>
+<script src="../js/cookie-utils.js?v=20260906"></script>
+<script src="../js/theme.js?v=20260906"></script>
 <script src="../js/nav.js"></script>
 <script src="../js/footer.js"></script>
 <script src="../js/transitions.js"></script>
-<script src="../js/cookies-consent.js"></script>
+<script src="../js/cookies-consent.js?v=20260906"></script>
 <script type="module">
-  import { mountBexoScene } from '../js/bexo-3d.js';
-  
-  const container = document.getElementById('bxThreeContainer');
+  import { mountSignalOrb } from '../js/bexo-3d.js?v=20260906';
+
+  const container = document.getElementById('bxOrbCanvasWrap');
   const hint = document.getElementById('bxThreeHint');
   if (container) {
-    try {
-      const scene = mountBexoScene(container);
-      if (scene && hint) {
-        hint.style.display = 'none';
-      }
-    } catch (err) {
-      console.warn('Three.js 3D model failed to load:', err);
+    const scene = mountSignalOrb(container);
+    if (scene && hint) {
+      hint.style.display = 'none';
     }
+  }
+
+  // Fire one outward pulse when the eConnect step is actually reached
+  const econnectSection = document.querySelector('[data-screen-label="eConnect"]');
+  if (econnectSection && 'IntersectionObserver' in window) {
+    const pulseOnce = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && window.bxOrbPulse) {
+          window.bxOrbPulse();
+          pulseOnce.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    pulseOnce.observe(econnectSection);
   }
 
   // Parallax scroll handler

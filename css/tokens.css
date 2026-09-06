@@ -1,40 +1,40 @@
 :root{
---bexo-ink-deep:#05070f;
---bexo-ink:#0b1220;
---bexo-ink-elevated:#070b14;
---bexo-paper:#f7f4ef;
---bexo-white:#ffffff;
---bexo-text:#f8fafc;
---bexo-muted:rgba(248,250,252,.62);
---bexo-border:rgba(255,255,255,.12);
---bexo-panel:rgba(255,255,255,.06);
---bexo-accent:#2f6bff;
---bexo-accent-hover:#2558e0;
---bexo-accent-soft:#9bb6ff;
---bexo-sky:#2f6bff;
---bexo-indigo:#2558e0;
+--bexo-ink-deep:#100d0a;
+--bexo-ink:#1a1611;
+--bexo-ink-elevated:#221c15;
+--bexo-paper:#f5f2ea;
+--bexo-white:#fffdf8;
+--bexo-text:#f3ede1;
+--bexo-muted:rgba(243,237,225,.62);
+--bexo-border:rgba(243,237,225,.12);
+--bexo-panel:rgba(243,237,225,.06);
+--bexo-accent:#c9793d;
+--bexo-accent-hover:#e0925a;
+--bexo-accent-soft:#e8b98c;
+--bexo-sky:#4f8a7d;
+--bexo-indigo:#3f6b63;
 --bexo-success:#6ee7b7;
 --bexo-danger:#fda4af;
 --bexo-warning:#fcd34d;
---bexo-grad-brand:linear-gradient(135deg,#4d82ff 0%,#2f6bff 52%,#2558e0 100%);
---bexo-grad-text:linear-gradient(135deg,#ffffff 18%,#e8eeff 58%,#9bb6ff 100%);
+--bexo-grad-brand:linear-gradient(135deg,#e0925a 0%,#c9793d 52%,#a35f28 100%);
+--bexo-grad-text:linear-gradient(135deg,#fffdf8 18%,#f3e6d6 58%,#e8b98c 100%);
 --surface-page:var(--bexo-ink);
 --surface-page-deep:var(--bexo-ink-deep);
 --surface-elevated:var(--bexo-ink-elevated);
---surface-card:rgba(255,255,255,.035);
---surface-card-hover:rgba(255,255,255,.05);
---surface-glass:rgba(5,7,15,.75);
+--surface-card:rgba(243,237,225,.035);
+--surface-card-hover:rgba(243,237,225,.05);
+--surface-glass:rgba(16,13,10,.75);
 --text-primary:var(--bexo-text);
 --text-muted:var(--bexo-muted);
 --text-accent:var(--bexo-accent-soft);
 --border-default:var(--bexo-border);
---border-accent:rgba(47,107,255,.4);
+--border-accent:rgba(201,121,61,.4);
 }
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap");
 :root{
---font-serif:"Playfair Display",Georgia,serif;
---font-sans:"Plus Jakarta Sans",system-ui,sans-serif;
---font-mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+--font-serif:"Fraunces",Georgia,serif;
+--font-sans:"Work Sans",system-ui,sans-serif;
+--font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 --text-display-xl:clamp(2.4rem,6vw,4.75rem);
 --text-display-lg:clamp(2rem,4.2vw,3.25rem);
 --text-display-md:1.85rem;
@@ -60,9 +60,9 @@
 --container-max:1120px;
 }
 :root{
---shadow-glow:0 14px 40px -14px rgba(47,107,255,.45);
---shadow-card:0 20px 48px -16px rgba(47,107,255,.22);
---shadow-panel:0 32px 72px -24px rgba(5,7,15,.85),0 0 0 1px rgba(47,107,255,.12),inset 0 1px 0 rgba(255,255,255,.12);
+--shadow-glow:0 14px 40px -14px rgba(201,121,61,.45);
+--shadow-card:0 20px 48px -16px rgba(201,121,61,.22);
+--shadow-panel:0 32px 72px -24px rgba(16,13,10,.85),0 0 0 1px rgba(201,121,61,.12),inset 0 1px 0 rgba(243,237,225,.12);
 --shadow-elevated:0 24px 60px -20px rgba(0,0,0,.6);
 --blur-glass:blur(28px) saturate(150%);
 --ease-out:cubic-bezier(.22,1,.36,1);

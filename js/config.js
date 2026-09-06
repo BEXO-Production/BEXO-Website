@@ -81,6 +81,13 @@
         el.setAttribute("href", dashUrl);
       }
     });
+
+    // "Create My Card" / "Create your Card" buttons always pointed at the
+    // production dashboard regardless of environment. Route them through
+    // the same environment-aware origin as everything else.
+    document.querySelectorAll(".bx-nav-cta, .bx-overlay-cta").forEach(function (el) {
+      if (el.tagName === "A") el.setAttribute("href", dashUrl);
+    });
   }
 
   if (document.readyState === "loading") {

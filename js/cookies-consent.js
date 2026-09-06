@@ -23,11 +23,8 @@
   function firePageCounter() {
     if (!window.bxCookie || !window.bxCookie.hasConsent("functional")) return;
 
-    var raw = window.bxCookie.get("bx_count");
-    var data;
-    try { data = JSON.parse(raw); } catch (e) { data = null; }
-
-    if (!data || typeof data.pages !== "number") {
+    var data = window.bxCookie.getJSON("bx_count");
+    if (typeof data.pages !== "number") {
       data = { pages: 0, started: Date.now() };
     }
     data.pages += 1;
@@ -43,9 +40,7 @@
   function firePrefs() {
     if (!window.bxCookie || !window.bxCookie.hasConsent("functional")) return;
 
-    var raw = window.bxCookie.get("bx_prefs");
-    var prefs;
-    try { prefs = JSON.parse(raw); } catch (e) { prefs = {}; }
+    var prefs = window.bxCookie.getJSON("bx_prefs");
 
     // Detect reduced motion
     var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -97,15 +92,15 @@
       "right:24px",
       "max-width:480px",
       "margin:0 auto 0 0",
-      "background:oklch(14% 0.028 258 / 0.94)",
+      "background:oklch(14% 0.028 68 / 0.94)",
       "backdrop-filter:blur(16px)",
       "-webkit-backdrop-filter:blur(16px)",
-      "border:1px solid var(--line, oklch(90% 0.01 258 / 0.14))",
+      "border:1px solid var(--line, oklch(90% 0.01 68 / 0.14))",
       "border-radius:20px",
       "padding:22px 24px",
-      "box-shadow:0 30px 60px -20px oklch(6% 0.02 258 / 0.65), 0 0 0 1px oklch(58% 0.19 264 / 0.15)",
-      "color:var(--ink, oklch(97% 0.01 258))",
-      "font-family:var(--sans, 'Plus Jakarta Sans', system-ui, sans-serif)",
+      "box-shadow:0 30px 60px -20px oklch(6% 0.02 68 / 0.65), 0 0 0 1px oklch(58% 0.129 55 / 0.15)",
+      "color:var(--ink, oklch(97% 0.01 68))",
+      "font-family:var(--sans, 'Work Sans', system-ui, sans-serif)",
       "z-index:390",
       "opacity:0",
       "transform:translateY(24px) scale(0.96)",
@@ -118,23 +113,23 @@
     banner.innerHTML = [
       '<div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">',
       '  <div style="display:flex; align-items:center; gap:8px;">',
-      '    <span style="width:28px; height:28px; border-radius:8px; background:oklch(58% 0.19 264 / 0.15); display:inline-flex; align-items:center; justify-content:center; color:var(--green, oklch(58% 0.19 264)); font-size:16px;">',
+      '    <span style="width:28px; height:28px; border-radius:8px; background:oklch(58% 0.129 55 / 0.15); display:inline-flex; align-items:center; justify-content:center; color:var(--green, oklch(58% 0.129 55)); font-size:16px;">',
       '      <i class="ph-fill ph-cookie"></i>',
       '    </span>',
       '    <span style="font-size:13.5px; font-weight:700; letter-spacing:-0.01em; color:var(--ink);">Cookie preferences</span>',
       '  </div>',
-      '  <button id="bxCookieClose" aria-label="Dismiss cookie notice" style="background:none; border:none; color:var(--ink-3, oklch(60% 0.02 258)); font-size:18px; cursor:pointer; padding:4px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; transition:color 0.2s ease;">',
+      '  <button id="bxCookieClose" aria-label="Dismiss cookie notice" style="background:none; border:none; color:var(--ink-3, oklch(60% 0.02 68)); font-size:18px; cursor:pointer; padding:4px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; transition:color 0.2s ease;">',
       '    <i class="ph-bold ph-x"></i>',
       '  </button>',
       '</div>',
-      '<p style="font-size:13.5px; line-height:1.55; color:var(--ink-2, oklch(78% 0.02 258)); margin:0;">',
-      '  We use <strong style="color:var(--ink);">2 essential</strong> cookies (theme &amp; this consent choice) and <strong style="color:var(--ink);">2 optional</strong> cookies (anonymous page count &amp; UI preferences). No ads, no tracking pixels, no cross-site surveillance. <a href="' + cookieUrl + '" style="color:var(--green, oklch(58% 0.19 264)); text-decoration:underline; font-weight:500;">Cookie Policy</a>.',
+      '<p style="font-size:13.5px; line-height:1.55; color:var(--ink-2, oklch(78% 0.02 68)); margin:0;">',
+      '  We use <strong style="color:var(--ink);">2 essential</strong> cookies (theme &amp; this consent choice) and <strong style="color:var(--ink);">2 optional</strong> cookies (anonymous page count &amp; UI preferences). No ads, no tracking pixels, no cross-site surveillance. <a href="' + cookieUrl + '" style="color:var(--green, oklch(58% 0.129 55)); text-decoration:underline; font-weight:500;">Cookie Policy</a>.',
       '</p>',
       '<div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:2px;">',
-      '  <button id="bxCookieAcceptAll" style="flex:1; min-width:110px; background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green, oklch(58% 0.19 264)) 60%); color:#fff; border:none; border-radius:999px; padding:10px 18px; font-size:13.5px; font-weight:600; font-family:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 24px -8px oklch(58% 0.19 264 / 0.5); transition:transform 0.2s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;">',
+      '  <button id="bxCookieAcceptAll" style="flex:1; min-width:110px; background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green, oklch(58% 0.129 55)) 60%); color:#fff; border:none; border-radius:999px; padding:10px 18px; font-size:13.5px; font-weight:600; font-family:inherit; cursor:pointer; box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 24px -8px oklch(58% 0.129 55 / 0.5); transition:transform 0.2s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;">',
       '    Accept all',
       '  </button>',
-      '  <button id="bxCookieEssential" style="background:var(--paper-2, oklch(12% 0.026 258)); border:1px solid var(--line, oklch(90% 0.01 258 / 0.14)); color:var(--ink-2, oklch(78% 0.02 258)); border-radius:999px; padding:10px 16px; font-size:13px; font-weight:500; font-family:inherit; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;">',
+      '  <button id="bxCookieEssential" style="background:var(--paper-2, oklch(12% 0.026 68)); border:1px solid var(--line, oklch(90% 0.01 68 / 0.14)); color:var(--ink-2, oklch(78% 0.02 68)); border-radius:999px; padding:10px 16px; font-size:13px; font-weight:500; font-family:inherit; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;">',
       '    Essential only',
       '  </button>',
       '</div>'

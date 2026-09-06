@@ -7,31 +7,25 @@
 <meta name="description" content="Every plan includes your BEXO Card, eConnect tap and scan, and Moment Capture. Explore transparent pricing for your professional web presence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450;1,9..144,500&family=Work+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/tokens.css?v=20260906">
+<link rel="stylesheet" href="../css/style.css?v=20260906c">
 </head>
 <body>
 
-<div data-bx-theme-root="true" style="--paper:oklch(16% 0.03 258); --paper-2:oklch(12% 0.026 258); --ink:oklch(97% 0.01 258); --ink-2:oklch(78% 0.02 258); --ink-3:oklch(60% 0.02 258); --green:oklch(58% 0.19 264); --green-deep:oklch(48% 0.19 264); --amber:oklch(72% 0.1 264); --line:oklch(90% 0.01 258 / 0.14); --serif:'Playfair Display',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
+<div data-bx-theme-root="true" style="--paper:#1a1611; --paper-2:#221c15; --ink:#f3ede1; --ink-2:#cabfab; --ink-3:#948a76; --green:#c9793d; --green-deep:#e0925a; --amber:#4f8a7d; --line:rgba(243,237,225,.14); --serif:'Fraunces',Georgia,serif; --sans:'Work Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; background:var(--paper); color:var(--ink); font-family:var(--sans); position:relative; min-height:100vh;">
 
   <!-- Noise & Liquid SVG filters -->
-  <div aria-hidden="true" style="position:fixed; inset:0; z-index:150; pointer-events:none; opacity:0.035; mix-blend-mode:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
-  <svg aria-hidden="true" style="position:absolute; width:0; height:0; overflow:hidden;"><defs><filter id="bx-liquid"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="7" result="turb"><animate attributeName="baseFrequency" values="0.012 0.09;0.02 0.14;0.012 0.09" dur="2.4s" repeatCount="indefinite"></animate></feTurbulence><feDisplacementMap in="SourceGraphic" in2="turb" scale="34" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></defs></svg>
 
   <!-- Page transition curtain & cursor -->
-  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 258); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
+  <div id="bxCurtain" style="position:fixed; inset:0; z-index:400; background:oklch(6% 0.02 68); display:flex; align-items:center; justify-content:center; border-radius:0 0 32px 32px; transform:translateY(0%); transition:transform 0.6s cubic-bezier(0.76,0,0.24,1), border-radius 0.6s cubic-bezier(0.76,0,0.24,1); pointer-events:auto;">
     <div id="bxCurtainGlow" style="position:absolute; width:130px; height:130px; border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); filter:blur(22px); opacity:1; transition:opacity 0.4s ease; animation:bx-logo-pulse 1.8s ease-in-out infinite; pointer-events:none;"></div>
-    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.19 264 / 0.6); pointer-events:none;">
-    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 258); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
+    <img id="bxCurtainLogo" src="../assets/bexo-logo.png" alt="" style="width:50px; height:50px; border-radius:14px; object-fit:cover; position:relative; z-index:1; opacity:1; transform:scale(1); transition:opacity 0.35s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 10px 32px -8px oklch(58% 0.129 55 / 0.6); pointer-events:none;">
+    <p id="bxLoadCopy" style="position:absolute; bottom:14%; left:0; right:0; text-align:center; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.02 68); margin:0; opacity:0.85;">Reading the signal&hellip;</p>
   </div>
   <div id="bxProgress" style="position:fixed; top:0; left:0; height:2px; width:0%; background:var(--green); z-index:250;"></div>
-  <div id="bxBlackhole" aria-hidden="true" style="position:fixed; inset:0; z-index:500; pointer-events:none; opacity:0; clip-path:circle(0px at 50% 50%); background:radial-gradient(circle at 50% 50%, oklch(22% 0.02 60) 0%, oklch(11% 0.015 60) 55%, oklch(4% 0.01 60) 100%);"></div>
-  <div id="bxRingA" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--green); opacity:0; transform:translate(-50%,-50%);"></div>
-  <div id="bxRingB" aria-hidden="true" style="position:fixed; z-index:501; pointer-events:none; left:0; top:0; width:0px; height:0px; border-radius:50%; border:2px solid var(--amber); opacity:0; transform:translate(-50%,-50%);"></div>
-  <div id="bxCursor" aria-hidden="true" style="position:fixed; top:0; left:0; width:34px; height:34px; margin:-17px 0 0 -17px; border:1px solid oklch(6% 0.02 258 / 0.45); border-radius:50%; pointer-events:none; z-index:380; opacity:0; display:flex; align-items:center; justify-content:center; transition:width 0.35s cubic-bezier(0.34,1.56,0.64,1), height 0.35s cubic-bezier(0.34,1.56,0.64,1), margin 0.35s cubic-bezier(0.34,1.56,0.64,1), background 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;"><span id="bxCursorLabel" style="opacity:0; font-size:9.5px; letter-spacing:0.14em; font-weight:700; color:#050505; transition:opacity 0.2s ease; white-space:nowrap;">VIEW</span></div>
 
   <!-- ===== Nav ===== -->
   <div data-bx-nav data-active="pricing">
@@ -70,7 +64,7 @@
   <!-- ===== Pricing Hero ===== -->
   <section data-screen-label="Pricing hero" style="padding:clamp(150px,17vw,230px) clamp(20px,5vw,64px) clamp(50px,6vw,80px); position:relative; overflow:hidden;">
     <div aria-hidden="true" style="position:absolute; top:-16%; right:-6%; width:min(560px,60vw); height:min(560px,60vw); border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 70%); opacity:0.09; filter:blur(70px); pointer-events:none;"></div>
-    <div aria-hidden="true" style="position:absolute; bottom:-24%; left:-8%; width:min(460px,52vw); height:min(460px,52vw); border-radius:50%; background:radial-gradient(circle, var(--amber, oklch(72% 0.1 264)) 0%, transparent 70%); opacity:0.08; filter:blur(70px); pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:absolute; bottom:-24%; left:-8%; width:min(460px,52vw); height:min(460px,52vw); border-radius:50%; background:radial-gradient(circle, var(--amber, oklch(72% 0.07 175)) 0%, transparent 70%); opacity:0.08; filter:blur(70px); pointer-events:none;"></div>
     <div id="bxHeroInner" style="max-width:1320px; margin:0 auto; opacity:0; transform:translateY(28px); transition:opacity 1s ease 0.35s, transform 1s cubic-bezier(0.16,1,0.3,1) 0.35s;">
       <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 34px; display:flex; align-items:center; gap:12px;"><span style="width:28px; height:1px; background:var(--ink-3); display:inline-block;"></span>Pricing</p>
       <h1 style="font-family:var(--serif); font-weight:300; font-size:clamp(40px,6.6vw,92px); line-height:0.99; letter-spacing:-0.022em; margin:0 0 30px; max-width:14ch;">Free to explore. Simple when you go live.</h1>
@@ -112,7 +106,7 @@
         </div>
 
         <!-- Essential Plan (Recommended) -->
-        <div data-reveal="true" style="border:1px solid rgba(47,107,255,.5); border-radius:20px; padding:clamp(32px,3.8vw,46px); display:flex; flex-direction:column; background:radial-gradient(ellipse at top, oklch(58% 0.19 264 / 0.22), transparent 60%), oklch(9% 0.03 258); color:var(--ink); position:relative; box-shadow:0 56px 100px -40px oklch(6% 0.02 258 / 0.55); transform:scale(1.045); z-index:2;">
+        <div data-reveal="true" style="border:1px solid rgba(201,121,61,.5); border-radius:20px; padding:clamp(32px,3.8vw,46px); display:flex; flex-direction:column; background:radial-gradient(ellipse at top, oklch(58% 0.129 55 / 0.22), transparent 60%), oklch(9% 0.03 68); color:var(--ink); position:relative; box-shadow:0 56px 100px -40px oklch(6% 0.02 68 / 0.55); transform:scale(1.045); z-index:2;">
           <div style="position:absolute; top:-12px; left:clamp(32px,3.8vw,46px);"><span class="bx-badge-plan">Recommended</span></div>
           <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(70% 0.014 70); margin:0 0 18px;">Essential</p>
           <p id="bxEssentialPrice" style="font-family:var(--serif); font-weight:300; font-size:48px; line-height:1; margin:0 0 8px; transition:transform 0.26s cubic-bezier(0.34,1.56,0.64,1);">&#8377;999<span id="bxEssentialPeriod" style="font-family:var(--sans); font-size:14px; color:oklch(70% 0.014 70);"> / year</span></p>
@@ -124,7 +118,7 @@
             <li style="display:flex; gap:10px;"><i class="ph-fill ph-check-circle" style="color:var(--green); font-size:18px;"></i>Exclusive card styles</li>
             <li style="display:flex; gap:10px;"><i class="ph-fill ph-check-circle" style="color:var(--green); font-size:18px;"></i>Refresh as often as you need</li>
           </ul>
-          <a href="https://dash.mybexo.com/login?next=%2Fcheckout%3Fplan%3Dessential" class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:14px 22px; border-radius:999px; text-align:center; font-size:15px; font-weight:600; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Go Essential</a>
+          <a href="https://dash.mybexo.com/login?next=%2Fcheckout%3Fplan%3Dessential" class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); padding:14px 22px; border-radius:999px; text-align:center; font-size:15px; font-weight:600; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Go Essential</a>
         </div>
       </div>
 
@@ -137,7 +131,7 @@
         </div>
         <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
           <p style="font-family:var(--serif); font-weight:300; font-size:44px; margin:0;">&#8377;1,999<span style="font-family:var(--sans); font-size:15px; color:var(--ink-3);"> once</span></p>
-          <a href="https://dash.mybexo.com/login?next=%2Fcheckout%3Fplan%3Dstudent" class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:15px 26px; border-radius:999px; font-size:15px; font-weight:500; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Claim Student+</a>
+          <a href="https://dash.mybexo.com/login?next=%2Fcheckout%3Fplan%3Dstudent" class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); padding:15px 26px; border-radius:999px; font-size:15px; font-weight:500; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Claim Student+</a>
         </div>
       </div>
 
@@ -152,17 +146,17 @@
   </section>
 
   <!-- ===== Which plan, honestly ===== -->
-  <section data-screen-label="Who it fits" style="padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px); background:oklch(6% 0.025 258); color:var(--ink);">
+  <section data-screen-label="Who it fits" style="padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px); background:oklch(6% 0.025 68); color:var(--ink);">
     <div style="max-width:1320px; margin:0 auto;">
       <div style="display:flex; gap:clamp(24px,6vw,90px); flex-wrap:wrap; margin-bottom:clamp(44px,6vw,72px);">
-        <span style="display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(80% 0.01 72); background:oklch(23% 0.03 258); border:1px solid oklch(32% 0.03 258); border-radius:20px; padding:6px 14px; height:fit-content; min-width:fit-content;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>Which plan, honestly</span>
+        <span style="display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:oklch(80% 0.01 72); background:oklch(23% 0.03 68); border:1px solid oklch(32% 0.03 68); border-radius:20px; padding:6px 14px; height:fit-content; min-width:fit-content;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>Which plan, honestly</span>
         <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(28px,4.2vw,56px); line-height:1.05; letter-spacing:-0.018em; max-width:20ch; margin:0;">Pick by how often you meet people.</h2>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2vw,24px);">
-        <div data-reveal="true" style="border:1px solid oklch(32% 0.03 258); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(19% 0.03 258);">
+        <div data-reveal="true" style="border:1px solid oklch(32% 0.03 68); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(19% 0.03 68);">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(72% 0.1 264), oklch(58% 0.19 264)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 258); flex-shrink:0;">RS</span>
+            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(72% 0.07 175), oklch(58% 0.129 55)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 68); flex-shrink:0;">RS</span>
             <div>
               <p style="font-size:14.5px; font-weight:600; margin:0;">Final-year student</p>
               <p style="font-size:12.5px; color:oklch(70% 0.014 70); margin:2px 0 0;">A few events a term</p>
@@ -172,10 +166,10 @@
           <p style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); margin:0;">Student+, once</p>
         </div>
 
-        <div data-reveal="true" style="border:1px solid var(--green); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(20% 0.03 258); position:relative;">
-          <span style="position:absolute; top:-11px; left:clamp(24px,3vw,32px); background:var(--green); color:oklch(6% 0.02 258); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:4px 12px; border-radius:999px;">Most people</span>
+        <div data-reveal="true" style="border:1px solid var(--green); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(20% 0.03 68); position:relative;">
+          <span style="position:absolute; top:-11px; left:clamp(24px,3vw,32px); background:var(--green); color:oklch(6% 0.02 68); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; padding:4px 12px; border-radius:999px;">Most people</span>
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(58% 0.19 264), oklch(72% 0.1 264)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 258); flex-shrink:0;">MK</span>
+            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(58% 0.129 55), oklch(72% 0.07 175)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 68); flex-shrink:0;">MK</span>
             <div>
               <p style="font-size:14.5px; font-weight:600; margin:0;">Founder or BD lead</p>
               <p style="font-size:12.5px; color:oklch(78% 0.01 72); margin:2px 0 0;">New people every week</p>
@@ -185,9 +179,9 @@
           <p style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--green); margin:0;">Essential, annual</p>
         </div>
 
-        <div data-reveal="true" style="border:1px solid oklch(32% 0.03 258); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(19% 0.03 258);">
+        <div data-reveal="true" style="border:1px solid oklch(32% 0.03 68); border-radius:18px; padding:clamp(24px,3vw,32px); background:oklch(19% 0.03 68);">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(60% 0.14 264), oklch(58% 0.19 264)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 258); flex-shrink:0;">AD</span>
+            <span style="width:44px; height:44px; border-radius:50%; background:linear-gradient(150deg, oklch(60% 0.095 55), oklch(58% 0.129 55)); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:16px; color:oklch(6% 0.02 68); flex-shrink:0;">AD</span>
             <div>
               <p style="font-size:14.5px; font-weight:600; margin:0;">Independent designer</p>
               <p style="font-size:12.5px; color:oklch(70% 0.014 70); margin:2px 0 0;">Work speaks first</p>
@@ -250,7 +244,7 @@
     <div aria-hidden="true" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:min(700px,80vw); height:min(700px,80vw); border-radius:50%; background:radial-gradient(circle, var(--green) 0%, transparent 68%); opacity:0.1; filter:blur(70px); pointer-events:none;"></div>
     <div style="max-width:760px; margin:0 auto; position:relative; z-index:1;">
       <h2 style="font-family:var(--serif); font-weight:300; font-size:clamp(32px,5.4vw,68px); line-height:1.03; letter-spacing:-0.022em; margin:0 0 40px;">Claim the name before someone else does.</h2>
-      <a href="../index.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.19 264) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.19 264 / 0.55); padding:17px 30px; border-radius:999px; font-weight:500; font-size:16px; display:inline-block; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Check your name</a>
+      <a href="../index.html" data-page-link class="bx-cta-primary" style="background:linear-gradient(180deg, oklch(66% 0.129 55) 0%, var(--green) 60%); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 16px 40px -14px oklch(58% 0.129 55 / 0.55); padding:17px 30px; border-radius:999px; font-weight:500; font-size:16px; display:inline-block; transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);">Check your name</a>
     </div>
   </section>
 
@@ -299,12 +293,13 @@
 
 </div>
 
-<script src="../js/cookie-utils.js"></script>
-<script src="../js/theme.js"></script>
+<script src="../js/config.js?v=20260906"></script>
+<script src="../js/cookie-utils.js?v=20260906"></script>
+<script src="../js/theme.js?v=20260906"></script>
 <script src="../js/nav.js"></script>
 <script src="../js/footer.js"></script>
 <script src="../js/transitions.js"></script>
-<script src="../js/cookies-consent.js"></script>
+<script src="../js/cookies-consent.js?v=20260906"></script>
 <script>
   (function () {
     const IDENTITY_M = 59, IDENTITY_Y = 499;

@@ -6,26 +6,26 @@
 
   var THEMES = {
     dark: {
-      "--paper": "oklch(16% 0.03 258)",
-      "--paper-2": "oklch(12% 0.026 258)",
-      "--ink": "oklch(97% 0.01 258)",
-      "--ink-2": "oklch(78% 0.02 258)",
-      "--ink-3": "oklch(60% 0.02 258)",
-      "--line": "oklch(90% 0.01 258 / 0.14)",
-      "--card-bg": "oklch(16% 0.03 258)",
-      "--bexo-bg": "oklch(12% 0.026 258)",
-      "--bexo-text": "oklch(97% 0.01 258)"
+      "--paper": "#1a1611",
+      "--paper-2": "#221c15",
+      "--ink": "#f3ede1",
+      "--ink-2": "#cabfab",
+      "--ink-3": "#948a76",
+      "--line": "rgba(243,237,225,.14)",
+      "--card-bg": "#221c15",
+      "--bexo-bg": "#1a1611",
+      "--bexo-text": "#f3ede1"
     },
     light: {
-      "--paper": "oklch(97% 0.012 258)",
-      "--paper-2": "oklch(93% 0.015 258)",
-      "--ink": "oklch(16% 0.03 258)",
-      "--ink-2": "oklch(36% 0.02 258)",
-      "--ink-3": "oklch(52% 0.02 258)",
-      "--line": "oklch(20% 0.02 258 / 0.12)",
-      "--card-bg": "oklch(99% 0.005 258)",
-      "--bexo-bg": "oklch(95% 0.012 258)",
-      "--bexo-text": "oklch(16% 0.03 258)"
+      "--paper": "#f5f2ea",
+      "--paper-2": "#ece7d9",
+      "--ink": "#1c1712",
+      "--ink-2": "#4a4238",
+      "--ink-3": "#7c7364",
+      "--line": "rgba(28,23,18,.12)",
+      "--card-bg": "#fffdf8",
+      "--bexo-bg": "#ece7d9",
+      "--bexo-text": "#1c1712"
     }
   };
 

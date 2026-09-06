@@ -52,6 +52,21 @@
   }
 
   /**
+   * Read + JSON.parse a cookie, always returning a plain object.
+   * JSON.parse(null) legitimately returns null (no exception), so callers
+   * that do `JSON.parse(get(name))` and then assign properties onto the
+   * result need this rather than a bare try/catch around JSON.parse.
+   * @param {string} name
+   * @returns {Object}
+   */
+  function getJSON(name) {
+    var raw = getCookie(name);
+    var parsed;
+    try { parsed = JSON.parse(raw); } catch (e) { parsed = null; }
+    return (parsed && typeof parsed === "object") ? parsed : {};
+  }
+
+  /**
    * Delete a cookie.
    * @param {string} name
    * @param {string} [path="/"]
@@ -164,6 +179,7 @@
   window.bxCookie = {
     set:            setCookie,
     get:            getCookie,
+    getJSON:        getJSON,
     del:            deleteCookie,
     setRegistered:  setRegistered,
     hasConsent:     hasConsent,

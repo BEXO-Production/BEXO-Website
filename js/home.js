@@ -44,8 +44,8 @@
   ];
 
   var STATUS_COLORS = {
-    idle: "oklch(60% 0.02 258)", checking: "oklch(60% 0.02 258)",
-    available: "oklch(48% 0.19 264)", invalid: "oklch(80% 0.1 15)", taken: "oklch(80% 0.1 15)"
+    idle: "oklch(60% 0.02 68)", checking: "oklch(60% 0.02 68)",
+    available: "oklch(48% 0.129 55)", invalid: "oklch(80% 0.1 15)", taken: "oklch(80% 0.1 15)"
   };
 
   /* ---------------- element refs ---------------- */
@@ -168,7 +168,16 @@
 
   function layoutFragments(p) {
     var m = fragMath();
-    if (fragmentsStage) fragmentsStage.style.height = m.stageHeight + "px";
+    // Grow the stage from a compact collapsed height up to its full,
+    // fully-scattered height as the reveal progresses, instead of reserving
+    // the final height from the very first frame — on short mobile
+    // viewports a fixed full-height box made the initial "stacked" state
+    // look like a mostly-empty, broken section.
+    var collapsedHeight = m.cardH + 56;
+    var growP = Math.max(0, Math.min(1, p / 0.3));
+    var growEased = growP * growP * (3 - 2 * growP);
+    var stageHeight = collapsedHeight + (m.stageHeight - collapsedHeight) * growEased;
+    if (fragmentsStage) fragmentsStage.style.height = stageHeight.toFixed(0) + "px";
     LABELS.forEach(function (label, i) {
       var el = fragmentEls[i];
       if (!el) return;
@@ -176,7 +185,7 @@
       var col = i % m.cols, row = Math.floor(i / m.cols);
       var local = Math.max(0, Math.min(1, (p - i * 0.05) / 0.4));
       var eased = local * local * (3 - 2 * local);
-      var sLeft = m.fragW / 2 - m.cardW / 2 + off.x * m.scaleX, sTop = m.stageHeight / 2 - 32 + off.y;
+      var sLeft = m.fragW / 2 - m.cardW / 2 + off.x * m.scaleX, sTop = stageHeight / 2 - 32 + off.y;
       var aLeft = col * (m.colWidth + m.gutter) + (m.colWidth - m.cardW) / 2, aTop = 20 + row * m.rowHeight;
       var left = sLeft + (aLeft - sLeft) * eased;
       var top = sTop + (aTop - sTop) * eased;
@@ -193,8 +202,8 @@
       el.style.color = active ? "var(--paper)" : "var(--ink)";
       el.classList.toggle("is-active", active);
       el.style.boxShadow = active
-        ? "0 0 0 5px oklch(58% 0.19 264 / 0.16), 0 26px 48px -20px oklch(6% 0.02 258 / 0.55)"
-        : "0 20px 40px -22px oklch(6% 0.02 258 / 0.45)";
+        ? "0 0 0 5px oklch(58% 0.129 55 / 0.16), 0 26px 48px -20px oklch(6% 0.02 68 / 0.55)"
+        : "0 20px 40px -22px oklch(6% 0.02 68 / 0.45)";
       var iconWrap = el.querySelector(".bx-fragment-icon");
       if (iconWrap) {
         iconWrap.style.background = active ? "linear-gradient(155deg, var(--green), var(--green-deep))" : "var(--paper-2)";
@@ -249,7 +258,7 @@
       cineFrame.style.height = (baseH + (100 - baseH) * ce).toFixed(2) + "vh";
       cineFrame.style.borderRadius = (isMobile ? (16 - 16 * ce) : (20 - 20 * ce)).toFixed(1) + "px";
       if (cineImg) cineImg.style.transform = "scale(" + (1.22 - 0.22 * ce).toFixed(3) + ")";
-      if (cineVeil) cineVeil.style.background = "linear-gradient(180deg, oklch(6% 0.02 258 / 0.15), oklch(6% 0.02 258 / " + (0.25 + 0.45 * ce).toFixed(2) + "))";
+      if (cineVeil) cineVeil.style.background = "linear-gradient(180deg, oklch(6% 0.02 68 / 0.15), oklch(6% 0.02 258 / " + (0.25 + 0.45 * ce).toFixed(2) + "))";
       if (cineCopy) {
         cineCopy.style.opacity = copyP.toFixed(2);
         cineCopy.style.transform = "translateY(" + (26 - 26 * copyP).toFixed(1) + "px)";
@@ -378,8 +387,8 @@
         cursor.style.width = big ? "62px" : "34px";
         cursor.style.height = big ? "62px" : "34px";
         cursor.style.margin = big ? "-31px 0 0 -31px" : "-17px 0 0 -17px";
-        cursor.style.background = big ? "oklch(58% 0.19 264 / 0.18)" : "transparent";
-        cursor.style.borderColor = big ? "oklch(58% 0.19 264 / 0.7)" : "oklch(6% 0.02 258 / 0.45)";
+        cursor.style.background = big ? "oklch(58% 0.129 55 / 0.18)" : "transparent";
+        cursor.style.borderColor = big ? "oklch(58% 0.129 55 / 0.7)" : "oklch(6% 0.02 68 / 0.45)";
       }
     }, { passive: true });
     document.addEventListener("mouseleave", function () { cursor.style.opacity = "0"; });
@@ -482,7 +491,7 @@
         setHandleStatus({ kind: "available", msg: handle + ".atbexo.com is available." }, true);
         var claimLink = claimWrap ? claimWrap.querySelector("a") : null;
         if (claimLink) {
-          claimLink.href = "https://dash.mybexo.com/login?claim=" + encodeURIComponent(handle);
+          claimLink.href = window.BEXO ? window.BEXO.claimLoginUrl(handle) : "https://dash.mybexo.com/login?claim=" + encodeURIComponent(handle);
         }
         var claimHandleSpan = document.getElementById("bxClaimHandle");
         if (claimHandleSpan) {
@@ -503,7 +512,7 @@
       if (e.key === "Enter") {
         e.preventDefault();
         if (state.handleStatus && state.handleStatus.kind === "available" && state.handleValue) {
-          window.location.href = "https://dash.mybexo.com/login?claim=" + encodeURIComponent(state.handleValue);
+          window.location.href = window.BEXO ? window.BEXO.claimLoginUrl(state.handleValue) : "https://dash.mybexo.com/login?claim=" + encodeURIComponent(state.handleValue);
         }
       }
     });
@@ -530,15 +539,15 @@
       if (node) {
         node.classList.toggle("is-active", active);
         node.style.transform = "translate(-50%,-50%) scale(" + (active ? 1.08 : 1) + ")";
-        node.style.background = active ? "var(--green)" : "oklch(23% 0.03 258)";
-        node.style.borderColor = active ? "var(--green)" : "oklch(34% 0.03 258)";
+        node.style.background = active ? "var(--green)" : "oklch(23% 0.03 68)";
+        node.style.borderColor = active ? "var(--green)" : "oklch(34% 0.03 68)";
         node.style.color = active ? "var(--ink)" : "oklch(85% 0.008 75)";
         node.style.fontWeight = active ? "600" : "500";
-        node.style.boxShadow = active ? "0 8px 22px -8px oklch(58% 0.19 264 / 0.55)" : "none";
+        node.style.boxShadow = active ? "0 8px 22px -8px oklch(58% 0.129 55 / 0.55)" : "none";
       }
       var line = spidLines[i];
       if (line) {
-        line.setAttribute("stroke", active ? "var(--green)" : "oklch(45% 0.03 258 / 0.45)");
+        line.setAttribute("stroke", active ? "var(--green)" : "oklch(45% 0.03 68 / 0.45)");
         line.setAttribute("stroke-width", active ? "0.55" : "0.25");
         line.style.strokeDasharray = active ? "3 3" : "none";
         line.style.animation = active ? "bx-flow 0.6s linear infinite" : "none";
