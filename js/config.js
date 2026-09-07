@@ -54,7 +54,9 @@
       .toLowerCase()
       .replace(/[^a-z0-9-]/g, "")
       .slice(0, 48);
-    var base = global.BEXO.DASH_ORIGIN + "/login";
+    // Claiming a handle always goes to the real production dashboard, same
+    // as the "Create My Card" CTA — there's no local/staging signup flow.
+    var base = "https://dash.mybexo.com/login";
     if (!clean) return base;
     return base + "?claim=" + encodeURIComponent(clean);
   };
@@ -82,11 +84,13 @@
       }
     });
 
-    // "Create My Card" / "Create your Card" buttons always pointed at the
-    // production dashboard regardless of environment. Route them through
-    // the same environment-aware origin as everything else.
+    // "Create My Card" / "Create your Card" always goes to the real
+    // production dashboard, on every environment (including local/.cyou
+    // testing) — there's no local/staging card-creation flow to send
+    // people to instead, so unlike the login/footer links above, this one
+    // intentionally does not follow DASH_ORIGIN.
     document.querySelectorAll(".bx-nav-cta, .bx-overlay-cta").forEach(function (el) {
-      if (el.tagName === "A") el.setAttribute("href", dashUrl);
+      if (el.tagName === "A") el.setAttribute("href", "https://dash.mybexo.com");
     });
   }
 
